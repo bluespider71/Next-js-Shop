@@ -1,0 +1,16 @@
+{
+  "trailingComma": "es5",
+  "useTabs": true,
+  "semi": true,
+  "singleQuote": false,
+  "endOfLine": "lf",
+  "insertFinalNewline": false,
+  "overrides": [
+    {
+      "files": "*.json",
+      "options": {
+        "useTabs": false
+      }
+    }
+  ]
+}
