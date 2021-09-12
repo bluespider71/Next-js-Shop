@@ -99,7 +99,7 @@ const SignUpForm: React.FC = () => {
 							disabled={isLoading}
 							className="h-11 md:h-12 w-full mt-2"
 						>
-							{t("common:text-login")}
+							{t("common:text-register")}
 						</Button>
 					</div>
 				</div>

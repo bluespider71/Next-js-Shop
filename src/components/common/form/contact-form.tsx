@@ -44,7 +44,8 @@ const ContactForm: React.FC = () => {
 						{...register("email", {
 							required: "forms:email-required",
 							pattern: {
-								value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+								value:
+									/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
 								message: "forms:email-error",
 							},
 						})}
@@ -55,7 +56,7 @@ const ContactForm: React.FC = () => {
 				</div>
 				<Input
 					labelKey="forms:label-subject"
-					{...register("subject", { required: "forms:subject-required" })}
+					{...register("subject", { required: "forms:name-subject" })}
 					className="relative"
 					placeholderKey="forms:placeholder-subject"
 					errorKey={errors.subject?.message}

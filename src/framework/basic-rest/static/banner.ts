@@ -718,3 +718,150 @@ export const homeFiveBanner = {
     },
   },
 };
+
+export const homeSixHeroImages = [
+  {
+		id: 1,
+		title: "We picked every item with care you must try",
+		slug: "winter-collection",
+		image: {
+			mobile: {
+				url: "/assets/images/hero/banner-mobile-4.jpg",
+				width: 690,
+				height: 480,
+			},
+			desktop: {
+				url: "/assets/images/hero/banner-4.jpg",
+				width: 1800,
+				height: 800,
+			},
+		},
+	},
+  {
+		id: 2,
+		title: "We picked every item with care you must try",
+		slug: "winter-collection",
+		image: {
+			mobile: {
+				url: "/assets/images/hero/banner-mobile-5.jpg",
+				width: 690,
+				height: 480,
+			},
+			desktop: {
+				url: "/assets/images/hero/banner-5.jpg",
+				width: 1800,
+				height: 800,
+			},
+		},
+	},
+  {
+		id: 3,
+		title: "We picked every item with care you must try",
+		slug: "winter-collection",
+		image: {
+			mobile: {
+				url: "/assets/images/hero/banner-mobile-6.jpg",
+				width: 690,
+				height: 480,
+			},
+			desktop: {
+				url: "/assets/images/hero/banner-6.jpg",
+				width: 1800,
+				height: 800,
+			},
+		},
+	},
+]
+
+export const homeSixCoupons = {
+  id: 3,
+  title: "We picked every item with care you must try",
+  slug: "winter-collection",
+  image: {
+    mobile: {
+      url: "/assets/images/banner/banner-mobile-7.jpg",
+      width: 690,
+      height: 300,
+    },
+    desktop: {
+      url: "/assets/images/banner/banner-7.jpg",
+      width: 1800,
+      height: 800,
+    },
+  },
+}
+
+
+export const saleBannerGrid = [
+	{
+		id: 1,
+		title: "25% Discount on Selected Items",
+		slug: "t-shirts-collection",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/grid/banner-mobile-4.jpg",
+				width: 690,
+				height: 360,
+			},
+			desktop: {
+				url: "/assets/images/banner/grid/banner-4.png",
+				width: 885,
+				height: 430,
+			},
+		},
+	},
+	{
+		id: 2,
+		title: "30% Discount on Kids Items",
+		slug: "jins-collection",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/grid/banner-mobile-5.jpg",
+				width: 690,
+				height: 360,
+			},
+			desktop: {
+				url: "/assets/images/banner/grid/banner-5.png",
+				width: 885,
+				height: 430,
+			},
+		},
+	},
+];
+
+export const saleBannerWithProducts = [
+  {
+    id: 1,
+    title: "Sale Offer",
+    slug: "sale-offer",
+    image: {
+      mobile: {
+        url: "/assets/images/banner/banner-sale-offer-half.jpg",
+        width: 1770,
+        height: 780,
+      },
+      desktop: {
+        url: "/assets/images/banner/banner-sale-offer-half.jpg",
+        width: 1770,
+        height: 780,
+      },
+    },
+  },
+  {
+    id: 2,
+    title: "New Sports",
+    slug: "new-sports",
+    image: {
+      mobile: {
+        url: "/assets/images/banner/banner-sale-offer-half.jpg",
+        width: 1770,
+        height: 780,
+      },
+      desktop: {
+        url: "/assets/images/banner/banner-sale-offer-half.jpg",
+        width: 1770,
+        height: 780,
+      },
+    },
+  },
+];

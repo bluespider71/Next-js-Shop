@@ -266,6 +266,9 @@
 	.carouselWrapper .product-gallery + div {
 		@apply hidden;
 	}
+	.carouselWrapper.pagination-left .swiper-pagination-bullets {
+		@apply start-6 sm:start-9 md:start-11 lg:start-14 xl:start-20 2xl:start-24 3xl:start-28;
+	}
 }
 
 /* Breadcrumb truncate last child */

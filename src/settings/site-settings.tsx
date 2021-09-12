@@ -50,6 +50,11 @@ export const siteSettings = {
 						path: "/classic",
 						label: "menu-classic",
 					},
+					{
+						id: 6,
+						path: "/trendy",
+						label: "menu-trendy",
+					},
 				],
 			},
 			{
