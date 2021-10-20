@@ -1,87 +1,56 @@
-import BannerCard from '@components/common/banner-card';
-import Container from '@components/ui/container';
-import BrandGridBlock from '@containers/brand-grid-block';
-import CategoryBlock from '@containers/category-block';
-import Layout from '@components/layout/layout';
-import BannerWithProducts from '@containers/banner-with-products';
-import BannerBlock from '@containers/banner-block';
-import Divider from '@components/ui/divider';
-import DownloadApps from '@components/common/download-apps';
-import Support from '@components/common/support';
-import Instagram from '@components/common/instagram';
-import ProductsFlashSaleBlock from '@containers/product-flash-sale-block';
-import ProductsFeatured from '@containers/products-featured';
-import BannerSliderBlock from '@containers/banner-slider-block';
-import ExclusiveBlock from '@containers/exclusive-block';
-import Subscription from '@components/common/subscription';
-import NewArrivalsProductFeed from '@components/product/feeds/new-arrivals-product-feed';
-import {
-    homeThreeBanner as banner
-}
-from '@framework/static/banner';
-import {
-    homeThreeMasonryBanner as masonryBanner
-}
-from '@framework/static/banner';
-import {
-    serverSideTranslations
-}
-from 'next-i18next/serverSideTranslations';
-import {
-    ROUTES
-}
-from '@utils/routes';
-import {
-    GetStaticProps
-}
-from 'next';
+import BannerCard from "@components/common/banner-card";
+import Container from "@components/ui/container";
+import BrandGridBlock from "@containers/brand-grid-block";
+import CategoryBlock from "@containers/category-block";
+import Layout from "@components/layout/layout";
+import BannerWithProducts from "@containers/banner-with-products";
+import BannerBlock from "@containers/banner-block";
+import Divider from "@components/ui/divider";
+import DownloadApps from "@components/common/download-apps";
+import Support from "@components/common/support";
+import Instagram from "@components/common/instagram";
+import ProductsFlashSaleBlock from "@containers/product-flash-sale-block";
+import ProductsFeatured from "@containers/products-featured";
+import BannerSliderBlock from "@containers/banner-slider-block";
+import ExclusiveBlock from "@containers/exclusive-block";
+import Subscription from "@components/common/subscription";
+import NewArrivalsProductFeed from "@components/product/feeds/new-arrivals-product-feed";
+import { homeThreeBanner as banner } from "@framework/static/banner";
+import { homeThreeMasonryBanner as masonryBanner } from "@framework/static/banner";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { ROUTES } from "@utils/routes";
+import { GetStaticProps } from "next";
 
 //this is for testing and must be removed
-import {
-    useState,
-    useEffect
-}
-from 'react';
-import ProductPopUp from "@components/product/product-popup"
-import oldData from "../personalData/oldData.js"
-import newData from "../personalData/newData.js"
-import {
-    useUI
-}
-from "@contexts/ui.context";
+import { useState, useEffect } from "react";
+import ProductPopUp from "@components/product/product-popup";
+import oldData from "../personalData/oldData.js";
+import newData from "../personalData/newData.js";
+import { useUI } from "@contexts/ui.context";
 //this is for testing and must be removed XX
 
-
 export default function Home() {
-    const[data, setData] = useState(oldData);
-    const[render, setRender] = useState(false);
-    const {
-        openModal,
-        setModalView,
-        setModalData
-    } = useUI();
-    useEffect(() => {
+  const [data, setData] = useState(oldData);
+  const [render, setRender] = useState(false);
+  const { openModal, setModalView, setModalData } = useUI();
+  useEffect(() => {
+    setModalData({
+      data: data,
+    });
+    setRender(true);
+  }, [data]);
 
-        setModalData({
-            data: data
-        });
-        setRender(true)
-    }, [data]);
+  return (
+    <>
+      {render && <ProductPopUp />}
+      {/* <BannerBlock data={masonryBanner} />*/}
+      <Container>
+        {/*<ProductsFlashSaleBlock date={'2023-03-01T01:02:03'} /> */}
+      </Container>
+      {/* < BannerSliderBlock /  >*/}
 
-    return (
-         <  > {
-        render &&  < ProductPopUp /  >
-    }{
-        /*
-        <BannerBlock data={masonryBanner} />*/
-    }
-         < Container > { /*<ProductsFlashSaleBlock date={'2023-03-01T01:02:03'} /> */
-    }
-         <  / Container > { /* < BannerSliderBlock /  >*/
-    }
-
-         < Container > {
-        /*
+      <Container>
+        {/*
         <CategoryBlock sectionHeading="text-shop-by-category" type="rounded" />
         <ProductsFeatured sectionHeading="text-featured-products" />
         <BannerCard
@@ -107,27 +76,24 @@ export default function Home() {
         <Support />
         <Instagram />
         <Subscription className="bg-opacity-0 px-5 sm:px-16 xl:px-0 py-12 md:py-14 xl:py-16" />
-         */
-    }
-         <  / Container >
-         < Divider className = "mb-0" /  >
-             <  /  > );
+         */}
+      </Container>
+      <Divider className="mb-0" />
+    </>
+  );
 }
 
 Home.Layout = Layout;
 
-export const getStaticProps:
-GetStaticProps = async({
-    locale
-}) => {
-    return {
-        props: {
-            ...(await serverSideTranslations(locale!, [
-                        'common',
-                        'forms',
-                        'menu',
-                        'footer',
-                    ])),
-        },
-    };
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale!, [
+        "common",
+        "forms",
+        "menu",
+        "footer",
+      ])),
+    },
+  };
 };
