@@ -30,7 +30,7 @@ import { useUI } from "@contexts/ui.context";
 //this is for testing and must be removed XX
 
 export default function Home() {
-  const [data, setData] = useState(oldData);
+  const [data, setData] = useState(newData);
   const [render, setRender] = useState(false);
   const { openModal, setModalView, setModalData } = useUI();
   useEffect(() => {

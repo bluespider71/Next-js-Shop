@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import { useRouter } from "next/router";
 import isEmpty from "lodash/isEmpty";
 import { ROUTES } from "@utils/routes";
@@ -14,13 +14,16 @@ import { useTranslation } from "next-i18next";
 
 //ui components
 import ProductCart from "@components/product/product-cart";
-import ProductColor from "@components/product/product-color";
+import ProductColors from "@components/product/product-colors";
 import ProductHeader from "@components/product/product-header";
 import ProductImage from "@components/product/product-image";
 import ProductPrice from "@components/product/product-price";
-import ProductSize from "@components/product/product-size";
+import ProductSizes from "@components/product/product-sizes";
+import ProductColorImages from "@components/product/product-color-images";
 
 export default function ProductPopup() {
+  const COLOR = "color";
+  const SIZE = "size";
   const { t } = useTranslation("common");
   const {
     modalData: { data },
@@ -33,21 +36,33 @@ export default function ProductPopup() {
   const [attributes, setAttributes] = useState<{ [key: string]: string }>({});
   const [viewCartBtn, setViewCartBtn] = useState<boolean>(false);
   const [addToCartLoader, setAddToCartLoader] = useState<boolean>(false);
-  const { price, basePrice, discount } = usePrice({
+  const [image, setImage] = useState("");  
+  const [sizes, setSizes] = useState([]);
+   const [pictures, setPictures] = useState([]);
+  /*const { price, basePrice, discount } = usePrice({
     amount: data.sale_price ? data.sale_price : data.price,
     baseAmount: data.price,
     currencyCode: "USD",
-  });
-  const variations = getVariations(data.variations);
-  console.log("hey", variations);
-  const { slug, image, name, description } = data;
+  });*/
+ // const variations = getVariations(data.variations);
+  const {variants, name, description, price, offerPrice} = data;
+  
+  useEffect(()=>{
+	  setImage(variants[0].pictures[0]);  
+	   setPictures(variants[0].pictures);  
+	   setSizes(variants[0].sizes);
+  },[variants])
 
+ 
+
+ /*
   const isSelected = !isEmpty(variations)
     ? !isEmpty(attributes) &&
       Object.keys(variations).every((variation) =>
         attributes.hasOwnProperty(variation)
       )
     : true;
+*/
 
   function addToCart() {
     if (!isSelected) return;
@@ -82,29 +97,58 @@ export default function ProductPopup() {
       openCart();
     }, 300);
   }
+  
+  function handleColorSelected(sku){
+	  variants.map(variant=>{
+		  if(variant.sku === sku){
+			 
+			  setImage(variant.pictures[0]);  
+			
+			  setPictures(variant.pictures);
+			  setSizes(variant.sizes);
+		  }
+	  })
+	 
+  }
+    function handlePictureSelected(index){
+	
+			  setImage(pictures[index]);  
+		
+	 
+  }
 
   return (
     <div className="rounded-lg bg-white">
       <div className="flex flex-col  lg:flex-row w-full m-3 w-11/12 mx-auto overflow-hidden ">
-        <div id="left" className="flex-1 ">
-          <ProductImage image={image} />
+        <div id="left" className=" flex flex-1 ">
+          <div>
+            <ProductColorImages pictures={pictures}  onClick={handlePictureSelected}/>
+          </div>
+          <div>
+            <ProductImage image={image} />
+          </div>
         </div>
 
         <div id="center" className="flex-1 flex flex-col items-center">
-         <ProductHeader
+          <ProductHeader
             name={name}
             description={description}
             navigateToProductPage={navigateToProductPage}
           />
           <ProductPrice
-            discount={discount}
             price={price}
-            basePrice={basePrice}
+            offerPrice={offerPrice}
           />
-          <ProductColor
-            variations={variations}
-            attributes={attributes}
-            handleAttribute={handleAttribute}
+
+		
+          <ProductColors
+		  variants={variants}
+            
+            onClick={handleColorSelected}
+          />
+          <ProductSizes
+          
+                       sizes={sizes}
           />
         </div>
         <div id="right" className="flex-1">

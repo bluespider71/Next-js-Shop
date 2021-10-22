@@ -23,16 +23,16 @@ type Product {
     id: ID!
     name: String!
     description: String!
-    categoryId: [Category]
-    subCategoryId: [SubCategory]
-    subSubCategoryId: [SubSubCategory]
+    categoryIds: [Category]
+    subCategoryIds: [SubCategory]
+    subSubCategoryIds: [SubSubCategory]
     price: Float!
     offerPrice: Int
     ownerId: ID
     ratings: Float
     totalViews: Int
     status: Boolean!
-    variant: [Variant]
+    variants: [Variant]
     wholesale1: Int!
     wholesale2: Int!
     retailPrice1: Float!
@@ -62,7 +62,6 @@ type Category {
     subCategoryId: [SubCategory]
     products: [Product]
     status: String
-    folder: String!
     createdAt: String
     updateAt: String
 }

@@ -125,7 +125,6 @@ type Category = {
     subCategoryIds ?  : string[] | SubCategory[];
     products ?  : Product[];
     status ?  : String;
-    folder: String;
     createdAt ?  : String;
     updateAt ?  : String;
 };

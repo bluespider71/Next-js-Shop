@@ -3,7 +3,7 @@
 | Important!* Using the implemented REST fetch approach |
 ---------------------------------------------------------
 
-1) Refactor and update the Product DataType at "src/framework/basic-rest/types.ts" file 
+#1) Refactor and update the Product DataType at "src/framework/basic-rest/types.ts" file 
    taking into account to the attached graphql query and its corresponding response.
 
 2) Update and refactor the required product properties of the fake data files 
@@ -62,6 +62,12 @@ Take Into Account:
       facilitate the job and avoid less errors. Update the existing 
       property names by the new ones could be a good point of start.
       
+
+
+#1) Remove the "brand" product property if exists
+2) Remove brands component
+3) Remove brand filter if exists
+#4) the backend response send a property named "folder" for the categories object. This is property do not exist anymore
 ---------------------------------------------------------------
 | Important!* In case you require some acclarations send me a |
 | message to whatsapp and I'll reply you as soon as posible   |

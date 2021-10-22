@@ -5,64 +5,56 @@
       "name": "Woman",
       "slug": "woman",
       "image": "/assets/images/category/woman.jpg",
-      "icon": "/assets/images/category/icons/woman.png",
-      " folder": "i'm folder"
-    },
+      "icon": "/assets/images/category/icons/woman.png"
+        },
     {
       "id": 2,
       "name": "Man",
       "slug": "man",
       "image": "/assets/images/category/man.jpg",
-      "icon": "/assets/images/category/icons/man.png",
-      " folder": "i'm folder"
+      "icon": "/assets/images/category/icons/man.png"
     },
     {
       "id": 3,
       "name": "Watch",
       "slug": "watch",
       "icon": "/assets/images/category/icons/watch.png",
-      "image": "/assets/images/category/watch.jpg",
-      " folder": "i'm folder"
+      "image": "/assets/images/category/watch.jpg"
     },
     {
       "id": 4,
       "name": "Kids",
       "slug": "kids",
       "icon": "/assets/images/category/icons/kids.png",
-      "image": "/assets/images/category/kid.jpg",
-      " folder": "i'm folder"
+      "image": "/assets/images/category/kid.jpg"
     },
     {
       "id": 5,
       "name": "Sports",
       "slug": "sports",
       "icon": "/assets/images/category/icons/sports.png",
-      "image": "/assets/images/category/sports.jpg",
-      " folder": "i'm folder"
+      "image": "/assets/images/category/sports.jpg"
     },
     {
       "id": 6,
       "name": "Sunglass",
       "slug": "sunglass",
       "icon": "/assets/images/category/icons/sunglass.png",
-      "image": "/assets/images/category/sunglass.jpg",
-      " folder": "i'm folder"
+      "image": "/assets/images/category/sunglass.jpg"
     },
     {
       "id": 7,
       "name": "Bags",
       "slug": "bags",
       "icon": "/assets/images/category/icons/bags.png",
-      "image": "/assets/images/category/bags.jpg",
-      " folder": "i'm folder"
+      "image": "/assets/images/category/bags.jpg"
     },
     {
       "id": 8,
       "name": "Sneakers",
       "slug": "sneakers",
       "icon": "/assets/images/category/icons/sneakers.png",
-      "image": "/assets/images/category/sneakers.jpg",
-      " folder": "i'm folder"
+      "image": "/assets/images/category/sneakers.jpg"
     }
   ]
 }
