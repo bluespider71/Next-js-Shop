@@ -13,7 +13,7 @@ export default function ProductSizes(props) {
 
 						key={index}
 						
-						onClick={() =>{ props.onClick(`${variant.sku}`)}}
+
 					>
 					{size.size}
 					</li>
