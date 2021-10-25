@@ -39,13 +39,13 @@ export default function ProductPopup() {
   const [image, setImage] = useState("");  
   const [sizes, setSizes] = useState([]);
    const [pictures, setPictures] = useState([]);
-  /*const { price, basePrice, discount } = usePrice({
-    amount: data.sale_price ? data.sale_price : data.price,
+  const { price, basePrice, discount } = usePrice({
+    amount: data.offerPrice ? data.offerPrice : data.price,
     baseAmount: data.price,
     currencyCode: "USD",
-  });*/
+  });
  // const variations = getVariations(data.variations);
-  const {variants, name, description, price, offerPrice} = data;
+  const {variants, name, description} = data;
   
   useEffect(()=>{
 	  setImage(variants[0].pictures[0]);  
@@ -137,7 +137,8 @@ export default function ProductPopup() {
           />
           <ProductPrice
             price={price}
-            offerPrice={offerPrice}
+            basePrice={basePrice}
+			discount = {discount}
           />
 
 		

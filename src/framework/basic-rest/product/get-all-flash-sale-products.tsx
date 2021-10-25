@@ -6,7 +6,6 @@ import { useQuery } from "react-query";
 export const fetchFlashSaleProducts = async ({ queryKey }: any) => {
 	const [_key, _params] = queryKey;
 	const { data } = await http.get(API_ENDPOINTS.FLASH_SALE_PRODUCTS);
-	console.log(data);
 	return data;
 };
 export const useFlashSaleProductsQuery = (options: QueryOptionsType) => {

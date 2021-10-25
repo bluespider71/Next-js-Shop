@@ -7,7 +7,7 @@
     "offerPrice": 17.99,
     "variants": [
       {
-        "pictures": ["/assets/images/products/p-11-1.png"]
+        "pictures": ["/assets/images/products/p-11.png"]
       }
     ]
   },
@@ -19,7 +19,7 @@
     "offerPrice": 30.0,
     "variants": [
       {
-        "pictures": ["/assets/images/products/p-22-1.png"]
+        "pictures": ["/assets/images/products/p-22.png"]
       }
     ]
   },
@@ -31,7 +31,7 @@
     "offerPrice": 25.0,
     "variants": [
       {
-        "pictures": ["/assets/images/products/p-18-1.png"]
+        "pictures": ["/assets/images/products/p-18.png"]
       }
     ]
   },
@@ -43,7 +43,7 @@
     "offerPrice": 15.0,
     "variants": [
       {
-        "pictures": ["/assets/images/products/p-14-1.png"]
+        "pictures": ["/assets/images/products/p-14.png"]
       }
     ]
   },
@@ -55,7 +55,7 @@
     "offerPrice": 12.0,
     "variants": [
       {
-        "pictures": ["/assets/images/products/p-15-1.png"]
+        "pictures": ["/assets/images/products/p-15.png"]
       }
     ]
   },
@@ -67,7 +67,7 @@
     "offerPrice": 60.0,
     "variants": [
       {
-        "pictures": ["/assets/images/products/p-16-1.png"]
+        "pictures": ["/assets/images/products/p-16.png"]
       }
     ]
   },
@@ -79,7 +79,7 @@
     "offerPrice": 12.99,
     "variants": [
       {
-        "pictures": ["/assets/images/products/p-17-1.png"]
+        "pictures": ["/assets/images/products/p-17.png"]
       }
     ]
   },
@@ -91,7 +91,7 @@
     "offerPrice": 13.0,
     "variants": [
       {
-        "pictures": ["/assets/images/products/p-13-1.png"]
+        "pictures": ["/assets/images/products/p-13.png"]
       }
     ]
   },
@@ -103,7 +103,7 @@
     "offerPrice": 250.0,
     "variants": [
       {
-        "pictures": ["/assets/images/products/p-19-1.png"]
+        "pictures": ["/assets/images/products/p-19.png"]
       }
     ]
   },
@@ -115,7 +115,7 @@
     "offerPrice": 15.0,
     "variants": [
       {
-        "pictures": ["/assets/images/products/p-20-1.png"]
+        "pictures": ["/assets/images/products/p-20.png"]
       }
     ]
   }

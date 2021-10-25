@@ -42,41 +42,53 @@ export default function Home() {
 
   return (
     <>
-      {render && <ProductPopUp />}
-      {/* <BannerBlock data={masonryBanner} />*/}
+      {/* {render && <ProductPopUp />}*/}
+      <BannerBlock data={masonryBanner} />
       <Container>
-        {/*<ProductsFlashSaleBlock date={'2023-03-01T01:02:03'} /> */}
+        <ProductsFlashSaleBlock date={"2023-03-01T01:02:03"} />
       </Container>
-      {/* < BannerSliderBlock /  >*/}
+      <BannerSliderBlock />
 
       <Container>
-        {/*
         <CategoryBlock sectionHeading="text-shop-by-category" type="rounded" />
+
         <ProductsFeatured sectionHeading="text-featured-products" />
+
         <BannerCard
-        key={`banner--key${banner[0].id}`}
-        banner={banner[0]}
-        href={`${ROUTES.COLLECTIONS}/${banner[0].slug}`}
-        className="mb-12 lg:mb-14 xl:mb-16 pb-0.5 lg:pb-1 xl:pb-0"
+          key={`banner--key${banner[0].id}`}
+          banner={banner[0]}
+          href={`${ROUTES.COLLECTIONS}/${banner[0].slug}`}
+          className="mb-12 lg:mb-14 xl:mb-16 pb-0.5 lg:pb-1 xl:pb-0"
         />
+        {/* 
+			// you mentioned something about removing brand component
         <BrandGridBlock sectionHeading="text-top-brands" />
+		
+		 */}
+
         <BannerCard
-        key={`banner--key${banner[1].id}`}
-        banner={banner[1]}
-        href={`${ROUTES.COLLECTIONS}/${banner[1].slug}`}
-        className="mb-12 lg:mb-14 xl:mb-16 pb-0.5 lg:pb-1 xl:pb-0"
+          key={`banner--key${banner[1].id}`}
+          banner={banner[1]}
+          href={`${ROUTES.COLLECTIONS}/${banner[1].slug}`}
+          className="mb-12 lg:mb-14 xl:mb-16 pb-0.5 lg:pb-1 xl:pb-0"
         />
+
         <BannerWithProducts
-        sectionHeading="text-on-selling-products"
-        categorySlug="/search"
+          sectionHeading="text-on-selling-products"
+          categorySlug="/search"
         />
+
         <ExclusiveBlock />
+
         <NewArrivalsProductFeed />
+
         <DownloadApps />
+
         <Support />
+
         <Instagram />
+
         <Subscription className="bg-opacity-0 px-5 sm:px-16 xl:px-0 py-12 md:py-14 xl:py-16" />
-         */}
       </Container>
       <Divider className="mb-0" />
     </>

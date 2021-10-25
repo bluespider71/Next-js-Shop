@@ -8,7 +8,7 @@
       "offerPrice": 80.0,
       "variants": [
         {
-          "pictures": ["/assets/images/products/p-29-1.png"]
+          "pictures": ["/assets/images/products/p-29-m.png"]
         }
       ]
     },
@@ -21,7 +21,7 @@
 
       "variants": [
         {
-          "pictures": ["/assets/images/products/p-27-sm.png"]
+          "pictures": ["/assets/images/products/p-27.png"]
         }
       ]
     },
@@ -33,7 +33,7 @@
       "offerPrice": 50.0,
       "variants": [
         {
-          "pictures": ["/assets/images/products/p-24-1.png"]
+          "pictures": ["/assets/images/products/p-24.png"]
         }
       ]
     }
@@ -47,7 +47,7 @@
       "offerPrice": 20.0,
       "variants": [
         {
-          "pictures": ["/assets/images/products/p-25-1.png"]
+          "pictures": ["/assets/images/products/p-25.png"]
         }
       ]
     },
@@ -59,7 +59,7 @@
       "offerPrice": 45.0,
       "variants": [
         {
-          "pictures": ["/assets/images/products/p-26-1.png"]
+          "pictures": ["/assets/images/products/p-26.png"]
         }
       ]
     }
@@ -73,7 +73,7 @@
       "offerPrice": 60.0,
       "variants": [
         {
-          "pictures": ["/assets/images/products/p-16-1.png"]
+          "pictures": ["/assets/images/products/p-16.png"]
         }
       ]
     },
@@ -85,7 +85,7 @@
       "offerPrice": 12.0,
       "variants": [
         {
-          "pictures": ["/assets/images/products/p-15-1.png"]
+          "pictures": ["/assets/images/products/p-15.png"]
         }
       ]
     }
@@ -99,7 +99,7 @@
       "offerPrice": 45.0,
       "variants": [
         {
-          "pictures": ["/assets/images/products/p-26-1.png"]
+          "pictures": ["/assets/images/products/p-26-m.png"]
         }
       ]
     },
@@ -111,7 +111,7 @@
       "offerPrice": 12.0,
       "variants": [
         {
-          "pictures": ["/assets/images/products/p-16-1.png"]
+          "pictures": ["/assets/images/products/p-16-m.png"]
         }
       ]
     },
@@ -123,7 +123,7 @@
       "offerPrice": 50.0,
       "variants": [
         {
-          "pictures": ["/assets/images/products/p-3-1.png"]
+          "pictures": ["/assets/images/products/p-3-m.png"]
         }
       ]
     },
@@ -135,7 +135,7 @@
       "offerPrice": 15.0,
       "variants": [
         {
-          "pictures": ["/assets/images/products/p-25-1.png"]
+          "pictures": ["/assets/images/products/p-25-m.png"]
         }
       ]
     },
@@ -147,7 +147,7 @@
       "offerPrice": 600.0,
       "variants": [
         {
-          "pictures": ["/assets/images/products/p-30-1.png"]
+          "pictures": ["/assets/images/products/p-30-m.png"]
         }
       ]
     },
@@ -159,7 +159,7 @@
       "offerPrice": 15.0,
       "variants": [
         {
-          "pictures": ["/assets/images/products/p-14-1.png"]
+          "pictures": ["/assets/images/products/p-14-m.png"]
         }
       ]
     },
@@ -171,7 +171,7 @@
       "offerPrice": 20.0,
       "variants": [
         {
-          "pictures": ["/assets/images/products/p-27-2.png"]
+          "pictures": ["/assets/images/products/p-27-m.png"]
         }
       ]
     },
@@ -183,7 +183,7 @@
       "offerPrice": 14.99,
       "variants": [
         {
-          "pictures": ["/assets/images/products/p-8-2.png"]
+          "pictures": ["/assets/images/products/p-8-m.png"]
         }
       ]
     },
@@ -195,7 +195,7 @@
       "offerPrice": 50.0,
       "variants": [
         {
-          "pictures": ["/assets/images/products/p-24-2.png"]
+          "pictures": ["/assets/images/products/p-24-m.png"]
         }
       ]
     },
@@ -207,7 +207,7 @@
       "offerPrice": 20.0,
       "variants": [
         {
-          "pictures": ["/assets/images/products/p-12-1.png"]
+          "pictures": ["/assets/images/products/p-12-m.png"]
         }
       ]
     }

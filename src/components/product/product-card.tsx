@@ -28,8 +28,8 @@ const ProductCard: FC<ProductProps> = ({
 }) => {
 	const { openModal, setModalView, setModalData } = useUI();
 	const placeholderImage = `/assets/placeholder/products/product-${variant}.svg`;
-	const { price, basePrice, discount } = usePrice({
-		amount: product.sale_price ? product.sale_price : product.price,
+	const { price, basePrice , discount } = usePrice({
+		amount: product.offerPrice ? product.offerPrice : product.price,
 		baseAmount: product.price,
 		currencyCode: "USD",
 	});
@@ -70,7 +70,7 @@ const ProductCard: FC<ProductProps> = ({
 				)}
 			>
 				<Image
-					src={product?.image?.thumbnail ?? placeholderImage}
+					src={product?.variants[0].pictures[0] ?? placeholderImage}
 					width={imgWidth}
 					height={imgHeight}
 					loading={imgLoading}

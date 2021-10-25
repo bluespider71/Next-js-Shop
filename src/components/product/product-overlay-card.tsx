@@ -52,7 +52,7 @@ const ProductOverlayCard: React.FC<ProductProps> = ({
 
   const { openModal, setModalView, setModalData } = useUI();
   const { price, basePrice, discount } = usePrice({
-    amount: product.sale_price ? product.sale_price : product.price,
+    amount: product.offerPrice ? product.offerPrice : product.price,
     baseAmount: product.price,
     currencyCode: 'USD',
   });
@@ -73,7 +73,7 @@ const ProductOverlayCard: React.FC<ProductProps> = ({
       >
         <Image
           src={
-            product?.image?.original ??
+            product.variants[0].pictures[0] ??
             '/assets/placeholder/products/product-featured.png'
           }
           width={size}

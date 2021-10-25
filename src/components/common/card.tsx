@@ -38,7 +38,7 @@ const Card: React.FC<Props> = ({
 			>
 				<div className="flex">
 					<Image
-						src={image?.original ?? placeholderImage}
+						src={image ?? placeholderImage}
 						alt={name || t("text-card-thumbnail")}
 						width={imageSize}
 						height={imageSize}
