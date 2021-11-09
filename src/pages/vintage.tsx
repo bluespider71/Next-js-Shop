@@ -28,6 +28,7 @@ export default function Home() {
 				<HeroWithCategoryFlash />
 			</Container>
 			<BannerSliderBlock />
+
 			<Container>
 				<CategoryBlock sectionHeading="text-shop-by-category" />
 				<BannerWithProducts
@@ -49,15 +50,24 @@ export default function Home() {
 					href={`${ROUTES.COLLECTIONS}/${banner[1].slug}`}
 					className="mb-11 md:mb-12 lg:mb-14 2xl:mb-16"
 				/>
+
 				<ProductsFlashSaleBlock date={"2023-03-01T01:02:03"} />
-				<BrandBlock sectionHeading="text-top-brands" />
+
+				{/* 
+			//brands
+			<BrandBlock sectionHeading="text-top-brands" />
+			*/}
+
 				<ExclusiveBlock />
+
 				<NewArrivalsProductFeed />
+
 				<BannerCard
 					banner={banner[2]}
 					href={`${ROUTES.COLLECTIONS}/${banner[2].slug}`}
 					className="mb-12 lg:mb-14 xl:mb-16 pb-0.5 lg:pb-1 xl:pb-0"
 				/>
+
 				<CategoryGridBlock sectionHeading="text-featured-categories" />
 				<DownloadApps />
 				<Support />

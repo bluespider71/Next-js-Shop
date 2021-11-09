@@ -6,7 +6,12 @@
     {
       "id": 1,
       "name": "kids",
-      "slug": "kids",
+      "slug": "kids"
+    }
+  ],
+  "variants": [
+    {
+      "pictures": ["/assets/images/products/p-20-m.png"]
     }
   ],
 

@@ -70,7 +70,7 @@ const ProductCard: FC<ProductProps> = ({
 				)}
 			>
 				<Image
-					src={product?.variants[0].pictures[0] ?? placeholderImage}
+					src={product?.variants[0]?.pictures[0] ?? placeholderImage}
 					width={imgWidth}
 					height={imgHeight}
 					loading={imgLoading}

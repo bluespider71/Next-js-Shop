@@ -28,8 +28,8 @@ const BannerCard: FC<BannerProps> = ({
 }) => {
   const { width } = useWindowSize();
   const { title, image } = banner;
-  const selectedImage = getImage(width, image);
-  return (
+    const selectedImage = getImage(width, image);
+    return (
     <div className={cn('mx-auto', className)}>
       <Link
         href={href}
