@@ -1,1 +1,0 @@
-> i only changed "categories" and "product" before i made a copy of this folder

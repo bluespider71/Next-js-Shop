@@ -31,44 +31,44 @@ export default function ProductPopup() {
 	const router = useRouter();
 	const { addItemToCart } = useCart();
 	const [quantity, setQuantity] = useState(1);
-	const [attributes, setAttributes] = useState<{ [key: string]: string }>({});
 	const [viewCartBtn, setViewCartBtn] = useState<boolean>(false);
 	const [addToCartLoader, setAddToCartLoader] = useState<boolean>(false);
 	const [image, setImage] = useState("");
 	const [sizes, setSizes] = useState([]);
 	const [pictures, setPictures] = useState([]);
+	const [selectedSize, setSelectedSize] = useState("");
+	const [selectedVariant, setSelectedVariant] = useState("");
+	const [selectedPicture, setSelectedPicture] = useState(0);
 	const { price, basePrice, discount } = usePrice({
 		amount: data.offerPrice ? data.offerPrice : data.price,
 		baseAmount: data.price,
 		currencyCode: "USD",
 	});
-	// const variations = getVariations(data.variations);
 	const { variants, name, description } = data;
 
 	useEffect(() => {
 		setImage(variants[0].pictures[0]);
 		setPictures(variants[0].pictures);
 		setSizes(variants[0].sizes);
+		setSelectedVariant(variants[0].sku);
 	}, [variants]);
 
-	/*
-  const isSelected = !isEmpty(variations)
-    ? !isEmpty(attributes) &&
-      Object.keys(variations).every((variation) =>
-        attributes.hasOwnProperty(variation)
-      )
-    : true;
-*/
+	const isSelected = !isEmpty(variants)
+		? selectedVariant && selectedSize && true
+		: true;
 
 	function addToCart() {
-		//	if (!isSelected) return;
+		if (!isSelected) return;
 		// to show btn feedback while product carting
 		setAddToCartLoader(true);
 		setTimeout(() => {
 			setAddToCartLoader(false);
 			setViewCartBtn(true);
 		}, 600);
-		const item = generateCartItem(data!, attributes);
+		const item = generateCartItem(data!, {
+			size: selectedSize,
+			variantSku: selectedVariant,
+		});
 		addItemToCart(item, quantity);
 		console.log(item, "item");
 	}
@@ -77,16 +77,9 @@ export default function ProductPopup() {
 		closeModal();
 		//router.push(`${ROUTES.PRODUCT}/${slug}`
 		//the below had slug as above
-		router.push(`${ROUTES.PRODUCT}/maniac-red-boys`, undefined, {
+		router.push(`${ROUTES.PRODUCT}/${data.id}`, undefined, {
 			locale: router.locale,
 		});
-	}
-
-	function handleAttribute(attribute: any) {
-		setAttributes((prev) => ({
-			...prev,
-			...attribute,
-		}));
 	}
 
 	function navigateToCartPage() {
@@ -100,65 +93,68 @@ export default function ProductPopup() {
 		variants.map((variant: any) => {
 			if (variant.sku === sku) {
 				setImage(variant.pictures[0]);
-
 				setPictures(variant.pictures);
 				setSizes(variant.sizes);
+				setSelectedVariant(sku);
 			}
 		});
 	}
 	function handlePictureSelected(index: any) {
 		setImage(pictures[index]);
+		setSelectedPicture(index);
+	}
+	function handleSizeSelected(size: string) {
+		setSelectedSize(size);
 	}
 
 	return (
 		<div className="rounded-lg bg-white">
-			<div className=" h-4 "></div>
-			<div
-				className="flex flex-col lg:flex-row w-full  w-11/12 mx-auto justify-items-center
-       place-items-center	lg:place-items-start
-      	justify-center overflow-hidden "
-			>
-				<div id="left" className=" flex flex-1 ">
-					<div>
-						<ProductColorImages
-							pictures={pictures}
-							onClick={handlePictureSelected}
+			<div className="flex flex-col lg:flex-row w-full md:w-[650px] lg:w-[960px] mx-auto overflow-hidden">
+				<ProductColorImages
+					pictures={pictures}
+					onClick={handlePictureSelected}
+					selectedPicture={selectedPicture}
+				/>
+
+				<ProductImage image={image} name={name} />
+
+				<div id="right" className="flex flex-col p-5 md:p-8 w-full">
+					<div className="pb-5">
+						<ProductHeader
+							name={name}
+							description={description}
+							navigateToProductPage={navigateToProductPage}
+						/>
+						<ProductPrice
+							price={price}
+							basePrice={basePrice}
+							discount={discount}
 						/>
 					</div>
-					<div className="mx-4">
-						<ProductImage image={image} />
-					</div>
-				</div>
+					<ProductColors
+						variants={variants}
+						onClick={handleColorSelected}
+						selectedVariant={selectedVariant}
+					/>
+					<ProductSizes
+						sizes={sizes}
+						onClick={handleSizeSelected}
+						selectedSize={selectedSize}
+					/>
 
-				<div id="center" className="flex-1 flex flex-col mt-5 lg:mt-0">
-					<ProductHeader
-						name={name}
-						description={description}
+					<ProductCart
 						navigateToProductPage={navigateToProductPage}
+						navigateToCartPage={navigateToCartPage}
+						addToCartLoader={addToCartLoader}
+						addToCart={addToCart}
+						quantity={quantity}
+						setQuantity={setQuantity}
+						t={t}
+						viewCartBtn={viewCartBtn}
+						isSelected={isSelected}
 					/>
-					<ProductPrice
-						price={price}
-						basePrice={basePrice}
-						discount={discount}
-					/>
-
-					<ProductColors variants={variants} onClick={handleColorSelected} />
-					<ProductSizes sizes={sizes} />
 				</div>
 			</div>
-			<div id="right" className="mx-auto w-1/4">
-				<ProductCart
-					navigateToProductPage={navigateToProductPage}
-					navigateToCartPage={navigateToCartPage}
-					addToCartLoader={addToCartLoader}
-					addToCart={addToCart}
-					quantity={quantity}
-					setQuantity={setQuantity}
-					t={t}
-					viewCartBtn={viewCartBtn}
-				/>
-			</div>
-			<div className=" h-4 "></div>
 		</div>
 	);
 }

@@ -1,7 +1,5 @@
 {
   "id": 1,
-  "name": "Maniac Red Boys",
-  "description": "Children’s clothing/ kids wear is usually more casual than adult clothing, fit play and rest. Hosiery is usually used. More recently, however, tons of childrenswear is heavily influenced by trends in adult fashion",
   "category": [
     {
       "id": 1,
@@ -9,19 +7,45 @@
       "slug": "kids"
     }
   ],
-  "variants": [
-    {
-      "pictures": ["/assets/images/products/p-20-m.png"]
-    }
-  ],
 
-  "price": 50,
-  "offerPrice": 40,
   "status": true,
   "wholesale1": 20,
   "wholesale2": 25,
   "retailPrice1": 55,
   "retailPrice2": 60,
   "createdAt": "18/10/21",
-  "updateAt": ""
+  "updateAt": "",
+  "name": "Adidas Shoes",
+  "description": "Men Black top sleeveless gown",
+  "price": 99.99,
+  "offerPrice": 45.0,
+  "variants": [
+    {
+      "name": "black",
+      "sku": "black",
+      "pictures": [
+        "/assets/images/products/p-26.png",
+        "/assets/images/products/p-26-side.png"
+      ],
+      "sizes": [
+        { "size": "S", "stock": 2 },
+        { "size": "M", "stock": 7 },
+        { "size": "L", "stock": 5 },
+        { "size": "X-L", "stock": 1 }
+      ]
+    },
+    {
+      "name": "green",
+      "sku": "green",
+      "pictures": [
+        "/assets/images/products/p-3.png",
+        "/assets/images/products/p-3-side.png"
+      ],
+      "sizes": [
+        { "size": "S", "stock": 2 },
+        { "size": "M", "stock": 7 },
+        { "size": "L", "stock": 5 }
+      ]
+    }
+  ]
 }

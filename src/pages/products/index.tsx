@@ -17,8 +17,7 @@ export default function Products() {
 	const { t } = useTranslation("common");
 	return (
 		<>
-		<h1>hiiting here first</h1>
-			{/* <ShopDiscount />
+			<ShopDiscount />
 			<Container>
 				<div className={`flex pt-8 pb-16 lg:pb-20`}>
 					<div className="flex-shrink-0 pe-24 hidden lg:block w-96">
@@ -49,7 +48,7 @@ export default function Products() {
 					</div>
 				</div>
 				<Subscription />
-			</Container> */}
+			</Container>
 		</>
 	);
 }

@@ -102,15 +102,15 @@ const Modal: FC<ModalProps> = ({
 						>
 							<div
 								className={cn(
-									"w-full  absolute left-1/10 transform -translate-x-1/10 shadow-xl",
+									"w-full md:w-auto absolute left-1/2 transform -translate-x-1/2 shadow-xl",
 									containerClasses[variant],
 									containerClassName
 								)}
 							>
 								<div
 									ref={modalInnerRef}
-									className="overflow-y-auto h-full rounded-lg w-full"
-									style={{ maxHeight: "calc(100vh - 130px)" }}
+									className="overflow-y-auto h-full rounded-lg"
+									style={{ maxHeight: "calc(100vh - 140px)" }}
 								>
 									{children}
 								</div>

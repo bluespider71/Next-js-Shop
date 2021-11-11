@@ -33,7 +33,31 @@
       "offerPrice": 50.0,
       "variants": [
         {
-          "pictures": ["/assets/images/products/p-24.png"]
+          "name": "black",
+          "sku": "black",
+          "pictures": [
+            "/assets/images/products/p-24.png",
+            "/assets/images/products/p-24-side.png"
+          ],
+          "sizes": [
+            { "size": "S", "stock": 2 },
+            { "size": "M", "stock": 7 },
+            { "size": "L", "stock": 5 },
+            { "size": "X-L", "stock": 1 }
+          ]
+        },
+        {
+          "name": "green",
+          "sku": "green",
+          "pictures": [
+            "/assets/images/products/p-3.png",
+            "/assets/images/products/p-3-side.png"
+          ],
+          "sizes": [
+            { "size": "S", "stock": 2 },
+            { "size": "M", "stock": 7 },
+            { "size": "L", "stock": 5 }
+          ]
         }
       ]
     }
@@ -93,13 +117,37 @@
   "productFlashSellGridTwo": [
     {
       "id": 1,
-      "name": "Adidas Shoes Black",
+      "name": "Adidas Shoes",
       "description": "Men Black top sleeveless gown",
       "price": 99.99,
       "offerPrice": 45.0,
       "variants": [
         {
-          "pictures": ["/assets/images/products/p-26-m.png"]
+          "name": "black",
+          "sku": "black",
+          "pictures": [
+            "/assets/images/products/p-26.png",
+            "/assets/images/products/p-26-side.png"
+          ],
+          "sizes": [
+            { "size": "S", "stock": 2 },
+            { "size": "M", "stock": 7 },
+            { "size": "L", "stock": 5 },
+            { "size": "X-L", "stock": 1 }
+          ]
+        },
+        {
+          "name": "green",
+          "sku": "green",
+          "pictures": [
+            "/assets/images/products/p-3.png",
+            "/assets/images/products/p-3-side.png"
+          ],
+          "sizes": [
+            { "size": "S", "stock": 2 },
+            { "size": "M", "stock": 7 },
+            { "size": "L", "stock": 5 }
+          ]
         }
       ]
     },
