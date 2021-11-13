@@ -18,6 +18,7 @@ import ProductMetaReview from "@components/product/product-meta-review";
 import ProductColors from "@components/product/product-colors";
 import ProductSizes from "@components/product/product-sizes";
 import { Variant } from "@framework/types";
+import { ROUTES } from "@utils/routes";
 
 const productGalleryCarouselResponsive = {
 	"768": {
@@ -29,11 +30,10 @@ const productGalleryCarouselResponsive = {
 };
 
 const ProductSingleDetails: React.FC = () => {
-	const {
-		query: { slug },
-	} = useRouter();
+	const router = useRouter();
+	const { id, variantSku } = router.query;
 	const { width } = useWindowSize();
-	const { data, isLoading } = useProductQuery(slug as string);
+	const { data, isLoading } = useProductQuery(id as string);
 	const { addItemToCart } = useCart();
 	const [quantity, setQuantity] = useState(1);
 	const [addToCartLoader, setAddToCartLoader] = useState<boolean>(false);
@@ -49,6 +49,7 @@ const ProductSingleDetails: React.FC = () => {
 	const [selectedVariant, setSelectedVariant] = useState("");
 	const [sizes, setSizes] = useState([]);
 	const [variants, setVariants] = useState([]);
+	const [image, setImage] = useState("");
 
 	useEffect(() => {
 		setVariants(data?.variants);
@@ -56,8 +57,16 @@ const ProductSingleDetails: React.FC = () => {
 
 	useEffect(() => {
 		if (variants && variants.length > 0) {
-			setSizes(variants[0].sizes);
-			setSelectedVariant(variants[0].sku);
+			let index = variants.findIndex((element) => element.sku === variantSku);
+			if (index !== -1) {
+				setSelectedVariant(variants[index].sku);
+				setImage(variants[index].pictures[0]);
+				setSizes(variants[index].sizes);
+			} else {
+				setSelectedVariant(variants[0].sku);
+				setImage(variants[0].pictures[0]);
+				setSizes(variants[0].sizes);
+			}
 		}
 	}, [variants]);
 
@@ -94,6 +103,14 @@ const ProductSingleDetails: React.FC = () => {
 	function handleColorSelected(sku: any) {
 		variants.map((variant: any) => {
 			if (variant.sku === sku) {
+				router.push(
+					`${ROUTES.PRODUCT}/${data?.id}?variantSku=${sku}`,
+					undefined,
+					{
+						locale: router.locale,
+					}
+				);
+				setImage(variant.pictures[0]);
 				setSizes(variant.sizes);
 				setSelectedVariant(sku);
 			}
@@ -106,49 +123,15 @@ const ProductSingleDetails: React.FC = () => {
 	if (!data) return <p>no data</p>;
 	return (
 		<div className="block lg:grid grid-cols-9 gap-x-10 xl:gap-x-14 pt-7 pb-10 lg:pb-14 2xl:pb-20 items-start">
-			{width < 1025 ? (
-				<Carousel
-					pagination={{
-						clickable: true,
-					}}
-					breakpoints={productGalleryCarouselResponsive}
-					className="product-gallery"
-					buttonClassName="hidden"
-				>
-					{variants?.map((variant, index: number) => (
-						<SwiperSlide key={`product-gallery-key-${index}`}>
-							<div className="col-span-1 transition duration-150 ease-in hover:opacity-90">
-								<img
-									src={
-										variant?.pictures[0] ??
-										"/assets/placeholder/products/product-gallery.svg"
-									}
-									alt={`${data?.name}--${index}`}
-									className="object-cover w-full"
-								/>
-							</div>
-						</SwiperSlide>
-					))}
-				</Carousel>
-			) : (
-				<div className="col-span-5 grid grid-cols-2 gap-2.5">
-					{variants?.map((variant, index: number) => (
-						<div
-							key={index}
-							className="col-span-1 transition duration-150 ease-in hover:opacity-90"
-						>
-							<img
-								src={
-									variant?.pictures[0] ??
-									"/assets/placeholder/products/product-gallery.svg"
-								}
-								alt={`${data?.name}--${index}`}
-								className="object-cover w-full"
-							/>
-						</div>
-					))}
+			<div className="col-span-5 grid grid-cols-1 gap-2.5">
+				<div className="col-span-1 transition duration-150 ease-in hover:opacity-90">
+					<img
+						src={image ?? "/assets/placeholder/products/product-gallery.svg"}
+						alt={`${data?.name}--${image}`}
+						className="object-cover w-full"
+					/>
 				</div>
-			)}
+			</div>
 
 			<div className="col-span-4 pt-8 lg:pt-0">
 				<div className="pb-7 mb-7 border-b border-gray-300">
@@ -205,55 +188,26 @@ const ProductSingleDetails: React.FC = () => {
 				</div>
 				<div className="py-6">
 					<ul className="text-sm space-y-5 pb-1">
-						{/*
-						//property sku is nolonger available in Product type
-						 <li>
-							<span className="font-semibold text-heading inline-block pe-2">
-								SKU:
-							</span>
-							{data?.sku}
-						</li> */}
-						{/* 
-						//this part needs to be re looked at #fixes
 						<li>
 							<span className="font-semibold text-heading inline-block pe-2">
 								Category:
 							</span>
-							<Link
-								href="/"
-								className="transition hover:underline hover:text-heading"
-							>
-								{data?.category?.name}
-							</Link>
-						</li>
-						*/}
-						{/*
-						//property tags is nolonger available in Product type
-						{data?.tags && Array.isArray(data.tags) && (
-							<li className="productTags">
-								<span className="font-semibold text-heading inline-block pe-2">
-									Tags:
-								</span>
-								{data.tags.map((tag) => (
+							{data?.categoryIds?.map((category) => (
+								<>
 									<Link
-										key={tag.id}
-										href={tag.slug}
-										className="inline-block pe-1.5 transition hover:underline hover:text-heading last:pe-0"
+										href="/"
+										className="transition hover:underline hover:text-heading"
 									>
-										{tag.name}
-										<span className="text-heading">,</span>
+										{category?.name}
 									</Link>
-								))}
-							</li>
-						)}
-						*/}
+									<span className="font-semibold text-heading inline-block pe-2">
+										,
+									</span>
+								</>
+							))}
+						</li>
 					</ul>
 				</div>
-
-				{/*
-				 //propert meta is nolonger available in product type
-				  <ProductMetaReview data={data} />  
-				  */}
 			</div>
 		</div>
 	);

@@ -77,7 +77,7 @@ export default function ProductPopup() {
 		closeModal();
 		//router.push(`${ROUTES.PRODUCT}/${slug}`
 		//the below had slug as above
-		router.push(`${ROUTES.PRODUCT}/${data.id}`, undefined, {
+		router.push(`${ROUTES.PRODUCT}/${data.id}?variantSku=${selectedVariant}`, undefined, {
 			locale: router.locale,
 		});
 	}
@@ -110,13 +110,14 @@ export default function ProductPopup() {
 	return (
 		<div className="rounded-lg bg-white">
 			<div className="flex flex-col lg:flex-row w-full md:w-[650px] lg:w-[960px] mx-auto overflow-hidden">
-				<ProductColorImages
-					pictures={pictures}
-					onClick={handlePictureSelected}
-					selectedPicture={selectedPicture}
-				/>
-
-				<ProductImage image={image} name={name} />
+				<div className="flex">
+					<ProductColorImages
+						pictures={pictures}
+						onClick={handlePictureSelected}
+						selectedPicture={selectedPicture}
+					/>
+					<ProductImage image={image} name={name} />
+				</div>
 
 				<div id="right" className="flex flex-col p-5 md:p-8 w-full">
 					<div className="pb-5">

@@ -4,7 +4,7 @@ import cn from "classnames";
 export default function ProductColorImages(props: any) {
 	return (
 		<>
-			<ul className="flex flex-col w-24 m-2 ">
+			<ul className="flex flex-col w-12 m-2 ">
 				{props.pictures.map((image: any, index: any) => (
 					<img
 						src={image}
@@ -17,7 +17,7 @@ export default function ProductColorImages(props: any) {
 						onClick={() => {
 							props.onClick(index);
 						}}
-						key={index}
+						key={image}
 					/>
 				))}
 			</ul>

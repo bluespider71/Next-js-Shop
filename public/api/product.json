@@ -1,13 +1,5 @@
 {
   "id": 1,
-  "category": [
-    {
-      "id": 1,
-      "name": "kids",
-      "slug": "kids"
-    }
-  ],
-
   "status": true,
   "wholesale1": 20,
   "wholesale2": 25,
@@ -19,6 +11,14 @@
   "description": "Men Black top sleeveless gown",
   "price": 99.99,
   "offerPrice": 45.0,
+  "categoryIds": [
+    {
+      "name": "Adidas Shoes"
+    },
+    {
+      "name": "kids"
+    }
+  ],
   "variants": [
     {
       "name": "black",
