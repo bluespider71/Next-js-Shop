@@ -3,6 +3,7 @@ import Button from "@components/ui/button";
 import Counter from "@components/common/counter";
 import { useRouter } from "next/router";
 import { useProductQuery } from "@framework/product/get-product";
+import { useCategoriesQuery } from "@framework/category/get-category";
 import { getVariations } from "@framework/utils/get-variations";
 import usePrice from "@framework/product/use-price";
 import { useCart } from "@contexts/cart/cart.context";
@@ -17,7 +18,7 @@ import { SwiperSlide } from "swiper/react";
 import ProductMetaReview from "@components/product/product-meta-review";
 import ProductColors from "@components/product/product-colors";
 import ProductSizes from "@components/product/product-sizes";
-import { Variant } from "@framework/types";
+import { Variant, Size } from "@framework/types";
 import { ROUTES } from "@utils/routes";
 
 const productGalleryCarouselResponsive = {
@@ -47,8 +48,8 @@ const ProductSingleDetails: React.FC = () => {
 
 	const [selectedSize, setSelectedSize] = useState("");
 	const [selectedVariant, setSelectedVariant] = useState("");
-	const [sizes, setSizes] = useState([]);
-	const [variants, setVariants] = useState([]);
+	const [sizes, setSizes] = useState<Size[] | undefined>([]);
+	const [variants, setVariants] = useState<Variant[] | undefined>([]);
 	const [image, setImage] = useState("");
 
 	useEffect(() => {
@@ -59,13 +60,20 @@ const ProductSingleDetails: React.FC = () => {
 		if (variants && variants.length > 0) {
 			let index = variants.findIndex((element) => element.sku === variantSku);
 			if (index !== -1) {
-				setSelectedVariant(variants[index].sku);
+				setSelectedVariant(variants[index].sku || "");
 				setImage(variants[index].pictures[0]);
 				setSizes(variants[index].sizes);
 			} else {
-				setSelectedVariant(variants[0].sku);
+				setSelectedVariant(variants[0].sku || "");
 				setImage(variants[0].pictures[0]);
 				setSizes(variants[0].sizes);
+				router.push(
+					`${ROUTES.PRODUCT}/${data?.id}/${variants[0].sku}`,
+					undefined,
+					{
+						locale: router.locale,
+					}
+				);
 			}
 		}
 	}, [variants]);
@@ -84,8 +92,8 @@ const ProductSingleDetails: React.FC = () => {
 
 		const item = generateCartItem(data!, {
 			size: selectedSize,
-			variantSku: selectedVariant,
-		});
+			color: selectedVariant
+		}, image);
 		addItemToCart(item, quantity);
 		toast("Added to the bag", {
 			type: "dark",
@@ -101,15 +109,11 @@ const ProductSingleDetails: React.FC = () => {
 	}
 
 	function handleColorSelected(sku: any) {
-		variants.map((variant: any) => {
+		variants?.map((variant: any) => {
 			if (variant.sku === sku) {
-				router.push(
-					`${ROUTES.PRODUCT}/${data?.id}?variantSku=${sku}`,
-					undefined,
-					{
-						locale: router.locale,
-					}
-				);
+				router.push(`${ROUTES.PRODUCT}/${data?.id}/${sku}`, undefined, {
+					locale: router.locale,
+				});
 				setImage(variant.pictures[0]);
 				setSizes(variant.sizes);
 				setSelectedVariant(sku);
@@ -119,6 +123,7 @@ const ProductSingleDetails: React.FC = () => {
 	function handleSizeSelected(size: string) {
 		setSelectedSize(size);
 	}
+
 	if (isLoading) return <p>Loading...</p>;
 	if (!data) return <p>no data</p>;
 	return (
@@ -186,6 +191,7 @@ const ProductSingleDetails: React.FC = () => {
 						<span className="py-2 3xl:px-8">Add to cart</span>
 					</Button>
 				</div>
+
 				<div className="py-6">
 					<ul className="text-sm space-y-5 pb-1">
 						<li>
@@ -193,9 +199,9 @@ const ProductSingleDetails: React.FC = () => {
 								Category:
 							</span>
 							{data?.categoryIds?.map((category) => (
-								<>
+								<React.Fragment key={category?.name}>
 									<Link
-										href="/"
+										href={`/category/${category?.name}`}
 										className="transition hover:underline hover:text-heading"
 									>
 										{category?.name}
@@ -203,7 +209,7 @@ const ProductSingleDetails: React.FC = () => {
 									<span className="font-semibold text-heading inline-block pe-2">
 										,
 									</span>
-								</>
+								</React.Fragment>
 							))}
 						</li>
 					</ul>

@@ -1,8 +1,10 @@
 export interface Item {
-  productId: string | number;
+  id: string | number;
   price: number;
   quantity?: number;
   [key: string]: any;
+  image: string;
+  name: string;
 }
 
 export interface UpdateItemInput extends Partial<Omit<Item, "id">> {}

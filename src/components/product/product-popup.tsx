@@ -24,7 +24,7 @@ import ProductColorImages from "@components/product/product-color-images";
 export default function ProductPopup() {
 	const { t } = useTranslation("common");
 	const {
-		modalData: { data },
+		modalData: { data  },
 		closeModal,
 		openCart,
 	} = useUI();
@@ -67,8 +67,9 @@ export default function ProductPopup() {
 		}, 600);
 		const item = generateCartItem(data!, {
 			size: selectedSize,
-			variantSku: selectedVariant,
-		});
+			color: selectedVariant
+		}, image);
+
 		addItemToCart(item, quantity);
 		console.log(item, "item");
 	}
@@ -77,7 +78,7 @@ export default function ProductPopup() {
 		closeModal();
 		//router.push(`${ROUTES.PRODUCT}/${slug}`
 		//the below had slug as above
-		router.push(`${ROUTES.PRODUCT}/${data.id}?variantSku=${selectedVariant}`, undefined, {
+		router.push(`${ROUTES.PRODUCT}/${data.id}/${selectedVariant}`, undefined, {
 			locale: router.locale,
 		});
 	}
@@ -96,6 +97,7 @@ export default function ProductPopup() {
 				setPictures(variant.pictures);
 				setSizes(variant.sizes);
 				setSelectedVariant(sku);
+				setSelectedPicture(0);
 			}
 		});
 	}

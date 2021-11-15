@@ -64,7 +64,7 @@ export type Product = {
 	id: number | string;
 	name: string;
 	description: string;
-	categoryIds?: string[] | Category[];
+	categoryIds?:  Category[] ;
 	subCategoryIds?: string[] | SubCategory[];
 	subSubCategoryIds?: string[] | SubSubCategory[];
 	price: number;
@@ -103,41 +103,41 @@ export type Order = {
 };
 
 export type Variant = {
-	name?: String;
-	sku?: String;
+	name?: string;
+	sku?: string;
 	pictures: string[];
 	sizes?: Size[];
 };
 export type Size = {
-	size?: String;
+	size?: string;
 	stock?: number;
 };
 
 export type Category = {
 	id: number | string;
-	name: String;
-	slug: String;
-	image?: String;
-	icon?: String;
+	name: string;
+	slug: string;
+	image?: string;
+	icon?: string;
 	subCategoryIds?: string[] | SubCategory[];
 	products?: Product[];
-	status?: String;
-	createdAt?: String;
-	updateAt?: String;
+	status?: string;
+	createdAt?: string;
+	updateAt?: string;
 };
 
 export type SubCategory = {
 	id: number | string;
-	name: String;
+	name: string;
 	subSubCategoryIds?: string[] | SubSubCategory[];
 	products?: Product[];
-	createdAt?: String;
-	updateAt?: String;
+	createdAt?: string;
+	updateAt?: string;
 };
 
 export type SubSubCategory = {
 	id: number | string;
-	name: String;
+	name: string;
 	products?: Product[];
 	createdAt?: Date;
 };
