@@ -5,6 +5,7 @@
   "password-old-required": "Se requiere contraseña anterior",
   "password-new-required": "Se requiere contraseña nueva",
   "name-required": "Se requiere nombre",
+  "shipping-required": "Seleccione la opción de envío",
   "first-name-required": "Se requiere nombre",
   "display-name-required": "Se requiere nombre para mostrar",
   "name-subject": "Se requiere asunto",
@@ -37,11 +38,19 @@
   "label-remember-me": "Recordarme",
   "label-save-information": "Guardar esta información para la próxima",
   "label-save-review-information": "Guardar mi nombre, correo electrónico y sitio web en este navegador para la próxima vez que comente.",
+  "label-shipping-option": "Tipo de Envío",
+  "label-province-option": "Provincia",
+  "label-city-option": "Ciudad",
+  "label-parish-option": "Parroquia",
   "placeholder-search": "Buscar ...",
   "placeholder-name": "Ingrese su nombre",
   "placeholder-email": "Ingrese su correo electrónico",
   "placeholder-subject": "Ingrese su asunto",
   "placeholder-message": "Escriba su mensaje aquí",
   "placeholder-email-subscribe": "Escriba su correo electrónico aquí",
-  "placeholder-order-notes": "Notas sobre su pedido, p. Ej. notas especiales para la entrega"
+  "placeholder-order-notes": "Notas sobre su pedido, p. Ej. notas especiales para la entrega",
+  "shipping-option-home": "Envío a domicilio",
+  "shipping-option-courier": "Retiro de oficina",
+  "shipping-option-bus": "Cooperativa de Terminal Terrestre",
+  "shipping-option-guayaquil": "Retiro en tienda Guayaquil"
 }

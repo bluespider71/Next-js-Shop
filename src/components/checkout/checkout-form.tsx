@@ -1,37 +1,86 @@
 import Input from "@components/ui/input";
 import { useForm } from "react-hook-form";
 import TextArea from "@components/ui/text-area";
+import Select from "@components/ui/select";
 import { useCheckoutMutation } from "@framework/checkout/use-checkout";
 import { CheckBox } from "@components/ui/checkbox";
 import Button from "@components/ui/button";
 import Router from "next/router";
 import { ROUTES } from "@utils/routes";
 import { useTranslation } from "next-i18next";
+import { getProvinces, getCitiesAndParishes } from "./provinces";
+import { useState, useEffect } from "react";
 
 interface CheckoutInputType {
 	firstName: string;
 	lastName: string;
 	phone: string;
 	email: string;
-	address: string;
-	city: string;
-	zipCode: string;
 	save: boolean;
 	note: string;
+	shippingOption: string;
+	provinceOption: string;
+	cityOption: string;
+	parishOption: string;
 }
-
+const shippingOptions = [
+	{ id: "forms:shipping-option-home", name: "forms:shipping-option-home" },
+	{
+		id: "forms:shipping-option-courier",
+		name: "forms:shipping-option-courier",
+	},
+	{ id: "forms:shipping-option-bus", name: "forms:shipping-option-bus" },
+	{
+		id: "forms:shipping-option-guayaquil",
+		name: "forms:shipping-option-guayaquil",
+	},
+];
+const provincesData = getProvinces();
 const CheckoutForm: React.FC = () => {
+	const [provinces, setProvinces] = useState(provincesData);
+	const [province, setProvince] = useState("");
+	const [shipping, setShipping] = useState("");
+	const [disableOptions, setDisableOptions] = useState(true);
+	const [cities, setCities] = useState<{ id: string; name: string }[]>([]);
+	const [parishes, setParishes] = useState<{ id: string; name: string }[]>([]);
 	const { t } = useTranslation();
 	const { mutate: updateUser, isLoading } = useCheckoutMutation();
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
+		getValues,
 	} = useForm<CheckoutInputType>();
 	function onSubmit(input: CheckoutInputType) {
 		updateUser(input);
 		Router.push(ROUTES.ORDER);
 	}
+	function handleProvinceOptions(value: string) {
+		setProvince(value);
+	}
+	function handleShippingOptions(value: string) {
+		setShipping(value);
+	}
+	useEffect(() => {
+		setProvince(provinces[0].name);
+	}, [provinces]);
+	useEffect(() => {
+		if (province) {
+			let temp = getCitiesAndParishes(province);
+			setCities(temp.cities);
+			setParishes(temp.parishes);
+		}
+	}, [province]);
+	useEffect(() => {
+		if (shipping === t("forms:shipping-option-guayaquil")) {
+			setDisableOptions(true);
+		} else {
+			setDisableOptions(false);
+		}
+	}, [shipping]);
+	useEffect(() => {
+		setShipping(getValues().shippingOption);
+	}, [register]);
 
 	return (
 		<>
@@ -64,14 +113,7 @@ const CheckoutForm: React.FC = () => {
 							className="w-full lg:w-1/2 lg:ms-3 mt-2 md:mt-0"
 						/>
 					</div>
-					<Input
-						labelKey="forms:label-address"
-						{...register("address", {
-							required: "forms:address-required",
-						})}
-						errorKey={errors.address?.message}
-						variant="solid"
-					/>
+
 					<div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0">
 						<Input
 							type="tel"
@@ -90,7 +132,8 @@ const CheckoutForm: React.FC = () => {
 							{...register("email", {
 								required: "forms:email-required",
 								pattern: {
-									value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+									value:
+										/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
 									message: "forms:email-error",
 								},
 							})}
@@ -99,21 +142,35 @@ const CheckoutForm: React.FC = () => {
 							className="w-full lg:w-1/2 lg:ms-3 mt-2 md:mt-0"
 						/>
 					</div>
-					<div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0">
-						<Input
-							labelKey="forms:label-city"
-							{...register("city")}
-							variant="solid"
-							className="w-full lg:w-1/2 "
-						/>
-
-						<Input
-							labelKey="forms:label-postcode"
-							{...register("zipCode")}
-							variant="solid"
-							className="w-full lg:w-1/2 lg:ms-3 mt-2 md:mt-0"
-						/>
-					</div>
+					<Select
+						labelKey="forms:label-shipping-option"
+						{...register("shippingOption")}
+						options={shippingOptions}
+						onChange={(e) => {
+							handleShippingOptions(e.target.value);
+						}}
+					/>
+					<Select
+						labelKey="forms:label-province-option"
+						{...register("provinceOption")}
+						options={provinces}
+						onChange={(e) => {
+							handleProvinceOptions(e.target.value);
+						}}
+						disabled={disableOptions}
+					/>
+					<Select
+						labelKey="forms:label-city-option"
+						{...register("cityOption")}
+						options={cities}
+						disabled={disableOptions}
+					/>
+					<Select
+						labelKey="forms:label-parish-option"
+						{...register("parishOption")}
+						options={parishes}
+						disabled={disableOptions}
+					/>
 					<div className="relative flex items-center ">
 						<CheckBox labelKey="forms:label-save-information" />
 					</div>
@@ -123,6 +180,7 @@ const CheckoutForm: React.FC = () => {
 						placeholderKey="forms:placeholder-order-notes"
 						className="relative pt-3 xl:pt-6"
 					/>
+
 					<div className="flex w-full">
 						<Button
 							className="w-full sm:w-auto"

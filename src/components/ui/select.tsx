@@ -1,17 +1,16 @@
 import cn from "classnames";
-import React, { InputHTMLAttributes } from "react";
+import React, { SelectHTMLAttributes } from "react";
 import { useTranslation } from "next-i18next";
 
-export interface Props extends InputHTMLAttributes<HTMLInputElement> {
+export interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
 	className?: string;
-	inputClassName?: string;
+	selectClassName?: string;
 	labelKey?: string;
-	placeholderKey?: string;
 	name: string;
 	errorKey?: string;
-	type?: string;
 	shadow?: boolean;
 	variant?: "normal" | "solid" | "outline";
+	options: { id: string; name: string }[];
 }
 const classes = {
 	root: "py-2 px-4 md:px-5 w-full appearance-none transition duration-150 ease-in-out border text-input text-xs lg:text-sm font-body rounded-md placeholder-body min-h-12 transition duration-200 ease-in-out",
@@ -22,18 +21,18 @@ const classes = {
 	outline: "border-gray-300 focus:border-primary",
 	shadow: "focus:shadow",
 };
-const Input = React.forwardRef<HTMLInputElement, Props>(
+const Select = React.forwardRef<HTMLSelectElement, Props>(
 	(
 		{
 			className = "block",
 			labelKey,
 			name,
 			errorKey,
-			placeholderKey,
 			variant = "normal",
 			shadow = false,
-			type = "text",
-			inputClassName,
+			selectClassName,
+			options,
+			id,
 			...rest
 		},
 		ref
@@ -48,7 +47,7 @@ const Input = React.forwardRef<HTMLInputElement, Props>(
 			{
 				[classes.shadow]: shadow,
 			},
-			inputClassName
+			selectClassName
 		);
 		const { t } = useTranslation();
 		return (
@@ -61,23 +60,23 @@ const Input = React.forwardRef<HTMLInputElement, Props>(
 						{t(labelKey)}
 					</label>
 				)}
-				<input
+				<select
 					id={name}
 					name={name}
-					type={type}
 					ref={ref}
-					// @ts-ignore
-					placeholder={t(placeholderKey)}
 					className={rootClassName}
-					autoComplete="off"
-					spellCheck="false"
-					aria-invalid={errorKey ? "true" : "false"}
 					{...rest}
-				/>
+				>
+					{options.map((data) => (
+						<option value={`${t(data.name)}`} key={data.id}>
+							{t(data.name)}
+						</option>
+					))}
+				</select>
 				{errorKey && <p className="my-2 text-xs text-red-500">{t(errorKey)}</p>}
 			</div>
 		);
 	}
 );
 
-export default Input;
+export default Select;
