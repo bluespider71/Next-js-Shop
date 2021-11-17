@@ -52,6 +52,7 @@ const CheckoutForm: React.FC = () => {
 		getValues,
 	} = useForm<CheckoutInputType>();
 	function onSubmit(input: CheckoutInputType) {
+		console.log(input);
 		updateUser(input);
 		Router.push(ROUTES.ORDER);
 	}
@@ -80,6 +81,7 @@ const CheckoutForm: React.FC = () => {
 	}, [shipping]);
 	useEffect(() => {
 		setShipping(getValues().shippingOption);
+		console.log(getValues());
 	}, [register]);
 
 	return (
@@ -144,32 +146,45 @@ const CheckoutForm: React.FC = () => {
 					</div>
 					<Select
 						labelKey="forms:label-shipping-option"
-						{...register("shippingOption")}
+						{...register("shippingOption", {
+							required: "forms:option-required",
+						})}
 						options={shippingOptions}
 						onChange={(e) => {
 							handleShippingOptions(e.target.value);
 						}}
+						errorKey={errors.shippingOption?.message}
 					/>
+
 					<Select
 						labelKey="forms:label-province-option"
-						{...register("provinceOption")}
+						{...register("provinceOption", {
+							...(disableOptions ? {required: false} : { required: "forms:option-required" }),
+						})}
 						options={provinces}
 						onChange={(e) => {
 							handleProvinceOptions(e.target.value);
 						}}
 						disabled={disableOptions}
+						errorKey={errors.provinceOption?.message}
 					/>
 					<Select
 						labelKey="forms:label-city-option"
-						{...register("cityOption")}
+						{...register("cityOption", {
+							...(disableOptions ? {required: false} : { required: "forms:option-required" }),
+						})}
 						options={cities}
 						disabled={disableOptions}
+						errorKey={errors.cityOption?.message}
 					/>
 					<Select
 						labelKey="forms:label-parish-option"
-						{...register("parishOption")}
+						{...register("parishOption", {
+							...(disableOptions ? {required: false} : { required: "forms:option-required" }),
+						})}
 						options={parishes}
 						disabled={disableOptions}
+						errorKey={errors.parishOption?.message}
 					/>
 					<div className="relative flex items-center ">
 						<CheckBox labelKey="forms:label-save-information" />

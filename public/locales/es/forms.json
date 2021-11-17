@@ -5,7 +5,7 @@
   "password-old-required": "Se requiere contraseña anterior",
   "password-new-required": "Se requiere contraseña nueva",
   "name-required": "Se requiere nombre",
-  "shipping-required": "Seleccione la opción de envío",
+  "option-required": "Seleccionar opción",
   "first-name-required": "Se requiere nombre",
   "display-name-required": "Se requiere nombre para mostrar",
   "name-subject": "Se requiere asunto",
@@ -52,5 +52,6 @@
   "shipping-option-home": "Envío a domicilio",
   "shipping-option-courier": "Retiro de oficina",
   "shipping-option-bus": "Cooperativa de Terminal Terrestre",
-  "shipping-option-guayaquil": "Retiro en tienda Guayaquil"
+  "shipping-option-guayaquil": "Retiro en tienda Guayaquil",
+  "message-select": "Seleccionar opción"
 }

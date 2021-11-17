@@ -10,7 +10,7 @@
   "name-subject": "Your subject is required",
   "address-required": "Address is required",
   "phone-required": "Phone number is required",
-  "shipping-required": "Select shipping option",
+  "option-required": "Select option",
   "last-name-required": "Last name is required",
   "label-name-required": "Your Name (required)",
   "label-email-required": "Your Email (required)",
@@ -52,5 +52,6 @@
   "shipping-option-home": "Home delivery",
   "shipping-option-courier": "Courier Office Pickup",
   "shipping-option-bus": "Bus Company Pickup",
-  "shipping-option-guayaquil": "Guayaquil Store Pickup"
+  "shipping-option-guayaquil": "Guayaquil Store Pickup",
+  "message-select": "Select Option"
 }

@@ -67,8 +67,9 @@ const Select = React.forwardRef<HTMLSelectElement, Props>(
 					className={rootClassName}
 					{...rest}
 				>
+					<option value="" style={{fontWeight:"bold"}}>{t("forms:message-select")}</option>
 					{options.map((data) => (
-						<option value={`${t(data.name)}`} key={data.id}>
+						<option value={`${t(data.name)}` || data.name} key={data.id}>
 							{t(data.name)}
 						</option>
 					))}
