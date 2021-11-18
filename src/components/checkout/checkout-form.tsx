@@ -2,6 +2,7 @@ import Input from "@components/ui/input";
 import { useForm } from "react-hook-form";
 import TextArea from "@components/ui/text-area";
 import Select from "@components/ui/select";
+import SearchableSelect from "@components/ui/searchable-select/searchable-select";
 import { useCheckoutMutation } from "@framework/checkout/use-checkout";
 import { CheckBox } from "@components/ui/checkbox";
 import Button from "@components/ui/button";
@@ -50,7 +51,16 @@ const CheckoutForm: React.FC = () => {
 		handleSubmit,
 		formState: { errors },
 		getValues,
-	} = useForm<CheckoutInputType>();
+		setValue,
+	} = useForm<CheckoutInputType>({
+		defaultValues: {
+			firstName: "rangarirai",
+			lastName: "zawe",
+			phone: "01234567",
+			email: "nakaramusic@gmail.com",
+		},
+	});
+
 	function onSubmit(input: CheckoutInputType) {
 		console.log(input);
 		updateUser(input);
@@ -156,35 +166,43 @@ const CheckoutForm: React.FC = () => {
 						errorKey={errors.shippingOption?.message}
 					/>
 
-					<Select
+					<SearchableSelect
 						labelKey="forms:label-province-option"
 						{...register("provinceOption", {
-							...(disableOptions ? {required: false} : { required: "forms:option-required" }),
+							...(disableOptions
+								? { required: false }
+								: { required: "forms:option-required" }),
 						})}
+						setFormValue={setValue}
 						options={provinces}
-						onChange={(e) => {
-							handleProvinceOptions(e.target.value);
-						}}
+						handleOptions={handleProvinceOptions}
 						disabled={disableOptions}
 						errorKey={errors.provinceOption?.message}
 					/>
-					<Select
+
+					<SearchableSelect
 						labelKey="forms:label-city-option"
 						{...register("cityOption", {
-							...(disableOptions ? {required: false} : { required: "forms:option-required" }),
+							...(disableOptions
+								? { required: false }
+								: { required: "forms:option-required" }),
 						})}
 						options={cities}
 						disabled={disableOptions}
 						errorKey={errors.cityOption?.message}
+						setFormValue={setValue}
 					/>
-					<Select
+					<SearchableSelect
 						labelKey="forms:label-parish-option"
 						{...register("parishOption", {
-							...(disableOptions ? {required: false} : { required: "forms:option-required" }),
+							...(disableOptions
+								? { required: false }
+								: { required: "forms:option-required" }),
 						})}
 						options={parishes}
 						disabled={disableOptions}
 						errorKey={errors.parishOption?.message}
+						setFormValue={setValue}
 					/>
 					<div className="relative flex items-center ">
 						<CheckBox labelKey="forms:label-save-information" />
