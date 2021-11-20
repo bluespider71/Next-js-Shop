@@ -90,10 +90,14 @@ const ProductSingleDetails: React.FC = () => {
 			setAddToCartLoader(false);
 		}, 600);
 
-		const item = generateCartItem(data!, {
-			size: selectedSize,
-			color: selectedVariant
-		}, image);
+		const item = generateCartItem(
+			data!,
+			{
+				size: selectedSize,
+				color: selectedVariant,
+			},
+			image
+		);
 		addItemToCart(item, quantity);
 		toast("Added to the bag", {
 			type: "dark",
@@ -117,6 +121,7 @@ const ProductSingleDetails: React.FC = () => {
 				setImage(variant.pictures[0]);
 				setSizes(variant.sizes);
 				setSelectedVariant(sku);
+				setSelectedSize("");
 			}
 		});
 	}

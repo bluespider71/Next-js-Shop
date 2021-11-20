@@ -127,7 +127,7 @@ const Select = React.forwardRef<HTMLInputElement, Props>(
 									ref(e);
 									selectedValueRef.current = e;
 								}}
-								autoComplete="off"
+								autoComplete="new-password"
 								value={value || query}
 								placeholder={t("forms:message-select")}
 								onChange={(e) => {

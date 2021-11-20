@@ -98,6 +98,7 @@ export default function ProductPopup() {
 				setSizes(variant.sizes);
 				setSelectedVariant(sku);
 				setSelectedPicture(0);
+				setSelectedSize("")
 			}
 		});
 	}

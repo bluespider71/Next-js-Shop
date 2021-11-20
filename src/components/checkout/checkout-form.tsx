@@ -85,9 +85,12 @@ const CheckoutForm: React.FC = () => {
 	}, [province]);
 	useEffect(() => {
 		if (shipping === t("forms:shipping-option-guayaquil")) {
-			setDisableOptions(true);
+			return setDisableOptions(true);
+		}
+		if (shipping) {
+			return setDisableOptions(false);
 		} else {
-			setDisableOptions(false);
+			return setDisableOptions(true);
 		}
 	}, [shipping]);
 	useEffect(() => {
@@ -115,6 +118,7 @@ const CheckoutForm: React.FC = () => {
 							errorKey={errors.firstName?.message}
 							variant="solid"
 							className="w-full lg:w-1/2 "
+							placeholderKey="forms:placeholder-first-name"
 						/>
 						<Input
 							labelKey="forms:label-last-name"
@@ -124,6 +128,7 @@ const CheckoutForm: React.FC = () => {
 							errorKey={errors.lastName?.message}
 							variant="solid"
 							className="w-full lg:w-1/2 lg:ms-3 mt-2 md:mt-0"
+							placeholderKey="forms:placeholder-last-name"
 						/>
 					</div>
 
@@ -137,6 +142,7 @@ const CheckoutForm: React.FC = () => {
 							errorKey={errors.phone?.message}
 							variant="solid"
 							className="w-full lg:w-1/2 "
+							placeholderKey="forms:placeholder-phone-number"
 						/>
 
 						<Input
@@ -153,6 +159,7 @@ const CheckoutForm: React.FC = () => {
 							errorKey={errors.email?.message}
 							variant="solid"
 							className="w-full lg:w-1/2 lg:ms-3 mt-2 md:mt-0"
+							placeholderKey="forms:placeholder-email"
 						/>
 					</div>
 					<Select
@@ -166,45 +173,48 @@ const CheckoutForm: React.FC = () => {
 						}}
 						errorKey={errors.shippingOption?.message}
 					/>
+					{!disableOptions && (
+						<>
+							<SearchableSelect
+								labelKey="forms:label-province-option"
+								{...register("provinceOption", {
+									...(disableOptions
+										? { required: false }
+										: { required: "forms:option-required" }),
+								})}
+								setFormValue={setValue}
+								options={provinces}
+								handleOptions={handleProvinceOptions}
+								disabled={disableOptions}
+								errorKey={errors.provinceOption?.message}
+							/>
+							<SearchableSelect
+								labelKey="forms:label-city-option"
+								{...register("cityOption", {
+									...(disableOptions
+										? { required: false }
+										: { required: "forms:option-required" }),
+								})}
+								options={cities}
+								disabled={disableOptions}
+								errorKey={errors.cityOption?.message}
+								setFormValue={setValue}
+							/>
+							<SearchableSelect
+								labelKey="forms:label-parish-option"
+								{...register("parishOption", {
+									...(disableOptions
+										? { required: false }
+										: { required: "forms:option-required" }),
+								})}
+								options={parishes}
+								disabled={disableOptions}
+								errorKey={errors.parishOption?.message}
+								setFormValue={setValue}
+							/>{" "}
+						</>
+					)}
 
-					<SearchableSelect
-						labelKey="forms:label-province-option"
-						{...register("provinceOption", {
-							...(disableOptions
-								? { required: false }
-								: { required: "forms:option-required" }),
-						})}
-						setFormValue={setValue}
-						options={provinces}
-						handleOptions={handleProvinceOptions}
-						disabled={disableOptions}
-						errorKey={errors.provinceOption?.message}
-					/>
-
-					<SearchableSelect
-						labelKey="forms:label-city-option"
-						{...register("cityOption", {
-							...(disableOptions
-								? { required: false }
-								: { required: "forms:option-required" }),
-						})}
-						options={cities}
-						disabled={disableOptions}
-						errorKey={errors.cityOption?.message}
-						setFormValue={setValue}
-					/>
-					<SearchableSelect
-						labelKey="forms:label-parish-option"
-						{...register("parishOption", {
-							...(disableOptions
-								? { required: false }
-								: { required: "forms:option-required" }),
-						})}
-						options={parishes}
-						disabled={disableOptions}
-						errorKey={errors.parishOption?.message}
-						setFormValue={setValue}
-					/>
 					<div className="relative flex items-center ">
 						<CheckBox
 							labelKey="forms:label-save-information"
