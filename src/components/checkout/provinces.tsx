@@ -200,6 +200,6 @@ export function getProvinces() {
 	}));
 }
 export function getCitiesAndParishes(province: string) {
-	let temp = PROVINCES_ARRAY.filter((data) => data.name === province);
+	let temp = PROVINCES_ARRAY.filter((data) => data.name.toLocaleLowerCase() === province.toLowerCase());
 	return { cities: temp[0].cities, parishes: temp[0].parishes };
 }

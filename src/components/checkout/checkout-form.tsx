@@ -58,6 +58,7 @@ const CheckoutForm: React.FC = () => {
 			lastName: "zawe",
 			phone: "01234567",
 			email: "nakaramusic@gmail.com",
+			save: true,
 		},
 	});
 
@@ -205,7 +206,10 @@ const CheckoutForm: React.FC = () => {
 						setFormValue={setValue}
 					/>
 					<div className="relative flex items-center ">
-						<CheckBox labelKey="forms:label-save-information" />
+						<CheckBox
+							labelKey="forms:label-save-information"
+							{...register("save")}
+						/>
 					</div>
 					<TextArea
 						labelKey="forms:label-order-notes"

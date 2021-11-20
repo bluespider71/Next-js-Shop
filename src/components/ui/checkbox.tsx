@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import { useTranslation } from "next-i18next";
 interface CheckBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
 	labelKey?: string;
@@ -6,7 +6,6 @@ interface CheckBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 export const CheckBox = React.forwardRef<HTMLInputElement, CheckBoxProps>(
 	({ labelKey, label, ...rest }, ref) => {
-		const [checked, setChecked] = useState(true);
 		const { t } = useTranslation();
 		return (
 			<label className="group flex items-center text-heading text-sm cursor-pointer">
@@ -19,8 +18,6 @@ export const CheckBox = React.forwardRef<HTMLInputElement, CheckBoxProps>(
 					 focus:outline-none focus:ring-0 focus-visible:outline-none checked:bg-heading"
 					ref={ref}
 					{...rest}
-					checked={checked}
-					onChange={(e) => setChecked(e.target.checked)}
 				/>
 				<span className="ms-4 -mt-0.5">{labelKey ? t(labelKey) : label}</span>
 			</label>

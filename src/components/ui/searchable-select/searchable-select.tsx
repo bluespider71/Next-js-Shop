@@ -75,6 +75,7 @@ const Select = React.forwardRef<HTMLInputElement, Props>(
 				trie.insert(option.name.toLowerCase());
 			});
 			setTrie(trie);
+			setValue("");
 		}, [options]);
 
 		function close(e: any) {
@@ -85,7 +86,7 @@ const Select = React.forwardRef<HTMLInputElement, Props>(
 		}
 		function filter() {
 			if (!query) {
-				return options.map((option) => option.name);
+				return options.map((option) => option.name.toLowerCase());
 			}
 			return trie?.autocomplete(query.toLowerCase());
 		}
@@ -112,19 +113,21 @@ const Select = React.forwardRef<HTMLInputElement, Props>(
 						className={styles.control}
 						onClick={() => {
 							setopen((prev) => !prev);
+							setQuery(value);
 							setValue("");
 						}}
 					>
 						<div className={styles["selected-value"]}>
 							<input
 								key={name}
-								type="text"
+								type="search"
 								id={name}
 								name={name}
 								ref={(e) => {
 									ref(e);
 									selectedValueRef.current = e;
 								}}
+								autoComplete="off"
 								value={value || query}
 								placeholder={t("forms:message-select")}
 								onChange={(e) => {
@@ -135,6 +138,9 @@ const Select = React.forwardRef<HTMLInputElement, Props>(
 									setopen((prev) => !prev);
 									setQuery("");
 									setFormValue(`${name}`, "");
+								}}
+								style={{
+									...(disabled ? { background: "#dddddd" } : {}),
 								}}
 							/>
 						</div>
