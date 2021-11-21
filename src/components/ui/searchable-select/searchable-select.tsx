@@ -86,9 +86,18 @@ const Select = React.forwardRef<HTMLInputElement, Props>(
 		}
 		function filter() {
 			if (!query) {
-				return options.map((option) => option.name.toLowerCase());
+				return options;
 			}
-			return trie?.autocomplete(query.toLowerCase());
+			let trieResult = trie?.autocomplete(query.toLowerCase());
+			return options.filter((option) => {
+				let isInResult = false;
+				trieResult?.forEach((value) => {
+					if (value === option.name.toLowerCase()) {
+						isInResult = true;
+					}
+				});
+				return isInResult;
+			});
 		}
 		return (
 			<div
@@ -149,23 +158,23 @@ const Select = React.forwardRef<HTMLInputElement, Props>(
 						></div>
 					</div>
 					<div className={`${styles.options} ${open ? styles.open : ""}`}>
-						{filter()?.map((val) => (
+						{filter()?.map((option) => (
 							<div
 								className={`${styles.option}   ${
-									val === value ? styles.selected : ""
+									option.name === value ? styles.selected : ""
 								}`}
-								key={val}
+								key={option.id}
 								onClick={() => {
 									setQuery("");
-									setValue(val);
-									setFormValue(`${name}`, val);
+									setValue(option.name);
+									setFormValue(`${name}`, option.name);
 									setopen(false);
 									if (handleOptions) {
-										handleOptions(val);
+										handleOptions(option.name);
 									}
 								}}
 							>
-								{val}
+								{option.name}
 							</div>
 						))}
 					</div>
