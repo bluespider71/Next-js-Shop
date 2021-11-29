@@ -72,7 +72,7 @@ const Select = React.forwardRef<HTMLInputElement, Props>(
 		useEffect(() => {
 			let trie = new Trie();
 			options.map((option) => {
-				trie.insert(option.name.toLowerCase());
+				trie.insert(t(option.name).toLowerCase());
 			});
 			setTrie(trie);
 			setValue("");
@@ -92,7 +92,7 @@ const Select = React.forwardRef<HTMLInputElement, Props>(
 			return options.filter((option) => {
 				let isInResult = false;
 				trieResult?.forEach((value) => {
-					if (value === option.name.toLowerCase()) {
+					if (value === t(option.name).toLowerCase()) {
 						isInResult = true;
 					}
 				});
@@ -147,6 +147,9 @@ const Select = React.forwardRef<HTMLInputElement, Props>(
 									setopen((prev) => !prev);
 									setQuery("");
 									setFormValue(`${name}`, "");
+									if (handleOptions) {
+										handleOptions("");
+									}
 								}}
 								style={{
 									...(disabled ? { background: "#dddddd" } : {}),
@@ -161,20 +164,20 @@ const Select = React.forwardRef<HTMLInputElement, Props>(
 						{filter()?.map((option) => (
 							<div
 								className={`${styles.option}   ${
-									option.name === value ? styles.selected : ""
+									t(option.name)=== value ? styles.selected : ""
 								}`}
 								key={option.id}
 								onClick={() => {
 									setQuery("");
-									setValue(option.name);
-									setFormValue(`${name}`, option.name);
+									setValue(t(option.name));
+									setFormValue(`${name}`,t(option.name));
 									setopen(false);
 									if (handleOptions) {
-										handleOptions(option.name);
+										handleOptions(t(option.name));
 									}
 								}}
 							>
-								{option.name}
+								{t(option.name)}
 							</div>
 						))}
 					</div>

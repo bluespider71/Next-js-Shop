@@ -23,6 +23,10 @@ interface CheckoutInputType {
 	provinceOption: string;
 	cityOption: string;
 	parishOption: string;
+	neighborhood: string;
+	houseColor: string;
+	crossStreet: string;
+	principalStreet: string;
 }
 const shippingOptions = [
 	{ id: "forms:shipping-option-home", name: "forms:shipping-option-home" },
@@ -44,6 +48,8 @@ const CheckoutForm: React.FC = () => {
 	const [disableOptions, setDisableOptions] = useState(true);
 	const [cities, setCities] = useState<{ id: string; name: string }[]>([]);
 	const [parishes, setParishes] = useState<{ id: string; name: string }[]>([]);
+	const [city, setCity] = useState("");
+	const [parish, setParish] = useState("");
 	const { t } = useTranslation();
 	const { mutate: updateUser, isLoading } = useCheckoutMutation();
 	const {
@@ -67,20 +73,30 @@ const CheckoutForm: React.FC = () => {
 		updateUser(input);
 		Router.push(ROUTES.ORDER);
 	}
-	function handleProvinceOptions(value: string) {
-		setProvince(value);
-	}
+
 	function handleShippingOptions(value: string) {
 		setShipping(value);
 	}
-	useEffect(() => {
-		setProvince(provinces[0].name);
-	}, [provinces]);
+	function handleProvinceOptions(value: string) {
+		setProvince(value);
+		setCity("");
+		setParish("");
+	}
+	function handleCityOptions(value: string) {
+		setCity(value);
+	}
+	function handleParishOptions(value: string) {
+		setParish(value);
+	}
+
 	useEffect(() => {
 		if (province) {
 			let temp = getCitiesAndParishes(province);
 			setCities(temp.cities);
 			setParishes(temp.parishes);
+		} else {
+			setCities([]);
+			setParishes([]);
 		}
 	}, [province]);
 	useEffect(() => {
@@ -162,16 +178,16 @@ const CheckoutForm: React.FC = () => {
 							placeholderKey="forms:placeholder-email"
 						/>
 					</div>
-					<Select
+
+					<SearchableSelect
 						labelKey="forms:label-shipping-option"
 						{...register("shippingOption", {
 							required: "forms:option-required",
 						})}
+						setFormValue={setValue}
 						options={shippingOptions}
-						onChange={(e) => {
-							handleShippingOptions(e.target.value);
-						}}
-						errorKey={errors.shippingOption?.message}
+						handleOptions={handleShippingOptions}
+						errorKey={errors.provinceOption?.message}
 					/>
 					{!disableOptions && (
 						<>
@@ -188,30 +204,86 @@ const CheckoutForm: React.FC = () => {
 								disabled={disableOptions}
 								errorKey={errors.provinceOption?.message}
 							/>
-							<SearchableSelect
-								labelKey="forms:label-city-option"
-								{...register("cityOption", {
-									...(disableOptions
-										? { required: false }
-										: { required: "forms:option-required" }),
-								})}
-								options={cities}
-								disabled={disableOptions}
-								errorKey={errors.cityOption?.message}
-								setFormValue={setValue}
-							/>
-							<SearchableSelect
-								labelKey="forms:label-parish-option"
-								{...register("parishOption", {
-									...(disableOptions
-										? { required: false }
-										: { required: "forms:option-required" }),
-								})}
-								options={parishes}
-								disabled={disableOptions}
-								errorKey={errors.parishOption?.message}
-								setFormValue={setValue}
-							/>{" "}
+							{!parish && (
+								<SearchableSelect
+									labelKey="forms:label-city-option"
+									{...register("cityOption", {
+										...(disableOptions
+											? { required: false }
+											: { required: "forms:option-required" }),
+									})}
+									options={cities}
+									disabled={disableOptions}
+									errorKey={errors.cityOption?.message}
+									setFormValue={setValue}
+									handleOptions={handleCityOptions}
+								/>
+							)}
+
+							{!city && (
+								<SearchableSelect
+									labelKey="forms:label-parish-option"
+									{...register("parishOption", {
+										...(disableOptions
+											? { required: false }
+											: { required: "forms:option-required" }),
+									})}
+									options={parishes}
+									disabled={disableOptions}
+									errorKey={errors.parishOption?.message}
+									setFormValue={setValue}
+									handleOptions={handleParishOptions}
+								/>
+							)}
+						</>
+					)}
+					{shipping === t("forms:shipping-option-home") && (
+						<>
+							<div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0">
+								<Input
+									labelKey="forms:label-principal-street"
+									{...register("principalStreet", {
+										//		required: "forms:principal-street-required",
+									})}
+									errorKey={errors.principalStreet?.message}
+									variant="solid"
+									className="w-full lg:w-1/2 "
+									//	placeholderKey="forms:placeholder-principal-street"
+								/>
+
+								<Input
+									labelKey="forms:label-cross-street"
+									{...register("crossStreet", {
+										//		required: "forms:cross-street-required"
+									})}
+									errorKey={errors.crossStreet?.message}
+									variant="solid"
+									className="w-full lg:w-1/2 lg:ms-3 mt-2 md:mt-0"
+									//	placeholderKey="forms:placeholder-cross-street"
+								/>
+							</div>
+							<div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0">
+								<Input
+									labelKey="forms:label-neighborhood"
+									{...register("neighborhood", {
+										//	required: "forms: neighborhood-required",
+									})}
+									errorKey={errors.neighborhood?.message}
+									variant="solid"
+									className="w-full lg:w-1/2 "
+									//placeholderKey="forms:placeholder-neighborhood"
+								/>
+								<Input
+									labelKey="forms:label-house-color"
+									{...register("houseColor", {
+										//	required: "forms:house-color-required",
+									})}
+									errorKey={errors.houseColor?.message}
+									variant="solid"
+									className="w-full lg:w-1/2 lg:ms-3 mt-2 md:mt-0"
+									//placeholderKey="forms:placeholder-house-color"
+								/>
+							</div>
 						</>
 					)}
 

@@ -16,9 +16,9 @@ const HeaderMenu: React.FC<MenuProps> = ({ data, className }) => {
 		<nav className={classNames(`headerMenu flex w-full relative`, className)}>
 			{data?.map((item: any) => (
 				<div
-					className={`menuItem group cursor-pointer py-7 ${
-						item.subMenu ? "relative" : ""
-					}`}
+					// removed the below classes for now. just to get rid of the annoying hover issue
+					// menuItem group
+					className={`cursor-pointer py-7 ${item.subMenu ? "relative" : ""}`}
 					key={item.id}
 				>
 					<Link
