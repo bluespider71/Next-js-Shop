@@ -7,7 +7,7 @@ import {
 	useUpdateUserMutation,
 	UpdateUserType,
 } from "@framework/customer/use-update-customer";
-import { RadioBox } from "@components/ui/radiobox";
+
 import { useTranslation } from "next-i18next";
 
 const defaultValues = {};
@@ -89,7 +89,8 @@ const AccountDetails: React.FC = () => {
 							{...register("email", {
 								required: "forms:email-required",
 								pattern: {
-									value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+									value:
+										/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
 									message: "forms:email-error",
 								},
 							})}
@@ -98,23 +99,7 @@ const AccountDetails: React.FC = () => {
 							errorKey={errors.email?.message}
 						/>
 					</div>
-					<div className="relative flex flex-col">
-						<span className="mt-2 text-sm text-heading font-semibold block pb-1">
-							{t("common:text-gender")}
-						</span>
-						<div className="mt-2 flex items-center space-s-6">
-							<RadioBox
-								labelKey="forms:label-male"
-								{...register("gender")}
-								value="male"
-							/>
-							<RadioBox
-								labelKey="forms:label-female"
-								{...register("gender")}
-								value="female"
-							/>
-						</div>
-					</div>
+
 					<div className="relative">
 						<Button
 							type="submit"

@@ -193,6 +193,118 @@ const PROVINCES_ARRAY = [
 	},
 ];
 
+const COVERAGE_COURIER = [
+	{
+		id: "cobertura_1",
+		cityId: "ciudad_Pichincha_1_ID",
+		provinceId: "PichinchaID",
+		name: "courier name test 1",
+		base_price: 3.5,
+		base_weight: 2, //kg
+		aditional_kg: 2, //$
+		address: "test address",
+		phone_number: "test phone number",
+	},
+	{
+		id: "cobertura_2",
+		cityId: "ciudad_Pichincha_2_ID",
+		provinceId: "PichinchaID",
+		name: "courier name test 2",
+		base_price: 3.5,
+		base_weight: 2, //kg
+		aditional_kg: 2, //$
+		address: "test address",
+		phone_number: "test phone number",
+	},
+	{
+		//add some enough ProvinceId-ParishId or ProvinceId-CityId
+		// combinations here in  order you can test
+	},
+	{
+		id: "cobertura_2",
+		parishId: "parroquia_Pichincha_1_id",
+		provinceId: "PichinchaID",
+		name: "courier name test p",
+		base_price: 3.5,
+		base_weight: 2, //kg
+		aditional_kg: 2, //$
+		address: "test address",
+		phone_number: "test phone number",
+	},
+];
+
+const COVERAGE_TERMINAL = [
+	{
+		id: "cobertura_1",
+		cityId: "ciudad_Pichincha_1_ID",
+		provinceId: "PichinchaID",
+		name: "bus company name test",
+		price_small_package: 2.5, //USD
+		max_weight_small_package: 2, //kg
+		price_medium_package: 4.5, //USD
+		max_weight_medium_package: 4, //kg
+		price_big_package: 8.5, //USD
+		max_weight_big_package: 8, //kg
+		address: "test address",
+		phone_number: "test phone number",
+	},
+	{
+		id: "cobertura_2",
+		cityId: "ciudad_Pichincha_2_ID",
+		provinceId: "PichinchaID",
+		name: "bus company name test",
+		price_small_package: 2.5, //USD
+		max_weight_small_package: 2, //kg
+		price_medium_package: 4.5, //USD
+		max_weight_medium_package: 4, //kg
+		price_big_package: 8.5, //USD
+		max_weight_big_package: 8, //kg
+		address: "test address",
+		phone_number: "test phone number",
+	},
+
+	{
+		id: "cobertura_3",
+		parishId: "parroquia_Pichincha_1_ID",
+		provinceId: "PichinchaID",
+		name: "bus company name test",
+		price_small_package: 2.5, //USD
+		max_weight_small_package: 2, //kg
+		price_medium_package: 4.5, //USD
+		max_weight_medium_package: 4, //kg
+		price_big_package: 8.5, //USD
+		max_weight_big_package: 8, //kg
+		address: "test address",
+		phone_number: "test phone number",
+	},
+];
+
+const USER_ADDRESSES = [
+	{
+		shipping_option: "Envío a domicilio",
+		chosen_courier_Id: "courier_id",
+		principal_street: "calle 1",
+		secondary_Street: "calle 2",
+		neighborhood_citadel: "barrio ejemplo",
+		house_color: "amarilla",
+		phone_number_1: "telefono 1",
+		phone_number_2: "telefono 2",
+		aditional_info: "Lorem Ipsum.....",
+	},
+	{
+		shipping_option: "Cooperativa de Terminal Terrestre",
+		chosen_bus_copmany_Id: "bus_company_id",
+		phone_number_1: "telefono 1",
+		phone_number_2: "telefono 2",
+		aditional_info: "Lorem Ipsum.....",
+	},
+	{
+		shipping_option: "Retiro de oficina",
+		chosen_courier_Id: "courier_id",
+		phone_number_1: "telefono 1",
+		aditional_info: "Lorem Ipsum.....",
+	},
+];
 export function getProvinces() {
 	return PROVINCES_ARRAY.map((data) => ({
 		id: data.id,
@@ -200,6 +312,50 @@ export function getProvinces() {
 	}));
 }
 export function getCitiesAndParishes(province: string) {
-	let temp = PROVINCES_ARRAY.filter((data) => data.name.toLocaleLowerCase() === province.toLowerCase());
+	let temp = PROVINCES_ARRAY.filter(
+		(data) => data.name.toLocaleLowerCase() === province.toLowerCase()
+	);
 	return { cities: temp[0].cities, parishes: temp[0].parishes };
+}
+
+export function getCoverageCourier(prov: string, city: string, parish: string) {
+	let d = getIds(prov, city, parish);
+	return COVERAGE_COURIER.filter(
+		(data) =>
+			data.parishId === d.parishId &&
+			data.provinceId === d.provId &&
+			data.cityId === d.cityId
+	);
+}
+export function getCoverageTerminal(
+	prov: string,
+	city: string,
+	parish: string
+) {
+	let d = getIds(prov, city, parish);
+	return COVERAGE_TERMINAL.filter(
+		(data) =>
+			data.parishId === d.parishId &&
+			data.provinceId === d.provId &&
+			data.cityId === d.cityId
+	);
+}
+
+function getIds(prov: string, city: string, parish: string) {
+	let tempProv = PROVINCES_ARRAY.filter(
+		(data) => data.name.toLocaleLowerCase() === prov.toLowerCase()
+	);
+	let tempCity =
+		tempProv[0]?.cities.filter(
+			(data) => data.name.toLocaleLowerCase() === city.toLowerCase()
+		) || [];
+	let tempParish =
+		tempProv[0]?.parishes.filter(
+			(data) => data.name.toLocaleLowerCase() === parish.toLowerCase()
+		) || [];
+	return {
+		provId: tempProv[0]?.id,
+		cityId: tempCity[0]?.id,
+		parishId: tempParish[0]?.id,
+	};
 }
