@@ -198,6 +198,7 @@ const COVERAGE_COURIER = [
 		id: "cobertura_1",
 		cityId: "ciudad_Pichincha_1_ID",
 		provinceId: "PichinchaID",
+		parishId: "",
 		name: "courier name test 1",
 		base_price: 3.5,
 		base_weight: 2, //kg
@@ -209,6 +210,7 @@ const COVERAGE_COURIER = [
 		id: "cobertura_2",
 		cityId: "ciudad_Pichincha_2_ID",
 		provinceId: "PichinchaID",
+
 		name: "courier name test 2",
 		base_price: 3.5,
 		base_weight: 2, //kg
@@ -216,13 +218,11 @@ const COVERAGE_COURIER = [
 		address: "test address",
 		phone_number: "test phone number",
 	},
-	{
-		//add some enough ProvinceId-ParishId or ProvinceId-CityId
-		// combinations here in  order you can test
-	},
+
 	{
 		id: "cobertura_2",
 		parishId: "parroquia_Pichincha_1_id",
+		cityId: "",
 		provinceId: "PichinchaID",
 		name: "courier name test p",
 		base_price: 3.5,
@@ -279,32 +279,6 @@ const COVERAGE_TERMINAL = [
 	},
 ];
 
-const USER_ADDRESSES = [
-	{
-		shipping_option: "Envío a domicilio",
-		chosen_courier_Id: "courier_id",
-		principal_street: "calle 1",
-		secondary_Street: "calle 2",
-		neighborhood_citadel: "barrio ejemplo",
-		house_color: "amarilla",
-		phone_number_1: "telefono 1",
-		phone_number_2: "telefono 2",
-		aditional_info: "Lorem Ipsum.....",
-	},
-	{
-		shipping_option: "Cooperativa de Terminal Terrestre",
-		chosen_bus_copmany_Id: "bus_company_id",
-		phone_number_1: "telefono 1",
-		phone_number_2: "telefono 2",
-		aditional_info: "Lorem Ipsum.....",
-	},
-	{
-		shipping_option: "Retiro de oficina",
-		chosen_courier_Id: "courier_id",
-		phone_number_1: "telefono 1",
-		aditional_info: "Lorem Ipsum.....",
-	},
-];
 export function getProvinces() {
 	return PROVINCES_ARRAY.map((data) => ({
 		id: data.id,
@@ -318,7 +292,11 @@ export function getCitiesAndParishes(province: string) {
 	return { cities: temp[0].cities, parishes: temp[0].parishes };
 }
 
-export function getCoverageCourier(prov: string, city: string, parish: string) {
+export function getCoverageCourier(
+	prov: string,
+	city: string,
+	parish: string
+): CourierData[] {
 	let d = getIds(prov, city, parish);
 	return COVERAGE_COURIER.filter(
 		(data) =>
@@ -341,6 +319,18 @@ export function getCoverageTerminal(
 	);
 }
 
+export type CourierData = {
+	id: string;
+	parishId?: string;
+	provinceId?: string;
+	name: string;
+	base_price: number;
+	base_weight: number;
+	aditional_kg: number;
+	address: string;
+	phone_number: string;
+	cityId?: string;
+};
 function getIds(prov: string, city: string, parish: string) {
 	let tempProv = PROVINCES_ARRAY.filter(
 		(data) => data.name.toLocaleLowerCase() === prov.toLowerCase()

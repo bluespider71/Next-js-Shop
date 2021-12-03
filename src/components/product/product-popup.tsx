@@ -24,7 +24,7 @@ import ProductColorImages from "@components/product/product-color-images";
 export default function ProductPopup() {
 	const { t } = useTranslation("common");
 	const {
-		modalData: { data  },
+		modalData: { data },
 		closeModal,
 		openCart,
 	} = useUI();
@@ -65,10 +65,14 @@ export default function ProductPopup() {
 			setAddToCartLoader(false);
 			setViewCartBtn(true);
 		}, 600);
-		const item = generateCartItem(data!, {
-			size: selectedSize,
-			color: selectedVariant
-		}, image);
+		const item = generateCartItem(
+			data!,
+			{
+				size: selectedSize,
+				color: selectedVariant,
+			},
+			image
+		);
 
 		addItemToCart(item, quantity);
 		console.log(item, "item");
@@ -98,7 +102,10 @@ export default function ProductPopup() {
 				setSizes(variant.sizes);
 				setSelectedVariant(sku);
 				setSelectedPicture(0);
-				setSelectedSize("")
+				let sizes = variant.sizes.map((item: any) => item.size);
+				if (!sizes.includes(selectedSize)) {
+					setSelectedSize("");
+				}
 			}
 		});
 	}

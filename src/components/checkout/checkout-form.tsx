@@ -13,20 +13,9 @@ import {
 	getCitiesAndParishes,
 	getCoverageCourier,
 	getCoverageTerminal,
+	CourierData,
 } from "./provinces";
 import { useState, useEffect } from "react";
-
-type CourierData = {
-	id: string;
-	parishId: string;
-	provinceId: string;
-	name: string;
-	base_price: number;
-	base_weight: number;
-	aditional_kg: number;
-	address: string;
-	phone_number: string;
-};
 
 interface CheckoutInputType {
 	firstName: string;
@@ -67,9 +56,7 @@ const CheckoutForm: React.FC = () => {
 	const [disableOptions, setDisableOptions] = useState(true);
 	const [cities, setCities] = useState<{ id: string; name: string }[]>([]);
 	const [parishes, setParishes] = useState<{ id: string; name: string }[]>([]);
-	const [coverageCourier, setCoverageCourier] = useState<
-		{ id: string; name: string }[]
-	>([]);
+	const [coverageCourier, setCoverageCourier] = useState<CourierData[]>([]);
 	const [coverageTerminal, setCoverageTerminal] = useState<
 		{ id: string; name: string }[]
 	>([]);
@@ -337,14 +324,13 @@ const CheckoutForm: React.FC = () => {
 							{...register("courier")}
 						/>
 					)}
-					{shipping ===
-						(t("forms:shipping-option-courier") && (
-							<SearchableSelect
-								setFormValue={setValue}
-								options={coverageCourier}
-								{...register("courier")}
-							/>
-						))}
+					{shipping === t("forms:shipping-option-courier") && (
+						<SearchableSelect
+							setFormValue={setValue}
+							options={coverageCourier}
+							{...register("courier")}
+						/>
+					)}
 					{shipping === t("forms:shipping-option-bus") && (
 						<SearchableSelect
 							setFormValue={setValue}
