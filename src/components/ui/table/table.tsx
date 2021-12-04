@@ -1,6 +1,7 @@
 import cn from "classnames";
 import React, { TableHTMLAttributes } from "react";
 import { useTranslation } from "next-i18next";
+import styles from "./table.module.css";
 
 export interface Props extends TableHTMLAttributes<HTMLTableElement> {
 	className?: string;
@@ -22,6 +23,7 @@ export interface Props extends TableHTMLAttributes<HTMLTableElement> {
 		phone_number_1: string;
 		phone_number_2: string;
 		aditional_info: string;
+		id: string;
 	}[];
 }
 const classes = {
@@ -64,7 +66,7 @@ const Table = React.forwardRef<HTMLTableElement, Props>(
 		);
 		const { t } = useTranslation();
 		return (
-			<div className={className}>
+			<div className={className + " w-full  overflow-x-scroll"}>
 				{labelKey && (
 					<label
 						htmlFor={name}
@@ -74,43 +76,49 @@ const Table = React.forwardRef<HTMLTableElement, Props>(
 					</label>
 				)}
 				<table
+					className={styles.data}
 					id={name}
-					name={name}
-					type={type}
+					// name={name}
+
 					ref={ref}
 					// @ts-ignore
 					placeholder={t(placeholderKey)}
-					className={rootClassName}
-					autoComplete="off"
+					//className={rootClassName + " text-left"}
 					spellCheck="false"
 					aria-invalid={errorKey ? "true" : "false"}
 					{...rest}
+					style={{ width: "100vw" }}
 				>
-					<tr>
-						<th>shipping option</th>
-						<th>chosen courier Id</th>
-						<th>principal street</th>
-						<th>secondary Street</th>
-						<th>neighborhood citadel</th>
-						<th>house color</th>
-						<th>phone number 1</th>
-						<th>phone number 2</th>
-						<th>aditional info</th>
-					</tr>
-					{data.map((d) => (
+					<thead className="bg-gray-600">
 						<tr>
-							<td>{d.shipping_option}</td>
-							<td>{d.chosen_courier_Id}</td>
-							<td>{d.principal_street}</td>
-							<td>{d.secondary_Street}</td>
-							<td>{d.neighborhood_citadel}</td>
-							<td>{d.house_color}</td>
-							<td>{d.phone_number_1}</td>
-							<td>{d.phone_number_2}</td>
-							<td>{d.aditional_info}</td>
+							<th>shipping option</th>
+							<th>chosen courier Id</th>
+							<th>principal street</th>
+							<th>secondary Street</th>
+							<th>neighborhood citadel</th>
+							<th>house color</th>
+							<th>phone number 1</th>
+							<th>phone number 2</th>
+							<th>aditional info</th>
 						</tr>
-					))}
+					</thead>
+					<tbody>
+						{data.map((d) => (
+							<tr>
+								<td>{d.shipping_option}</td>
+								<td>{d.chosen_courier_Id}</td>
+								<td>{d.principal_street}</td>
+								<td>{d.secondary_Street}</td>
+								<td>{d.neighborhood_citadel}</td>
+								<td>{d.house_color}</td>
+								<td>{d.phone_number_1}</td>
+								<td>{d.phone_number_2}</td>
+								<td>{d.aditional_info}</td>
+							</tr>
+						))}
+					</tbody>
 				</table>
+
 				{errorKey && <p className="my-2 text-xs text-red-500">{t(errorKey)}</p>}
 			</div>
 		);

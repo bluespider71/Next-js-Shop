@@ -1,6 +1,6 @@
 import Input from "@components/ui/input";
 import Button from "@components/ui/button";
-import Table from "@components/ui/table";
+import Table from "@components/ui/table/table";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { fadeInTop } from "@utils/motion/fade-in-top";
@@ -121,6 +121,7 @@ export default AccountDetails;
 
 const USER_ADDRESSES = [
 	{
+		id:"1",
 		shipping_option: "Envío a domicilio",
 		chosen_courier_Id: "courier_id",
 		principal_street: "calle 1",
@@ -133,6 +134,7 @@ const USER_ADDRESSES = [
 		chosen_bus_copmany_Id: "",
 	},
 	{
+		id:"2",
 		shipping_option: "Cooperativa de Terminal Terrestre",
 		chosen_bus_copmany_Id: "bus_company_id",
 		chosen_courier_Id: "",
@@ -145,6 +147,7 @@ const USER_ADDRESSES = [
 		aditional_info: "Lorem Ipsum.....",
 	},
 	{
+		id:"3",
 		shipping_option: "Retiro de oficina",
 		chosen_courier_Id: "courier_id",
 		principal_street: "",

@@ -25,6 +25,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ columns, shouldShow }) => {
 			}`}
 		>
 			<div className="grid grid-cols-5">
+				
 				{columns?.map((column) => (
 					<ul
 						className="even:bg-gray-150 pb-7 2xl:pb-8 pt-6 2xl:pt-7"
