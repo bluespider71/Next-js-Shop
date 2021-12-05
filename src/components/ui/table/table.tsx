@@ -104,7 +104,7 @@ const Table = React.forwardRef<HTMLTableElement, Props>(
 					</thead>
 					<tbody>
 						{data.map((d) => (
-							<tr key={data.id}>
+							<tr key={d.id}>
 								<td>{d.shipping_option}</td>
 								<td>{d.chosen_courier_Id}</td>
 								<td>{d.principal_street}</td>

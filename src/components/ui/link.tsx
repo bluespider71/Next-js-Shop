@@ -8,6 +8,7 @@ const Link: React.FC<
 			<a
 				{...props}
 				onClick={(e: any) => {
+					console.log(href)
 					if (!href) {
 						e.preventDefault();
 					}
