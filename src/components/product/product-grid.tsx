@@ -5,6 +5,7 @@ import { useProductsQuery } from "@framework/product/get-all-products";
 import { useRouter } from "next/router";
 import ProductFeedLoader from "@components/ui/loaders/product-feed-loader";
 import { useTranslation } from "next-i18next";
+import { Product } from "@framework/types";
 interface ProductGridProps {
 	className?: string;
 }
@@ -31,7 +32,7 @@ export const ProductGrid: FC<ProductGridProps> = ({ className = "" }) => {
 					<ProductFeedLoader limit={20} uniqueKey="search-product" />
 				) : (
 					data?.pages?.map((page) => {
-						return page?.data?.map((product) => (
+						return page?.data?.map((product: Product) => (
 							<ProductCard
 								key={`product--key${product.id}`}
 								product={product}

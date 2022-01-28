@@ -34,7 +34,7 @@ const containerClasses = {
 	bottom: "h-full max-h-70vh bottom-0 rounded-ts-2xl rounded-te-2xl",
 };
 const closeBtnClasses = {
-	center: "top-4 end-4",
+	center: "-top-3.5 md:-top-4 -end-3.5 md:-end-4",
 	bottom: "top-1/4 start-1/2 transform -translate-y-1/2 -translate-x-1/2",
 };
 
@@ -77,22 +77,12 @@ const Modal: FC<ModalProps> = ({
 						exit="from"
 						variants={fadeInOut(0.25)}
 						className={cn(
-							"modal-root fixed bg-black bg-opacity-70 inset-0 z-50",
+							"modal-root fixed bg-black bg-opacity-70 inset-0 z-50 cursor-pointer",
 							useBlurBackdrop && "backdrop-filter backdrop-blur-sm",
 							rootClasses[variant],
 							rootClassName
 						)}
 					>
-						<button
-							onClick={onClose}
-							aria-label="Close panel"
-							className={cn(
-								"fixed z-10 inline-flex items-center justify-center w-7 h-7 md:w-8 md:h-8 rounded-full bg-white shadow text-gray-600 transition duration-200 focus:outline-none focus:text-gray-800 focus:shadow-md hover:text-gray-800 hover:shadow-md",
-								closeBtnClasses[variant]
-							)}
-						>
-							<IoClose className="text-xl" />
-						</button>
 						<motion.div
 							initial="from"
 							animate="to"
@@ -107,10 +97,20 @@ const Modal: FC<ModalProps> = ({
 									containerClassName
 								)}
 							>
+								<button
+									onClick={onClose}
+									aria-label="Close panel"
+									className={cn(
+										"fixed z-10 inline-flex items-center justify-center w-7 h-7 md:w-8 md:h-8 rounded-full bg-white shadow text-gray-600 transition duration-200 focus:outline-none focus:text-gray-800 focus:shadow-md hover:text-gray-800 hover:shadow-md",
+										closeBtnClasses[variant]
+									)}
+								>
+									<IoClose className="text-xl" />
+								</button>
 								<div
 									ref={modalInnerRef}
 									className="overflow-y-auto h-full rounded-lg"
-									style={{ maxHeight: "calc(100vh - 140px)" }}
+									style={{ maxHeight: "calc(100vh - 120px)" }}
 								>
 									{children}
 								</div>

@@ -70,7 +70,13 @@ export function CategoryListCardSection() {
 				</div>
 			) : width < 1025 ? (
 				<div className="col-span-full">
-					<Carousel breakpoints={categoryResponsive} buttonSize="small">
+					<Carousel
+						breakpoints={categoryResponsive}
+						autoplay={{
+							delay: 4000,
+						}}
+						buttonSize="small"
+					>
 						{isLoading
 							? Array.from({ length: 7 }).map((_, idx) => (
 									<SwiperSlide key={idx}>
@@ -133,7 +139,7 @@ export function SellWithProgressCardSection() {
 					imgWidth={330}
 					imgHeight={425}
 					error={error?.message}
-					className="col-span-full 2xl:col-span-2 2xl:row-auto xl:hidden 2xl:flex"
+					className="col-span-full 2xl:col-span-2 2xl:row-auto"
 				/>
 			)}
 		</>

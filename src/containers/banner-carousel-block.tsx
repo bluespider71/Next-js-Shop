@@ -2,7 +2,6 @@ import BannerCard from "@components/common/banner-card";
 import Carousel from "@components/ui/carousel/carousel";
 import { SwiperSlide } from "swiper/react";
 import { ROUTES } from "@utils/routes";
-import { promotionBannerTwo as banners } from "@framework/static/banner";
 
 const breakpoints = {
 	"1025": {
@@ -21,15 +20,17 @@ const breakpoints = {
 
 interface BannerProps {
 	className?: string;
+	bannerData: any;
 }
 
 const BannerCarouselBlock: React.FC<BannerProps> = ({
 	className = "mb-12 md:mb-12 lg:mb-14 pb-0.5 xl:pb-1.5",
+	bannerData,
 }) => {
 	return (
 		<div className={className}>
 			<Carousel breakpoints={breakpoints} autoplay={{ delay: 5000 }}>
-				{banners?.map((banner: any) => (
+				{bannerData?.map((banner: any) => (
 					<SwiperSlide key={`promotion-banner-key-${banner?.id}`}>
 						<BannerCard
 							banner={banner}

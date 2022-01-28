@@ -12,7 +12,7 @@ interface Props {
 const banner = {
 	id: 1,
 	title: "banner-on-selected-items",
-	slug: "/search",
+	slug: "men's-collection",
 	image: {
 		mobile: {
 			url: "/assets/images/banner/banner-mobile-2.jpg",
@@ -28,11 +28,12 @@ const banner = {
 };
 
 const flashSaleCarouselBreakpoint = {
-	"1281": {
+	"1280": {
 		slidesPerView: 1,
 	},
 	"768": {
 		slidesPerView: 2,
+		spaceBetween: 20,
 	},
 	"0": {
 		slidesPerView: 1,

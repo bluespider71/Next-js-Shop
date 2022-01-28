@@ -1,5 +1,5 @@
 import Container from "@components/ui/container";
-import HeroSlider from "@containers/hero-slider-fullwidth";
+import HeroSlider from "@containers/hero-slider";
 import Layout from "@components/layout/layout";
 import { GetStaticProps } from "next";
 import { QueryClient } from "react-query";
@@ -22,12 +22,13 @@ import SaleBannerWithProducts from "@containers/sale-banner-with-products";
 import BrandGridBlock from "@containers/brand-grid-block";
 import TestimonialCarousel from "@containers/testimonial-carousel";
 import SubscriptionWithBg from "@components/common/subscription-with-bg";
+import { homeSixHeroSlider as banners } from "@framework/static/banner";
 
 export default function Home() {
 	return (
 		<>
 			<Container>
-				<HeroSlider />
+				<HeroSlider data={banners} buttonGroupClassName="hidden" />
 				<SaleBannerGrid />
 				<CategoryBlockIcon sectionHeading="text-featured-categories" />
 				<ProductsFeatured

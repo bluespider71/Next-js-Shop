@@ -6,6 +6,7 @@ import ProductFlashSaleLoader from "@components/ui/loaders/product-flash-sale-lo
 import ProgressCard from "@components/common/progress-card";
 import SectionHeader from "@components/common/section-header";
 import Alert from "@components/ui/alert";
+import cn from "classnames";
 
 interface Props {
 	products: any[];
@@ -21,6 +22,10 @@ interface Props {
 const breakpoints = {
 	"1441": {
 		slidesPerView: 1,
+	},
+	"1280": {
+		slidesPerView: 2,
+		spaceBetween: 28,
 	},
 	"768": {
 		slidesPerView: 2,
@@ -67,12 +72,14 @@ const SellWithProgress: React.FC<Props> = ({
 								breakpoints={
 									carouselBreakpoint ? carouselBreakpoint : breakpoints
 								}
+								autoplay={{
+									delay: 3500,
+								}}
 								buttonSize="small"
-								buttonClassName={
-									productVariant === "gridSlim"
-										? "-top-12 md:-top-14 lg:-top-28 2xl:-top-32"
-										: "-top-12 md:-top-14"
-								}
+								buttonGroupClassName={cn("-top-12 md:-top-14", {
+									"-top-12 md:-top-14 lg:-top-28 2xl:-top-32":
+										productVariant === "gridSlim",
+								})}
 								className="-mx-0 md:-mx-2.5 xl:-mx-0"
 							>
 								{productVariant === "gridSlim"
@@ -101,12 +108,17 @@ const SellWithProgress: React.FC<Props> = ({
 									breakpoints={
 										carouselBreakpoint ? carouselBreakpoint : breakpoints
 									}
+									autoplay={{
+										delay: 3500,
+									}}
 									buttonSize="small"
-									buttonClassName={
-										productVariant === "gridSlim"
-											? "-top-12 md:-top-14 lg:-top-28 2xl:-top-32"
-											: "-top-12 md:-top-14"
-									}
+									buttonGroupClassName={cn(
+										"-mt-8 md:-mt-10 2xl:-mt-12 3xl:-mt-14",
+										{
+											"lg:-mt-28 2xl:-mt-32 3xl:-mt-32":
+												productVariant === "gridSlim",
+										}
+									)}
 								>
 									{products.map((product) => (
 										<SwiperSlide key={`product--key${product.id}`}>

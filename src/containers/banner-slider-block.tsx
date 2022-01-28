@@ -23,11 +23,15 @@ const BannerSliderBlock: React.FC<BannerProps> = ({
 				<Carousel
 					breakpoints={breakpoints}
 					centeredSlides={true}
+					loop={true}
+					autoplay={{
+						delay: 4000,
+					}}
 					pagination={{
 						clickable: true,
 					}}
 					paginationVariant="circle"
-					buttonClassName="hidden"
+					buttonGroupClassName="hidden"
 				>
 					{promotionBanner.map((banner: any) => (
 						<SwiperSlide

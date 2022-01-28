@@ -12,7 +12,7 @@ import CollectionTopBar from "@components/collection/collection-top-bar";
 import { CollectionFilters } from "@components/collection/collection-filters";
 import { GetServerSideProps } from "next";
 
-export default function Shop() {
+export default function Collections() {
 	const { t } = useTranslation("common");
 
 	return (
@@ -52,7 +52,7 @@ export default function Shop() {
 	);
 }
 
-Shop.Layout = Layout;
+Collections.Layout = Layout;
 
 export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
 	return {

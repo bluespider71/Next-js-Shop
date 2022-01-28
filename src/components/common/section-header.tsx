@@ -15,9 +15,7 @@ const SectionHeader: React.FC<Props> = ({
 }) => {
 	const { t } = useTranslation("common");
 	return (
-		<div
-			className={`flex items-center justify-between -mt-2 lg:-mt-2.5 ${className}`}
-		>
+		<div className={`flex items-center justify-between -mt-2 ${className}`}>
 			<Text variant="mediumHeading">{t(`${sectionHeading}`)}</Text>
 			{categorySlug && (
 				<Link

@@ -6,6 +6,7 @@ import { useOnSellingProductsQuery } from "@framework/product/get-all-on-selling
 import { homeThreeProductsBanner as banner } from "@framework/static/banner";
 import Alert from "@components/ui/alert";
 import { ROUTES } from "@utils/routes";
+import { Product } from "@framework/types";
 
 interface ProductsProps {
 	sectionHeading: string;
@@ -61,7 +62,7 @@ const BannerWithProducts: React.FC<ProductsProps> = ({
 										uniqueKey={`on-selling-${idx}`}
 									/>
 							  ))
-							: data?.map((product) => (
+							: data?.map((product: Product) => (
 									<ProductCard
 										key={`product--key${product.id}`}
 										product={product}

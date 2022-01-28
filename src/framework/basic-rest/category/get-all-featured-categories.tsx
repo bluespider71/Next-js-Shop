@@ -4,13 +4,13 @@ import { API_ENDPOINTS } from "@framework/utils/api-endpoints";
 import { useQuery } from "react-query";
 
 export const fetchFeaturedCategories = async ({ queryKey }: any) => {
-  const [_key, _params] = queryKey;
-  const { data } = await http.get(API_ENDPOINTS.FEATURED_CATEGORIES);
-  return data;
+	const [_key, _params] = queryKey;
+	const { data } = await http.get(API_ENDPOINTS.FEATURED_CATEGORIES);
+	return data as Category[];
 };
 export const useFeaturedCategoriesQuery = (options: QueryOptionsType) => {
-  return useQuery<Category[], Error>(
-    [API_ENDPOINTS.FEATURED_CATEGORIES, options],
-    fetchFeaturedCategories
-  );
+	return useQuery<Category[], Error>(
+		[API_ENDPOINTS.FEATURED_CATEGORIES, options],
+		fetchFeaturedCategories
+	);
 };

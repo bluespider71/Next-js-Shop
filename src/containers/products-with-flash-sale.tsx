@@ -21,12 +21,10 @@ const ProductsWithFlashSale: React.FC<Props> = ({
 		limit: 10,
 	});
 
-	const {
-		data: flashSellProduct,
-		isLoading: flashSellProductLoading,
-	} = useFlashSaleProductsQuery({
-		limit: 10,
-	});
+	const { data: flashSellProduct, isLoading: flashSellProductLoading } =
+		useFlashSaleProductsQuery({
+			limit: 10,
+		});
 
 	return (
 		<div
@@ -43,16 +41,18 @@ const ProductsWithFlashSale: React.FC<Props> = ({
 					) : isLoading && !data?.length ? (
 						<ProductListFeedLoader limit={4} />
 					) : (
-						data?.map((product) => (
-							<ProductCard
-								key={`product--key${product.id}`}
-								product={product}
-								imgWidth={265}
-								imgHeight={265}
-								imageContentClassName="flex-shrink-0 w-32 sm:w-44 md:w-40 lg:w-52 2xl:w-56 3xl:w-64"
-								contactClassName="ps-3.5 sm:ps-5 md:ps-4 xl:ps-5 2xl:ps-6 3xl:ps-10"
-							/>
-						))
+						data
+							?.slice(0, 4)
+							?.map((product) => (
+								<ProductCard
+									key={`product--key${product.id}`}
+									product={product}
+									imgWidth={265}
+									imgHeight={265}
+									imageContentClassName="flex-shrink-0 w-32 sm:w-44 md:w-40 lg:w-52 2xl:w-56 3xl:w-64"
+									contactClassName="ps-3.5 sm:ps-5 md:ps-4 xl:ps-5 2xl:ps-6 3xl:ps-10"
+								/>
+							))
 					)}
 				</div>
 			</div>

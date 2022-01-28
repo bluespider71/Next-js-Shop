@@ -1,19 +1,19 @@
 export const homeOneBanner = {
-  id: 1,
-  title: "Holiday Offers",
-  slug: "holiday-offers",
-  image: {
-    mobile: {
-      url: "/assets/images/banner/banner-mobile-1.jpg",
-      width: 450,
-      height: 120,
-    },
-    desktop: {
-      url: "/assets/images/banner/banner-1.jpg",
-      width: 1800,
-      height: 270,
-    },
-  },
+	id: 1,
+	title: "Holiday Offers",
+	slug: "holiday-offers",
+	image: {
+		mobile: {
+			url: "/assets/images/banner/banner-mobile-1.jpg",
+			width: 450,
+			height: 120,
+		},
+		desktop: {
+			url: "/assets/images/banner/banner-1.jpg",
+			width: 1800,
+			height: 270,
+		},
+	},
 };
 
 export const homeOneHeroBanner = [
@@ -71,204 +71,257 @@ export const homeOneHeroBanner = [
 ];
 
 export const homeTwoHeroBanner = [
-  {
-    id: 1,
-    title: "winter collection",
+	{
+		id: 1,
+		title: "winter collection",
 		slug: "winter-collection",
-    image: {
-      mobile: {
-        url: "/assets/images/hero/two/banner-mobile-1.jpg",
-        width: 450,
-        height: 275,
-      },
-      desktop: {
-        url: "/assets/images/hero/two/banner-1.jpg",
-        width: 1450,
-        height: 800,
-      },
-    },
-  },
-  {
-    id: 2,
-    title: "gift collection",
+		image: {
+			mobile: {
+				url: "/assets/images/hero/two/banner-mobile-1.jpg",
+				width: 450,
+				height: 275,
+			},
+			desktop: {
+				url: "/assets/images/hero/two/banner-1.jpg",
+				width: 1450,
+				height: 800,
+			},
+		},
+	},
+	{
+		id: 2,
+		title: "gift collection",
 		slug: "gift-collection",
-    image: {
-      mobile: {
-        url: "/assets/images/hero/two/banner-mobile-2.jpg",
-        width: 450,
-        height: 275,
-      },
-      desktop: {
-        url: "/assets/images/hero/two/banner-2.jpg",
-        width: 1450,
-        height: 800,
-      },
-    },
-  },
-  {
-    id: 3,
-    title: "party collection",
+		image: {
+			mobile: {
+				url: "/assets/images/hero/two/banner-mobile-2.jpg",
+				width: 450,
+				height: 275,
+			},
+			desktop: {
+				url: "/assets/images/hero/two/banner-2.jpg",
+				width: 1450,
+				height: 800,
+			},
+		},
+	},
+	{
+		id: 3,
+		title: "party collection",
 		slug: "party-collection",
-    image: {
-      mobile: {
-        url: "/assets/images/hero/two/banner-mobile-3.jpg",
-        width: 450,
-        height: 275,
-      },
-      desktop: {
-        url: "/assets/images/hero/two/banner-3.jpg",
-        width: 1450,
-        height: 800,
-      },
-    },
-  },
+		image: {
+			mobile: {
+				url: "/assets/images/hero/two/banner-mobile-3.jpg",
+				width: 450,
+				height: 275,
+			},
+			desktop: {
+				url: "/assets/images/hero/two/banner-3.jpg",
+				width: 1450,
+				height: 800,
+			},
+		},
+	},
+];
+export const homeEightHeroBanner = [
+	{
+		id: 1,
+		title: "winter collection",
+		slug: "winter-collection",
+		image: {
+			mobile: {
+				url: "/assets/images/hero/two/banner-mobile-4.jpg",
+				width: 450,
+				height: 275,
+			},
+			desktop: {
+				url: "/assets/images/hero/two/banner-4.jpg",
+				width: 1450,
+				height: 800,
+			},
+		},
+	},
+	{
+		id: 2,
+		title: "gift collection",
+		slug: "gift-collection",
+		image: {
+			mobile: {
+				url: "/assets/images/hero/two/banner-mobile-2.jpg",
+				width: 450,
+				height: 275,
+			},
+			desktop: {
+				url: "/assets/images/hero/two/banner-2.jpg",
+				width: 1450,
+				height: 800,
+			},
+		},
+	},
+	{
+		id: 3,
+		title: "party collection",
+		slug: "party-collection",
+		image: {
+			mobile: {
+				url: "/assets/images/hero/two/banner-mobile-3.jpg",
+				width: 450,
+				height: 275,
+			},
+			desktop: {
+				url: "/assets/images/hero/two/banner-3.jpg",
+				width: 1450,
+				height: 800,
+			},
+		},
+	},
 ];
 
 export const homeThreeBanner = [
-  {
-    id: 1,
-    title: "Winter Collection of Kid Items",
-    slug: "winter-collection",
-    image: {
-      mobile: {
-        url: "/assets/images/banner/banner-mobile-3.jpg",
-        width: 450,
-        height: 180,
-      },
-      desktop: {
-        url: "/assets/images/banner/banner-3.jpg",
-        width: 1800,
-        height: 570,
-      },
-    },
-  },
-  {
-    id: 2,
-    title: "Offer Off Everything",
-    slug: "offer-everything",
-    image: {
-      mobile: {
-        url: "/assets/images/banner/banner-mobile-4.jpg",
-        width: 450,
-        height: 130,
-      },
-      desktop: {
-        url: "/assets/images/banner/banner-4.jpg",
-        width: 1800,
-        height: 420,
-      },
-    },
-  },
+	{
+		id: 1,
+		title: "Winter Collection of Kid Items",
+		slug: "winter-collection",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/banner-mobile-3.jpg",
+				width: 450,
+				height: 180,
+			},
+			desktop: {
+				url: "/assets/images/banner/banner-3.jpg",
+				width: 1800,
+				height: 570,
+			},
+		},
+	},
+	{
+		id: 2,
+		title: "Offer Off Everything",
+		slug: "offer-everything",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/banner-mobile-4.jpg",
+				width: 450,
+				height: 130,
+			},
+			desktop: {
+				url: "/assets/images/banner/banner-4.jpg",
+				width: 1800,
+				height: 420,
+			},
+		},
+	},
 ];
 export const homeThreeMasonryBanner = [
-  {
-    id: 1,
-    title: "Men's Collection",
-    slug: "mens-collection",
-    image: {
-      mobile: {
-        url: "/assets/images/banner/masonry/banner-mobile-1.jpg",
-        width: 470,
-        height: 232,
-      },
-      desktop: {
-        url: "/assets/images/banner/masonry/banner-1.jpg",
-        width: 1078,
-        height: 425,
-      },
-    },
-    type: "medium",
-  },
-  {
-    id: 2,
-    title: "New Sports",
-    slug: "new-sports",
-    image: {
-      mobile: {
-        url: "/assets/images/banner/masonry/banner-mobile-2.jpg",
-        width: 232,
-        height: 232,
-      },
-      desktop: {
-        url: "/assets/images/banner/masonry/banner-2.jpg",
-        width: 425,
-        height: 425,
-      },
-    },
-    type: "small",
-  },
-  {
-    id: 3,
-    title: "Dress Women",
-    slug: "dress-women",
-    image: {
-      mobile: {
-        url: "/assets/images/banner/masonry/banner-mobile-3.jpg",
-        width: 232,
-        height: 232,
-      },
-      desktop: {
-        url: "/assets/images/banner/masonry/banner-3.jpg",
-        width: 425,
-        height: 425,
-      },
-    },
-    type: "small",
-  },
-  {
-    id: 4,
-    title: "Exclusive Sunglasses",
-    slug: "exclusive-sunglasses",
-    image: {
-      mobile: {
-        url: "/assets/images/banner/masonry/banner-mobile-4.jpg",
-        width: 232,
-        height: 232,
-      },
-      desktop: {
-        url: "/assets/images/banner/masonry/banner-4.jpg",
-        width: 425,
-        height: 425,
-      },
-    },
-    type: "small",
-  },
-  {
-    id: 5,
-    title: "Product Coupons",
-    slug: "product-coupons",
-    image: {
-      mobile: {
-        url: "/assets/images/banner/masonry/banner-mobile-5.jpg",
-        width: 232,
-        height: 232,
-      },
-      desktop: {
-        url: "/assets/images/banner/masonry/banner-5.jpg",
-        width: 425,
-        height: 425,
-      },
-    },
-    type: "small",
-  },
-  {
-    id: 6,
-    title: "New Backpack",
-    slug: "new-backpack",
-    image: {
-      mobile: {
-        url: "/assets/images/banner/masonry/banner-mobile-6.jpg",
-        width: 470,
-        height: 232,
-      },
-      desktop: {
-        url: "/assets/images/banner/masonry/banner-6.jpg",
-        width: 1078,
-        height: 425,
-      },
-    },
-    type: "medium",
-  },
+	{
+		id: 1,
+		title: "Men's Collection",
+		slug: "mens-collection",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/masonry/banner-mobile-1.jpg",
+				width: 470,
+				height: 232,
+			},
+			desktop: {
+				url: "/assets/images/banner/masonry/banner-1.jpg",
+				width: 1078,
+				height: 425,
+			},
+		},
+		type: "medium",
+	},
+	{
+		id: 2,
+		title: "New Sports",
+		slug: "new-sports",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/masonry/banner-mobile-2.jpg",
+				width: 232,
+				height: 232,
+			},
+			desktop: {
+				url: "/assets/images/banner/masonry/banner-2.jpg",
+				width: 425,
+				height: 425,
+			},
+		},
+		type: "small",
+	},
+	{
+		id: 3,
+		title: "Dress Women",
+		slug: "dress-women",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/masonry/banner-mobile-3.jpg",
+				width: 232,
+				height: 232,
+			},
+			desktop: {
+				url: "/assets/images/banner/masonry/banner-3.jpg",
+				width: 425,
+				height: 425,
+			},
+		},
+		type: "small",
+	},
+	{
+		id: 4,
+		title: "Exclusive Sunglasses",
+		slug: "exclusive-sunglasses",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/masonry/banner-mobile-4.jpg",
+				width: 232,
+				height: 232,
+			},
+			desktop: {
+				url: "/assets/images/banner/masonry/banner-4.jpg",
+				width: 425,
+				height: 425,
+			},
+		},
+		type: "small",
+	},
+	{
+		id: 5,
+		title: "Product Coupons",
+		slug: "product-coupons",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/masonry/banner-mobile-5.jpg",
+				width: 232,
+				height: 232,
+			},
+			desktop: {
+				url: "/assets/images/banner/masonry/banner-5.jpg",
+				width: 425,
+				height: 425,
+			},
+		},
+		type: "small",
+	},
+	{
+		id: 6,
+		title: "New Backpack",
+		slug: "new-backpack",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/masonry/banner-mobile-6.jpg",
+				width: 470,
+				height: 232,
+			},
+			desktop: {
+				url: "/assets/images/banner/masonry/banner-6.jpg",
+				width: 1078,
+				height: 425,
+			},
+		},
+		type: "medium",
+	},
 ];
 
 export const bannerGrid = [
@@ -381,7 +434,7 @@ export const promotionBanner = [
 				height: 570,
 			},
 		},
-		type: "large",
+		type: "small",
 	},
 ];
 
@@ -439,288 +492,512 @@ export const promotionBannerTwo = [
 	},
 ];
 
+export const promotionBannerThree = [
+	{
+		id: 1,
+		title: "Men's Collection",
+		slug: "men's-collection",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/small/banner-mobile-4.jpg",
+				width: 450,
+				height: 150,
+			},
+			desktop: {
+				url: "/assets/images/banner/small/banner-4.png",
+				width: 580,
+				height: 360,
+			},
+		},
+	},
+	{
+		id: 2,
+		title: "Women's Collection",
+		slug: "women's-collection",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/small/banner-mobile-5.jpg",
+				width: 450,
+				height: 150,
+			},
+			desktop: {
+				url: "/assets/images/banner/small/banner-5.png",
+				width: 580,
+				height: 360,
+			},
+		},
+	},
+	{
+		id: 3,
+		title: "Kid's Collection",
+		slug: "kid's-collection",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/small/banner-mobile-6.jpg",
+				width: 450,
+				height: 150,
+			},
+			desktop: {
+				url: "/assets/images/banner/small/banner-6.png",
+				width: 580,
+				height: 360,
+			},
+		},
+	},
+];
+
 export const bannerDataOne = [
-  {
-    id: 1,
-    title: "Men's Collection",
-    slug: "men's-collection",
-    image: {
-      mobile: {
-        url: "/assets/images/banner/masonry/banner-mobile-1.jpg",
-        width: 470,
-        height: 232,
-      },
-      desktop: {
-        url: "/assets/images/banner/masonry/banner-1.jpg",
-        width: 1078,
-        height: 425,
-      },
-    },
-    type: "medium",
-  },
-  {
-    id: 2,
-    title: "New Sports",
-    slug: "new-sports",
-    image: {
-      mobile: {
-        url: "/assets/images/banner/masonry/banner-mobile-2.jpg",
-        width: 232,
-        height: 232,
-      },
-      desktop: {
-        url: "/assets/images/banner/masonry/banner-2.jpg",
-        width: 425,
-        height: 425,
-      },
-    },
-    type: "small",
-  },
-  {
-    id: 3,
-    title: "Dress Women",
-    slug: "dress-women",
-    image: {
-      mobile: {
-        url: "/assets/images/banner/masonry/banner-mobile-3.jpg",
-        width: 232,
-        height: 232,
-      },
-      desktop: {
-        url: "/assets/images/banner/masonry/banner-3.jpg",
-        width: 425,
-        height: 425,
-      },
-    },
-    type: "small",
-  },
+	{
+		id: 1,
+		title: "Men's Collection",
+		slug: "men's-collection",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/masonry/banner-mobile-1.jpg",
+				width: 470,
+				height: 232,
+			},
+			desktop: {
+				url: "/assets/images/banner/masonry/banner-1.jpg",
+				width: 1078,
+				height: 425,
+			},
+		},
+		type: "medium",
+	},
+	{
+		id: 2,
+		title: "New Sports",
+		slug: "new-sports",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/masonry/banner-mobile-2.jpg",
+				width: 232,
+				height: 232,
+			},
+			desktop: {
+				url: "/assets/images/banner/masonry/banner-2.jpg",
+				width: 425,
+				height: 425,
+			},
+		},
+		type: "small",
+	},
+	{
+		id: 3,
+		title: "Dress Women",
+		slug: "dress-women",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/masonry/banner-mobile-3.jpg",
+				width: 232,
+				height: 232,
+			},
+			desktop: {
+				url: "/assets/images/banner/masonry/banner-3.jpg",
+				width: 425,
+				height: 425,
+			},
+		},
+		type: "small",
+	},
 ];
 
 export const bannerDataTwo = [
-  {
-    id: 1,
-    title: "Exclusive Sunglasses",
-    slug: "exclusive-sunglasses",
-    image: {
-      mobile: {
-        url: "/assets/images/banner/masonry/banner-mobile-4.jpg",
-        width: 232,
-        height: 232,
-      },
-      desktop: {
-        url: "/assets/images/banner/masonry/banner-4.jpg",
-        width: 425,
-        height: 425,
-      },
-    },
-    type: "small",
-  },
-  {
-    id: 2,
-    title: "Product Coupons",
-    slug: "product-coupons",
-    image: {
-      mobile: {
-        url: "/assets/images/banner/masonry/banner-mobile-5.jpg",
-        width: 232,
-        height: 232,
-      },
-      desktop: {
-        url: "/assets/images/banner/masonry/banner-5.jpg",
-        width: 425,
-        height: 425,
-      },
-    },
-    type: "small",
-  },
-  {
-    id: 3,
-    title: "New Backpack",
-    slug: "new-backpack",
-    image: {
-      mobile: {
-        url: "/assets/images/banner/masonry/banner-mobile-6.jpg",
-        width: 470,
-        height: 232,
-      },
-      desktop: {
-        url: "/assets/images/banner/masonry/banner-6.jpg",
-        width: 1078,
-        height: 425,
-      },
-    },
-    type: "medium",
-  },
+	{
+		id: 1,
+		title: "Exclusive Sunglasses",
+		slug: "exclusive-sunglasses",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/masonry/banner-mobile-4.jpg",
+				width: 232,
+				height: 232,
+			},
+			desktop: {
+				url: "/assets/images/banner/masonry/banner-4.jpg",
+				width: 425,
+				height: 425,
+			},
+		},
+		type: "small",
+	},
+	{
+		id: 2,
+		title: "Product Coupons",
+		slug: "product-coupons",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/masonry/banner-mobile-5.jpg",
+				width: 232,
+				height: 232,
+			},
+			desktop: {
+				url: "/assets/images/banner/masonry/banner-5.jpg",
+				width: 425,
+				height: 425,
+			},
+		},
+		type: "small",
+	},
+	{
+		id: 3,
+		title: "New Backpack",
+		slug: "new-backpack",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/masonry/banner-mobile-6.jpg",
+				width: 470,
+				height: 232,
+			},
+			desktop: {
+				url: "/assets/images/banner/masonry/banner-6.jpg",
+				width: 1078,
+				height: 425,
+			},
+		},
+		type: "medium",
+	},
+];
+
+export const bannerDataThree = [
+	{
+		id: 1,
+		title: "Men's Collection",
+		slug: "men's-collection",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/masonry/banner-mobile-7.jpg",
+				width: 470,
+				height: 232,
+			},
+			desktop: {
+				url: "/assets/images/banner/masonry/banner-7.jpg",
+				width: 980,
+				height: 403,
+			},
+		},
+		type: "medium",
+	},
+	{
+		id: 2,
+		title: "New Kid's",
+		slug: "new-kid's",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/masonry/banner-mobile-8.jpg",
+				width: 232,
+				height: 232,
+			},
+			desktop: {
+				url: "/assets/images/banner/masonry/banner-8.jpg",
+				width: 403,
+				height: 403,
+			},
+		},
+		type: "small",
+	},
+	{
+		id: 3,
+		title: "Dress Women",
+		slug: "dress-women",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/masonry/banner-mobile-9.jpg",
+				width: 232,
+				height: 232,
+			},
+			desktop: {
+				url: "/assets/images/banner/masonry/banner-9.jpg",
+				width: 403,
+				height: 403,
+			},
+		},
+		type: "small",
+	},
+];
+
+export const bannerDataFour = [
+	{
+		id: 1,
+		title: "Exclusive Sunglasses",
+		slug: "exclusive-sunglasses",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/masonry/banner-mobile-10.jpg",
+				width: 232,
+				height: 232,
+			},
+			desktop: {
+				url: "/assets/images/banner/masonry/banner-10.jpg",
+				width: 403,
+				height: 403,
+			},
+		},
+		type: "small",
+	},
+	{
+		id: 2,
+		title: "Summer Collection",
+		slug: "summer-collection",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/masonry/banner-mobile-11.jpg",
+				width: 470,
+				height: 232,
+			},
+			desktop: {
+				url: "/assets/images/banner/masonry/banner-11.jpg",
+				width: 976,
+				height: 403,
+			},
+		},
+		type: "medium",
+	},
+	{
+		id: 3,
+		title: "Dress Women",
+		slug: "dress-women",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/masonry/banner-mobile-9.jpg",
+				width: 232,
+				height: 232,
+			},
+			desktop: {
+				url: "/assets/images/banner/masonry/banner-9.jpg",
+				width: 403,
+				height: 403,
+			},
+		},
+		type: "small",
+	},
+];
+export const bannerDataFourMobile = [
+	{
+		id: 1,
+		title: "Exclusive Sunglasses",
+		slug: "exclusive-sunglasses",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/masonry/banner-mobile-10.jpg",
+				width: 232,
+				height: 232,
+			},
+			desktop: {
+				url: "/assets/images/banner/masonry/banner-10.jpg",
+				width: 403,
+				height: 403,
+			},
+		},
+		type: "small",
+	},
+	{
+		id: 2,
+		title: "Dress Women",
+		slug: "dress-women",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/masonry/banner-mobile-9.jpg",
+				width: 232,
+				height: 232,
+			},
+			desktop: {
+				url: "/assets/images/banner/masonry/banner-9.jpg",
+				width: 403,
+				height: 403,
+			},
+		},
+		type: "small",
+	},
+	{
+		id: 3,
+		title: "Summer Collection",
+		slug: "summer-collection",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/masonry/banner-mobile-11.jpg",
+				width: 470,
+				height: 232,
+			},
+			desktop: {
+				url: "/assets/images/banner/masonry/banner-11.jpg",
+				width: 976,
+				height: 403,
+			},
+		},
+		type: "medium",
+	},
 ];
 
 export const homeThreeProductsBanner = [
-  {
-    id: 1,
-    title: "Sale Offer",
-    slug: "sale-offer",
-    image: {
-      mobile: {
-        url: "/assets/images/banner/banner-sale-offer.jpg",
-        width: 430,
-        height: 600,
-      },
-      desktop: {
-        url: "/assets/images/banner/banner-sale-offer.jpg",
-        width: 430,
-        height: 600,
-      },
-    },
-  },
-  {
-    id: 2,
-    title: "New Sports",
-    slug: "new-sports",
-    image: {
-      mobile: {
-        url: "/assets/images/banner/banner-sale-offer-reverse.jpg",
-        width: 430,
-        height: 600,
-      },
-      desktop: {
-        url: "/assets/images/banner/banner-sale-offer-reverse.jpg",
-        width: 430,
-        height: 600,
-      },
-    },
-  },
+	{
+		id: 1,
+		title: "Sale Offer",
+		slug: "sale-offer",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/banner-sale-offer.jpg",
+				width: 430,
+				height: 600,
+			},
+			desktop: {
+				url: "/assets/images/banner/banner-sale-offer.jpg",
+				width: 430,
+				height: 600,
+			},
+		},
+	},
+	{
+		id: 2,
+		title: "New Sports",
+		slug: "new-sports",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/banner-sale-offer-reverse.jpg",
+				width: 430,
+				height: 600,
+			},
+			desktop: {
+				url: "/assets/images/banner/banner-sale-offer-reverse.jpg",
+				width: 430,
+				height: 600,
+			},
+		},
+	},
 ];
 
 export const homeFourBanner = [
-  {
-    id: 1,
-    title: "New Backpack",
-    slug: "new-backpack",
-    image: {
-      mobile: {
-        url: "/assets/images/banner/banner-mobile-6.png",
-        width: 450,
-        height: 180,
-      },
-      desktop: {
-        url: "/assets/images/banner/banner-6.jpg",
-        width: 1800,
-        height: 570,
-      },
-    },
-  },
-  {
-    id: 2,
-    title: "Men's Collection",
-    slug: "men's-collection",
-    image: {
-      mobile: {
-        url: "/assets/images/banner/banner-mobile-5.png",
-        width: 480,
-        height: 180,
-      },
-      desktop: {
-        url: "/assets/images/banner/banner-5.jpg",
-        width: 1800,
-        height: 570,
-      },
-    },
-  },
-  {
-    id: 3,
-    title: "Offer Off Everything",
-    slug: "offer-everything",
-    image: {
-      mobile: {
-        url: "/assets/images/banner/banner-mobile-4.jpg",
-        width: 450,
-        height: 130,
-      },
-      desktop: {
-        url: "/assets/images/banner/banner-4.jpg",
-        width: 1800,
-        height: 420,
-      },
-    },
-  },
+	{
+		id: 1,
+		title: "New Backpack",
+		slug: "new-backpack",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/banner-mobile-6.png",
+				width: 450,
+				height: 180,
+			},
+			desktop: {
+				url: "/assets/images/banner/banner-6.jpg",
+				width: 1800,
+				height: 570,
+			},
+		},
+	},
+	{
+		id: 2,
+		title: "Men's Collection",
+		slug: "men's-collection",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/banner-mobile-5.png",
+				width: 480,
+				height: 180,
+			},
+			desktop: {
+				url: "/assets/images/banner/banner-5.jpg",
+				width: 1800,
+				height: 570,
+			},
+		},
+	},
+	{
+		id: 3,
+		title: "Offer Off Everything",
+		slug: "offer-everything",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/banner-mobile-4.jpg",
+				width: 450,
+				height: 130,
+			},
+			desktop: {
+				url: "/assets/images/banner/banner-4.jpg",
+				width: 1800,
+				height: 420,
+			},
+		},
+	},
 ];
 
 export const homeFourGridBanners = [
-  {
-    id: 1,
-    title: "On Selected Items",
-    slug: "selected-items",
-    image: {
-      mobile: {
-        url: "/assets/images/banner/grid/small/banner-mobile-1.jpg",
-        width: 470,
-        height: 190,
-      },
-      desktop: {
-        url: "/assets/images/banner/grid/small/banner-1.jpg",
-        width: 980,
-        height: 340,
-      },
-    },
-    type: "large",
-  },
-  {
-    id: 2,
-    title: "Casual Top",
-    slug: "casual-top",
-    image: {
-      mobile: {
-        url: "/assets/images/banner/grid/small/banner-mobile-2.jpg",
-        width: 232,
-        height: 190,
-      },
-      desktop: {
-        url: "/assets/images/banner/grid/small/banner-2.jpg",
-        width: 480,
-        height: 340,
-      },
-    },
-    type: "small",
-  },
-  {
-    id: 3,
-    title: "Branded Top",
-    slug: "branded-top",
-    image: {
-      mobile: {
-        url: "/assets/images/banner/grid/small/banner-mobile-3.jpg",
-        width: 232,
-        height: 190,
-      },
-      desktop: {
-        url: "/assets/images/banner/grid/small/banner-3.jpg",
-        width: 480,
-        height: 340,
-      },
-    },
-    type: "small",
-  },
+	{
+		id: 1,
+		title: "On Selected Items",
+		slug: "selected-items",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/grid/small/banner-mobile-1.jpg",
+				width: 470,
+				height: 190,
+			},
+			desktop: {
+				url: "/assets/images/banner/grid/small/banner-1.jpg",
+				width: 980,
+				height: 340,
+			},
+		},
+		type: "large",
+	},
+	{
+		id: 2,
+		title: "Casual Top",
+		slug: "casual-top",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/grid/small/banner-mobile-2.jpg",
+				width: 232,
+				height: 190,
+			},
+			desktop: {
+				url: "/assets/images/banner/grid/small/banner-2.jpg",
+				width: 480,
+				height: 340,
+			},
+		},
+		type: "small",
+	},
+	{
+		id: 3,
+		title: "Branded Top",
+		slug: "branded-top",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/grid/small/banner-mobile-3.jpg",
+				width: 232,
+				height: 190,
+			},
+			desktop: {
+				url: "/assets/images/banner/grid/small/banner-3.jpg",
+				width: 480,
+				height: 340,
+			},
+		},
+		type: "small",
+	},
 ];
 
 export const homeFiveBanner = {
-  id: 1,
-  title: "Winter Collection of Kid Items",
-  slug: "winter-collection",
-  image: {
-    mobile: {
-      url: "/assets/images/banner/banner-mobile-3.jpg",
-      width: 450,
-      height: 180,
-    },
-    desktop: {
-      url: "/assets/images/banner/banner-3.jpg",
-      width: 1800,
-      height: 570,
-    },
-  },
+	id: 1,
+	title: "Winter Collection of Kid Items",
+	slug: "winter-collection",
+	image: {
+		mobile: {
+			url: "/assets/images/banner/banner-mobile-3.jpg",
+			width: 450,
+			height: 180,
+		},
+		desktop: {
+			url: "/assets/images/banner/banner-3.jpg",
+			width: 1800,
+			height: 570,
+		},
+	},
 };
 
-export const homeSixHeroImages = [
-  {
+export const homeSixHeroSlider = [
+	{
 		id: 1,
 		title: "We picked every item with care you must try",
 		slug: "winter-collection",
@@ -737,7 +1014,7 @@ export const homeSixHeroImages = [
 			},
 		},
 	},
-  {
+	{
 		id: 2,
 		title: "We picked every item with care you must try",
 		slug: "winter-collection",
@@ -754,7 +1031,7 @@ export const homeSixHeroImages = [
 			},
 		},
 	},
-  {
+	{
 		id: 3,
 		title: "We picked every item with care you must try",
 		slug: "winter-collection",
@@ -771,26 +1048,151 @@ export const homeSixHeroImages = [
 			},
 		},
 	},
-]
+];
+
+export const homeHeroGridSlider = [
+	{
+		id: 1,
+		title: "Men's Collection",
+		slug: "mens-collection",
+		image: {
+			mobile: {
+				url: "/assets/images/hero/small/banner-mobile-1.jpg",
+				width: 690,
+				height: 480,
+			},
+			desktop: {
+				url: "/assets/images/hero/small/banner-1.jpg",
+				width: 592,
+				height: 770,
+			},
+		},
+	},
+	{
+		id: 2,
+		title: "Kid's Collection",
+		slug: "kid's-collection",
+		image: {
+			mobile: {
+				url: "/assets/images/hero/small/banner-mobile-2.jpg",
+				width: 690,
+				height: 480,
+			},
+			desktop: {
+				url: "/assets/images/hero/small/banner-2.jpg",
+				width: 592,
+				height: 770,
+			},
+		},
+	},
+	{
+		id: 3,
+		title: "Women's Collection",
+		slug: "women's-collection",
+		image: {
+			mobile: {
+				url: "/assets/images/hero/small/banner-mobile-3.jpg",
+				width: 690,
+				height: 480,
+			},
+			desktop: {
+				url: "/assets/images/hero/small/banner-3.jpg",
+				width: 592,
+				height: 770,
+			},
+		},
+	},
+];
 
 export const homeSixCoupons = {
-  id: 3,
-  title: "We picked every item with care you must try",
-  slug: "winter-collection",
-  image: {
-    mobile: {
-      url: "/assets/images/banner/banner-mobile-7.jpg",
-      width: 690,
-      height: 300,
-    },
-    desktop: {
-      url: "/assets/images/banner/banner-7.jpg",
-      width: 1800,
-      height: 800,
-    },
-  },
-}
+	id: 3,
+	title: "We picked every item with care you must try",
+	slug: "winter-collection",
+	image: {
+		mobile: {
+			url: "/assets/images/banner/banner-mobile-7.jpg",
+			width: 690,
+			height: 300,
+		},
+		desktop: {
+			url: "/assets/images/banner/banner-7.jpg",
+			width: 1800,
+			height: 800,
+		},
+	},
+};
 
+export const homeSevenBanner = {
+	id: 1,
+	title: "Winter Collection of Kid Items",
+	slug: "winter-collection",
+	image: {
+		mobile: {
+			url: "/assets/images/banner/banner-mobile-8.jpg",
+			width: 900,
+			height: 540,
+		},
+		desktop: {
+			url: "/assets/images/banner/banner-8.jpg",
+			width: 1800,
+			height: 620,
+		},
+	},
+};
+
+export const homeElegantHeroSlider = [
+	{
+		id: 1,
+		title: "We picked every item with care you must try",
+		slug: "winter-collection",
+		image: {
+			mobile: {
+				url: "/assets/images/hero/banner-mobile-7.jpg",
+				width: 690,
+				height: 480,
+			},
+			desktop: {
+				url: "/assets/images/hero/banner-7.jpg",
+				width: 1920,
+				height: 900,
+			},
+		},
+	},
+	{
+		id: 2,
+		title: "We picked every item with care you must try",
+		slug: "winter-collection",
+		image: {
+			mobile: {
+				url: "/assets/images/hero/banner-mobile-7.jpg",
+				width: 690,
+				height: 480,
+			},
+			desktop: {
+				url: "/assets/images/hero/banner-8.jpg",
+				width: 1920,
+				height: 900,
+			},
+		},
+	},
+	{
+		id: 3,
+		title: "We picked every item with care you must try",
+		slug: "winter-collection",
+		image: {
+			mobile: {
+				url: "/assets/images/hero/banner-mobile-7.jpg",
+				width: 690,
+				height: 480,
+			},
+			desktop: {
+				url: "/assets/images/hero/banner-9.jpg",
+				width: 1920,
+				height: 900,
+			},
+		},
+	},
+];
 
 export const saleBannerGrid = [
 	{
@@ -830,38 +1232,74 @@ export const saleBannerGrid = [
 ];
 
 export const saleBannerWithProducts = [
-  {
-    id: 1,
-    title: "Sale Offer",
-    slug: "sale-offer",
-    image: {
-      mobile: {
-        url: "/assets/images/banner/banner-sale-offer-half.jpg",
-        width: 1770,
-        height: 780,
-      },
-      desktop: {
-        url: "/assets/images/banner/banner-sale-offer-half.jpg",
-        width: 1770,
-        height: 780,
-      },
-    },
-  },
-  {
-    id: 2,
-    title: "New Sports",
-    slug: "new-sports",
-    image: {
-      mobile: {
-        url: "/assets/images/banner/banner-sale-offer-half.jpg",
-        width: 1770,
-        height: 780,
-      },
-      desktop: {
-        url: "/assets/images/banner/banner-sale-offer-half.jpg",
-        width: 1770,
-        height: 780,
-      },
-    },
-  },
+	{
+		id: 1,
+		title: "Sale Offer",
+		slug: "sale-offer",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/banner-sale-offer-half-mobile.jpg",
+				width: 900,
+				height: 400,
+			},
+			desktop: {
+				url: "/assets/images/banner/banner-sale-offer-half.jpg",
+				width: 1770,
+				height: 780,
+			},
+		},
+	},
+	{
+		id: 2,
+		title: "New Sports",
+		slug: "new-sports",
+		image: {
+			mobile: {
+				url: "/assets/images/banner/banner-sale-offer-half.jpg",
+				width: 1770,
+				height: 780,
+			},
+			desktop: {
+				url: "/assets/images/banner/banner-sale-offer-half.jpg",
+				width: 1770,
+				height: 780,
+			},
+		},
+	},
 ];
+
+export const homeEightCoupons = {
+	id: 1,
+	title: "20% OFF EVERYTHING",
+	slug: "gift-collection",
+	image: {
+		mobile: {
+			url: "/assets/images/banner/banner-mobile-9.jpg",
+			width: 900,
+			height: 300,
+		},
+		desktop: {
+			url: "/assets/images/banner/banner-9.jpg",
+			width: 1800,
+			height: 480,
+		},
+	},
+};
+
+export const homeEightWinterBanner = {
+	id: 1,
+	title: "Winter Clearance Sale",
+	slug: "winter-collection",
+	image: {
+		mobile: {
+			url: "/assets/images/banner/banner-mobile-10.jpg",
+			width: 900,
+			height: 420,
+		},
+		desktop: {
+			url: "/assets/images/banner/banner-10.jpg",
+			width: 1800,
+			height: 620,
+		},
+	},
+};

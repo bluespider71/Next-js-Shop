@@ -17,13 +17,13 @@ const breakpoints = {
 		slidesPerView: 4,
 		spaceBetween: 28,
 	},
-	"800": {
+	"768": {
 		slidesPerView: 3,
 		spaceBetween: 20,
 	},
 	"440": {
 		slidesPerView: 2,
-		spaceBetween: 20,
+		spaceBetween: 12,
 	},
 	"0": {
 		slidesPerView: 1,
@@ -49,7 +49,12 @@ const CategoryGridBlock: React.FC<CategoriesProps> = ({
 				<>
 					{width < 1025 ? (
 						<div className="relative">
-							<Carousel breakpoints={breakpoints}>
+							<Carousel
+								breakpoints={breakpoints}
+								autoplay={{
+									delay: 4000,
+								}}
+							>
 								{isLoading
 									? Array.from({ length: 6 }).map((_, idx) => (
 											<SwiperSlide key={idx}>

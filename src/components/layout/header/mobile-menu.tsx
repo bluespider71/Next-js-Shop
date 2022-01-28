@@ -75,10 +75,10 @@ export default function MobileMenu() {
 	}: any) =>
 		data.label && (
 			<li className={`mb-0.5 ${className}`}>
-				<div className="flex items-center justify-between">
+				<div className="flex items-center justify-between relative">
 					<Link
 						href={data.path}
-						className="w-full text-[15px] menu-item relative py-3 ps-5 md:ps-7 pe-4 transition duration-300 ease-in-out"
+						className="w-full text-[15px] menu-item relative py-3 ps-5 md:ps-6 pe-4 transition duration-300 ease-in-out"
 					>
 						<span className="block w-full" onClick={closeSidebar}>
 							{t(`${data.label}`)}
@@ -86,7 +86,7 @@ export default function MobileMenu() {
 					</Link>
 					{hasSubMenu && (
 						<div
-							className="cursor-pointer w-16 md:w-20 h-8 text-lg flex-shrink-0 flex items-center justify-center"
+							className="cursor-pointer w-full h-full text-lg flex items-center justify-end absolute start-0 top-0 pe-5"
 							onClick={() => handleArrowClick(menuName)}
 						>
 							<IoIosArrowDown
@@ -143,7 +143,7 @@ export default function MobileMenu() {
 					<Logo />
 
 					<button
-						className="flex text-2xl items-center justify-center text-gray-500 px-4 md:px-5 py-6 lg:py-8 focus:outline-none transition-opacity hover:opacity-60"
+						className="flex text-2xl items-center justify-center text-gray-500 px-4 md:px-6 py-6 lg:py-8 focus:outline-none transition-opacity hover:opacity-60"
 						onClick={closeSidebar}
 						aria-label="close"
 					>

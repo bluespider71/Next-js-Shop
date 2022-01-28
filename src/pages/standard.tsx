@@ -15,6 +15,7 @@ import FlashSaleBlock from "@components/product/feeds/flash-sale-product-feed";
 import BestSellerProductFeed from "@components/product/feeds/best-seller-product-feed";
 import NewArrivalsProductFeed from "@components/product/feeds/new-arrivals-product-feed";
 import { homeOneBanner as banner } from "@framework/static/banner";
+import { promotionBannerTwo as promotionBanners } from "@framework/static/banner";
 import { GetStaticProps } from "next";
 import { QueryClient } from "react-query";
 import { dehydrate } from "react-query/hydration";
@@ -25,6 +26,7 @@ import { fetchBestSellerProducts } from "@framework/product/get-all-best-seller-
 import { fetchNewArrivalProducts } from "@framework/product/get-all-new-arrival-products";
 import { fetchBrands } from "@framework/brand/get-all-brands";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { collectionData as collection } from "@framework/static/collection";
 import { useEffect } from "react";
 import { ROUTES } from "@utils/routes";
 import { useUI } from "@contexts/ui.context";
@@ -42,7 +44,7 @@ export default function Home() {
 			<HeroBlock />
 			<Container>
 				<FlashSaleBlock />
-				<BannerCarouselBlock />
+				<BannerCarouselBlock bannerData={promotionBanners} />
 				<CategoryBlock sectionHeading="text-shop-by-category" />
 				<Divider />
 				<BestSellerProductFeed />
@@ -56,7 +58,7 @@ export default function Home() {
 				<NewArrivalsProductFeed />
 				<Divider />
 				<BrandBlock sectionHeading="text-top-brands" />
-				<CollectionBlock />
+				<CollectionBlock data={collection} />
 				<FeatureBlock />
 				<DownloadApps className="bg-linen" />
 				<Support />

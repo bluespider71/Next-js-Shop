@@ -6,6 +6,7 @@ import CardRoundedLoader from "@components/ui/loaders/card-rounded-loader";
 import { useBrandsQuery } from "@framework/brand/get-all-brands";
 import { ROUTES } from "@utils/routes";
 import Alert from "@components/ui/alert";
+import { Brand } from "@framework/types";
 
 interface BrandProps {
 	sectionHeading: string;
@@ -23,13 +24,13 @@ const breakpoints = {
 	},
 	"1025": {
 		slidesPerView: 6,
-		spaceBetween: 28,
+		spaceBetween: 20,
 	},
 	"768": {
 		slidesPerView: 5,
 		spaceBetween: 20,
 	},
-	"500 ": {
+	"500": {
 		slidesPerView: 4,
 		spaceBetween: 20,
 	},
@@ -54,14 +55,20 @@ const BrandBlock: React.FC<BrandProps> = ({
 			{error ? (
 				<Alert message={error?.message} />
 			) : (
-				<Carousel breakpoints={breakpoints} buttonClassName="-mt-8 md:-mt-12">
+				<Carousel
+					breakpoints={breakpoints}
+					buttonGroupClassName="-mt-4 md:-mt-5 xl:-mt-7"
+					autoplay={{
+						delay: 4000,
+					}}
+				>
 					{isLoading && !data
 						? Array.from({ length: 10 }).map((_, idx) => (
 								<SwiperSlide key={idx}>
 									<CardRoundedLoader uniqueKey={`category-${idx}`} />
 								</SwiperSlide>
 						  ))
-						: brands?.map((brand) => (
+						: brands?.map((brand: Brand) => (
 								<SwiperSlide key={`brand--key${brand.id}`}>
 									<Card
 										item={brand}

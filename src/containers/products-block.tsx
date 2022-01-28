@@ -18,7 +18,7 @@ interface ProductsProps {
 const ProductsBlock: React.FC<ProductsProps> = ({
 	sectionHeading,
 	categorySlug,
-	className = "mb-9 md:mb-9 lg:mb-10 xl:mb-12",
+	className = "mb-9 md:mb-10 xl:mb-12",
 	products,
 	loading,
 	error,

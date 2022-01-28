@@ -7,11 +7,11 @@ interface BannerProps {
 
 const BannerBlock: React.FC<BannerProps> = ({
 	data,
-	className = "mb-12 md:mb-14 xl:mb-16",
+	className = "mb-12 md:mb-14 xl:mb-16 px-2.5",
 }) => {
 	return (
 		<div
-			className={`${className} px-2.5 grid grid-cols-2 sm:grid-cols-9 gap-2 md:gap-2.5 max-w-[1920px] mx-auto`}
+			className={`${className} grid grid-cols-2 sm:grid-cols-9 gap-2 md:gap-2.5 max-w-[1920px] mx-auto`}
 		>
 			{data.map((banner: any) => (
 				<BannerCard

@@ -14,13 +14,15 @@ import BannerGridBlock from "@containers/banner-grid-block";
 import BestSellerProductFeed from "@components/product/feeds/best-seller-product-feed";
 import NewArrivalsProductFeed from "@components/product/feeds/new-arrivals-product-feed";
 import Subscription from "@components/common/subscription";
+import { homeTwoHeroBanner as heroBanner } from "@framework/static/banner";
 import { homeOneBanner as banner } from "@framework/static/banner";
+import { collectionData as collection } from "@framework/static/collection";
 import { ROUTES } from "@utils/routes";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetStaticProps } from "next";
 
 const flashSaleCarouselBreakpoint = {
-	"1281": {
+	"1280": {
 		slidesPerView: 1,
 		spaceBetween: 28,
 	},
@@ -37,7 +39,7 @@ const flashSaleCarouselBreakpoint = {
 export default function Home() {
 	return (
 		<Container>
-			<HeroWithCategory />
+			<HeroWithCategory bannerData={heroBanner} />
 			<ProductsWithFlashSale carouselBreakpoint={flashSaleCarouselBreakpoint} />
 			<BannerGridBlock />
 			<CategoryGridBlock sectionHeading="text-featured-categories" />
@@ -53,7 +55,7 @@ export default function Home() {
 			<Divider />
 			<BrandBlock sectionHeading="text-top-brands" />
 			<FeatureBlock />
-			<CollectionBlock />
+			<CollectionBlock data={collection} />
 			<DownloadApps />
 			<Support />
 			<Subscription />

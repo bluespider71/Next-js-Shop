@@ -14,9 +14,8 @@ export const CategoryFilter = () => {
 	const selectedCategories = query?.category
 		? (query.category as string).split(",")
 		: [];
-	const [formState, setFormState] = React.useState<string[]>(
-		selectedCategories
-	);
+	const [formState, setFormState] =
+		React.useState<string[]>(selectedCategories);
 
 	React.useEffect(() => {
 		setFormState(selectedCategories);

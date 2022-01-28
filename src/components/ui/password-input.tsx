@@ -13,8 +13,7 @@ export interface Props extends InputHTMLAttributes<HTMLInputElement> {
 	errorKey: string | undefined;
 }
 const classes = {
-	root:
-		"py-2 px-4 md:px-5 w-full appearance-none transition duration-150 ease-in-out border border-gray-500 text-input text-xs lg:text-sm font-body rounded-md placeholder-gray-600  transition duration-200 ease-in-out bg-white border border-gray-100 focus:outline-none focus:border-heading h-11 md:h-12",
+	root: "py-2 px-4 md:px-5 w-full appearance-none transition duration-150 ease-in-out border border-gray-500 text-input text-xs lg:text-sm font-body rounded-md placeholder-gray-600  transition duration-200 ease-in-out bg-white border border-gray-100 focus:outline-none focus:border-heading h-11 md:h-12",
 };
 const PasswordInput = React.forwardRef<HTMLInputElement, Props>(
 	(

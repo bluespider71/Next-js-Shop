@@ -4,7 +4,6 @@ import Carousel from "@components/ui/carousel/carousel";
 import { SwiperSlide } from "swiper/react";
 import { useCategoriesQuery } from "@framework/category/get-all-categories";
 import { useWindowSize } from "@utils/use-window-size";
-import { homeTwoHeroBanner as heroBanner } from "@framework/static/banner";
 import CategoryListCardLoader from "@components/ui/loaders/category-list-card-loader";
 import CategoryListFeedLoader from "@components/ui/loaders/category-list-feed-loader";
 import { ROUTES } from "@utils/routes";
@@ -12,6 +11,8 @@ import Alert from "@components/ui/alert";
 
 interface Props {
 	className?: string;
+	paginationPosition?: "left" | "center";
+	bannerData?: any;
 }
 
 const categoryResponsive = {
@@ -21,7 +22,7 @@ const categoryResponsive = {
 	},
 	"768": {
 		slidesPerView: 3,
-		spaceBetween: 24,
+		spaceBetween: 20,
 	},
 	"480": {
 		slidesPerView: 2,
@@ -35,6 +36,8 @@ const categoryResponsive = {
 
 const HeroWithCategory: React.FC<Props> = ({
 	className = "mb-12 md:mb-14 xl:mb-16",
+	paginationPosition = "center",
+	bannerData,
 }) => {
 	const { width } = useWindowSize();
 	const { data, isLoading, error } = useCategoriesQuery({
@@ -48,7 +51,13 @@ const HeroWithCategory: React.FC<Props> = ({
 				<Alert message={error?.message} />
 			) : width < 1500 ? (
 				<div>
-					<Carousel breakpoints={categoryResponsive} buttonSize="small">
+					<Carousel
+						autoplay={{
+							delay: 3000,
+						}}
+						breakpoints={categoryResponsive}
+						buttonSize="small"
+					>
 						{isLoading && !data?.categories?.data?.length
 							? Array.from({ length: 8 }).map((_, idx) => (
 									<SwiperSlide key={`category-list-${idx}`}>
@@ -86,10 +95,14 @@ const HeroWithCategory: React.FC<Props> = ({
 					pagination={{
 						clickable: true,
 					}}
+					autoplay={{
+						delay: 5000,
+					}}
 					className="-mx-0"
-					buttonClassName="hidden"
+					buttonGroupClassName="hidden"
+					paginationPosition={paginationPosition}
 				>
-					{heroBanner?.map((banner: any) => (
+					{bannerData?.map((banner: any) => (
 						<SwiperSlide key={`banner--key${banner.id}`}>
 							<BannerCard
 								banner={banner}

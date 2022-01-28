@@ -32,7 +32,7 @@ export const footer = {
 				{
 					id: 4,
 					title: "link-youtube",
-					path: "https://www.youtube.com/channel/UCjld1tyVHRNy_pe3ROLiLhw",
+					path: "https://www.facebook.com/arrullosbebe/videos",
 					icon: <IoLogoYoutube />,
 				},
 			],

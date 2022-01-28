@@ -3,7 +3,7 @@ import React, { forwardRef, ButtonHTMLAttributes } from "react";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	className?: string;
-	variant?: "flat" | "slim";
+	variant?: "flat" | "slim" | "smoke";
 	active?: boolean;
 	type?: "submit" | "reset" | "button";
 	loading?: boolean;
@@ -28,6 +28,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 				variant === "flat",
 			"h-11 md:h-12 px-5 bg-heading text-white py-2 transform-none normal-case hover:text-white hover:bg-gray-600 hover:shadow-cart":
 				variant === "slim",
+			"h-11 md:h-12 px-5 bg-gray-200 text-heading py-2 transform-none normal-case hover:bg-gray-300":
+				variant === "smoke",
 			"cursor-not-allowed": loading,
 			"cursor-not-allowed hover:cursor-not-allowed": disabled,
 		},

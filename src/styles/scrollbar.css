@@ -102,6 +102,10 @@
 	max-height: calc(100vh - 125px);
 	-webkit-overflow-scrolling: touch;
 }
+.shop-sidebar-scrollbar {
+	max-height: calc(100vh - 80px);
+	-webkit-overflow-scrolling: touch;
+}
 @media (min-width: 768px) {
 	.cart-scrollbar {
 		max-height: calc(100vh - 128px);

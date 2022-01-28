@@ -2,11 +2,13 @@ import Link from "@components/ui/link";
 import Image from "next/image";
 import Text from "@components/ui/text";
 import { useTranslation } from "next-i18next";
+import cn from "classnames";
 
 interface Props {
 	imgWidth?: number | string;
 	imgHeight?: number | string;
 	contactClassName?: string;
+	variant?: "default" | "modern";
 	collection: {
 		slug: string;
 		image: string;
@@ -20,19 +22,25 @@ const CollectionCard: React.FC<Props> = ({
 	imgWidth = 580,
 	imgHeight = 580,
 	contactClassName = "",
+	variant = "default",
 }) => {
 	const { slug, image, title, description } = collection;
 	const { t } = useTranslation("common");
 	return (
 		<Link
 			href={slug}
-			className="group text-center flex flex-col justify-between sm:even:flex-col-reverse sm:last:hidden lg:last:flex border sm:border-0 border-gray-300 overflow-hidden rounded-md pb-4 sm:pb-0"
+			className={cn(
+				"group text-center flex flex-col sm:last:hidden lg:last:flex border sm:border-0 border-gray-300 overflow-hidden rounded-md pb-4 sm:pb-0",
+				{
+					"justify-between sm:even:flex-col-reverse": variant === "default",
+				}
+			)}
 		>
 			<div className="flex mx-auto flex-col relative">
 				<div className="flex">
 					<Image
 						src={image ?? "/assets/placeholder/collection.svg"}
-						alt={t(`${title}`) || t("text-card-thumbnail")}
+						alt={t("title") || t("text-card-thumbnail")}
 						width={imgWidth}
 						height={imgHeight}
 						className="bg-gray-300 object-cover sm:rounded-md transition duration-200 ease-in-out group-hover:opacity-90"
@@ -51,7 +59,7 @@ const CollectionCard: React.FC<Props> = ({
 				>
 					{t(`${title}`)}
 				</Text>
-				<p className="text-body text-xs md:text-sm leading-6 md:leading-7 xl:px-10 3xl:px-20">
+				<p className="text-body text-[13px] md:text-sm leading-6 md:leading-7 xl:px-10 3xl:px-20">
 					{t(`${description}`)}
 				</p>
 			</div>
