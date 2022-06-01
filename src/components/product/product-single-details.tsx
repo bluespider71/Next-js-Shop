@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "@components/ui/button";
 import Counter from "@components/common/counter";
 import { useRouter } from "next/router";
 import { useProductQuery } from "@framework/product/get-product";
+import { useCategoriesQuery } from "@framework/category/get-category";
 import { getVariations } from "@framework/utils/get-variations";
 import usePrice from "@framework/product/use-price";
 import { useCart } from "@contexts/cart/cart.context";
@@ -15,6 +16,10 @@ import { useWindowSize } from "@utils/use-window-size";
 import Carousel from "@components/ui/carousel/carousel";
 import { SwiperSlide } from "swiper/react";
 import ProductMetaReview from "@components/product/product-meta-review";
+import ProductColors from "@components/product/product-colors";
+import ProductSizes from "@components/product/product-sizes";
+import { Variant, Size } from "@framework/types";
+import { ROUTES } from "@utils/routes";
 
 const productGalleryCarouselResponsive = {
 	"768": {
@@ -26,30 +31,55 @@ const productGalleryCarouselResponsive = {
 };
 
 const ProductSingleDetails: React.FC = () => {
-	const {
-		query: { slug },
-	} = useRouter();
+	const router = useRouter();
+	const { id, variantSku } = router.query;
 	const { width } = useWindowSize();
-	const { data, isLoading } = useProductQuery(slug as string);
+	const { data, isLoading } = useProductQuery(id as string);
 	const { addItemToCart } = useCart();
-	const [attributes, setAttributes] = useState<{ [key: string]: string }>({});
 	const [quantity, setQuantity] = useState(1);
 	const [addToCartLoader, setAddToCartLoader] = useState<boolean>(false);
 	const { price, basePrice, discount } = usePrice(
 		data && {
-			amount: data.sale_price ? data.sale_price : data.price,
+			amount: data.offerPrice ? data.offerPrice : data.price,
 			baseAmount: data.price,
 			currencyCode: "USD",
 		}
 	);
-	if (isLoading) return <p>Loading...</p>;
-	const variations = getVariations(data?.variations);
 
-	const isSelected = !isEmpty(variations)
-		? !isEmpty(attributes) &&
-		  Object.keys(variations).every((variation) =>
-				attributes.hasOwnProperty(variation)
-		  )
+	const [selectedSize, setSelectedSize] = useState("");
+	const [selectedVariant, setSelectedVariant] = useState("");
+	const [sizes, setSizes] = useState<Size[] | undefined>([]);
+	const [variants, setVariants] = useState<Variant[] | undefined>([]);
+	const [image, setImage] = useState("");
+
+	useEffect(() => {
+		setVariants(data?.variants);
+	}, [data]);
+
+	useEffect(() => {
+		if (variants && variants.length > 0) {
+			let index = variants.findIndex((element) => element.sku === variantSku);
+			if (index !== -1) {
+				setSelectedVariant(variants[index].sku || "");
+				setImage(variants[index].pictures[0]);
+				setSizes(variants[index].sizes);
+			} else {
+				setSelectedVariant(variants[0].sku || "");
+				setImage(variants[0].pictures[0]);
+				setSizes(variants[0].sizes);
+				router.push(
+					`${ROUTES.PRODUCT}/${data?.id}/${variants[0].sku}`,
+					undefined,
+					{
+						locale: router.locale,
+					}
+				);
+			}
+		}
+	}, [variants]);
+
+	const isSelected = !isEmpty(variants)
+		? selectedVariant && selectedSize && true
 		: true;
 
 	function addToCart() {
@@ -60,7 +90,14 @@ const ProductSingleDetails: React.FC = () => {
 			setAddToCartLoader(false);
 		}, 600);
 
-		const item = generateCartItem(data!, attributes);
+		const item = generateCartItem(
+			data!,
+			{
+				size: selectedSize,
+				color: selectedVariant,
+			},
+			image
+		);
 		addItemToCart(item, quantity);
 		toast("Added to the bag", {
 			progressClassName: "fancy-progress-bar",
@@ -74,58 +111,36 @@ const ProductSingleDetails: React.FC = () => {
 		console.log(item, "item");
 	}
 
-	function handleAttribute(attribute: any) {
-		setAttributes((prev) => ({
-			...prev,
-			...attribute,
-		}));
+	function handleColorSelected(sku: any) {
+		variants?.map((variant: any) => {
+			if (variant.sku === sku) {
+				router.push(`${ROUTES.PRODUCT}/${data?.id}/${sku}`, undefined, {
+					locale: router.locale,
+				});
+				setImage(variant.pictures[0]);
+				setSizes(variant.sizes);
+				setSelectedVariant(sku);
+				setSelectedSize("");
+			}
+		});
+	}
+	function handleSizeSelected(size: string) {
+		setSelectedSize(size);
 	}
 
+	if (isLoading) return <p>Loading...</p>;
+	if (!data) return <p>no data</p>;
 	return (
 		<div className="block lg:grid grid-cols-9 gap-x-10 xl:gap-x-14 pt-7 pb-10 lg:pb-14 2xl:pb-20 items-start">
-			{width < 1025 ? (
-				<Carousel
-					pagination={{
-						clickable: true,
-					}}
-					breakpoints={productGalleryCarouselResponsive}
-					className="product-gallery"
-					buttonGroupClassName="hidden"
-				>
-					{data?.gallery?.map((item, index: number) => (
-						<SwiperSlide key={`product-gallery-key-${index}`}>
-							<div className="col-span-1 transition duration-150 ease-in hover:opacity-90">
-								<img
-									src={
-										item?.original ??
-										"/assets/placeholder/products/product-gallery.svg"
-									}
-									alt={`${data?.name}--${index}`}
-									className="object-cover w-full"
-								/>
-							</div>
-						</SwiperSlide>
-					))}
-				</Carousel>
-			) : (
-				<div className="col-span-5 grid grid-cols-2 gap-2.5">
-					{data?.gallery?.map((item, index: number) => (
-						<div
-							key={index}
-							className="col-span-1 transition duration-150 ease-in hover:opacity-90"
-						>
-							<img
-								src={
-									item?.original ??
-									"/assets/placeholder/products/product-gallery.svg"
-								}
-								alt={`${data?.name}--${index}`}
-								className="object-cover w-full"
-							/>
-						</div>
-					))}
+			<div className="col-span-5 grid grid-cols-1 gap-2.5">
+				<div className="col-span-1 transition duration-150 ease-in hover:opacity-90">
+					<img
+						src={image ?? "/assets/placeholder/products/product-gallery.svg"}
+						alt={`${data?.name}--${image}`}
+						className="object-cover w-full"
+					/>
 				</div>
-			)}
+			</div>
 
 			<div className="col-span-4 pt-8 lg:pt-0">
 				<div className="pb-7 mb-7 border-b border-gray-300">
@@ -148,17 +163,16 @@ const ProductSingleDetails: React.FC = () => {
 				</div>
 
 				<div className="pb-3 border-b border-gray-300">
-					{Object.keys(variations).map((variation) => {
-						return (
-							<ProductAttributes
-								key={variation}
-								title={variation}
-								attributes={variations[variation]}
-								active={attributes[variation]}
-								onClick={handleAttribute}
-							/>
-						);
-					})}
+					<ProductColors
+						variants={variants}
+						onClick={handleColorSelected}
+						selectedVariant={selectedVariant}
+					/>
+					<ProductSizes
+						sizes={sizes}
+						onClick={handleSizeSelected}
+						selectedSize={selectedSize}
+					/>
 				</div>
 				<div className="flex items-center space-s-4 md:pe-32 lg:pe-12 2xl:pe-32 3xl:pe-48 border-b border-gray-300 py-8">
 					<Counter
@@ -181,46 +195,29 @@ const ProductSingleDetails: React.FC = () => {
 						<span className="py-2 3xl:px-8">Add to cart</span>
 					</Button>
 				</div>
+
 				<div className="py-6">
 					<ul className="text-sm space-y-5 pb-1">
 						<li>
 							<span className="font-semibold text-heading inline-block pe-2">
-								SKU:
-							</span>
-							{data?.sku}
-						</li>
-						<li>
-							<span className="font-semibold text-heading inline-block pe-2">
 								Category:
 							</span>
-							<Link
-								href="/"
-								className="transition hover:underline hover:text-heading"
-							>
-								{data?.category?.name}
-							</Link>
-						</li>
-						{data?.tags && Array.isArray(data.tags) && (
-							<li className="productTags">
-								<span className="font-semibold text-heading inline-block pe-2">
-									Tags:
-								</span>
-								{data.tags.map((tag) => (
+							{data?.categoryIds?.map((category) => (
+								<React.Fragment key={category?.name}>
 									<Link
-										key={tag.id}
-										href={tag.slug}
-										className="inline-block pe-1.5 transition hover:underline hover:text-heading last:pe-0"
+										href={`/category/${category?.name}`}
+										className="transition hover:underline hover:text-heading"
 									>
-										{tag.name}
-										<span className="text-heading">,</span>
+										{category?.name}
 									</Link>
-								))}
-							</li>
-						)}
+									<span className="font-semibold text-heading inline-block pe-2">
+										,
+									</span>
+								</React.Fragment>
+							))}
+						</li>
 					</ul>
 				</div>
-
-				<ProductMetaReview data={data} />
 			</div>
 		</div>
 	);

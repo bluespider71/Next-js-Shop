@@ -13,13 +13,19 @@ type MegaMenuProps = {
 		id: number | string;
 		columnItems: MenuItem[];
 	}[];
+	shouldShow: boolean;
 };
 
-const MegaMenu: React.FC<MegaMenuProps> = ({ columns }) => {
+const MegaMenu: React.FC<MegaMenuProps> = ({ columns, shouldShow }) => {
 	const { t } = useTranslation("menu");
 	return (
-		<div className="megaMenu shadow-header bg-gray-200 absolute -start-20 xl:start-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible">
+		<div
+			className={`megaMenu shadow-header bg-gray-200 absolute -start-20 xl:start-0 opacity-0 invisible ${
+				shouldShow ? "opacity-100" : ""
+			}`}
+		>
 			<div className="grid grid-cols-5">
+				
 				{columns?.map((column) => (
 					<ul
 						className="even:bg-gray-150 pb-7 2xl:pb-8 pt-6 2xl:pt-7"

@@ -1,27 +1,25 @@
 import isEmpty from "lodash/isEmpty";
-
 interface Item {
 	id: string | number;
-	name: string;
-	slug: string;
-	image: {
-		thumbnail: string;
-		[key: string]: unknown;
-	};
 	price: number;
-	sale_price?: number;
+	offerPrice?: number;
 	[key: string]: unknown;
+	name: string;
 }
-export function generateCartItem(item: Item, attributes: object) {
-	const { id, name, slug, image, price, sale_price } = item;
+export function generateCartItem(
+	item: Item,
+	attributes: object,
+	image: string
+) {
+	const { id, price, offerPrice, name } = item;
 	return {
 		id: !isEmpty(attributes)
 			? `${id}.${Object.values(attributes).join(".")}`
 			: id,
+		//i left price so that you can compare the price that the user sees with the price in the database
+		price: offerPrice ? offerPrice : price,
+		image,
 		name,
-		slug,
-		image: image.thumbnail,
-		price: sale_price ? sale_price : price,
 		attributes,
 	};
 }

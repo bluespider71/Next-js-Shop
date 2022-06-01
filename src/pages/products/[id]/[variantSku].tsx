@@ -17,7 +17,9 @@ export default function ProductPage() {
 					<Breadcrumb />
 				</div>
 				<ProductSingleDetails />
+
 				<RelatedProducts sectionHeading="text-related-products" />
+
 				<Subscription />
 			</Container>
 		</>

@@ -25,6 +25,7 @@ const Card: React.FC<Props> = ({
 		(size === "small" && 180) || (size === "medium" && 198);
 
 	const placeholderImage = `/assets/placeholder/card-${size}.svg`;
+
 	const { t } = useTranslation("common");
 	return (
 		<Link
@@ -37,8 +38,9 @@ const Card: React.FC<Props> = ({
 				}`}
 			>
 				<div className="flex">
-					<Image
-						src={image?.original ?? placeholderImage}
+					{
+						typeof image === "string" ? <Image
+						src={image ?? placeholderImage}
 						alt={name || t("text-card-thumbnail")}
 						width={imageSize}
 						height={imageSize}
@@ -46,7 +48,9 @@ const Card: React.FC<Props> = ({
 						className={`object-cover bg-gray-300 ${
 							variant === "rounded" ? "rounded-md" : "rounded-full"
 						}`}
-					/>
+					/> : <></>
+					}
+					
 				</div>
 				{effectActive === true && (
 					<>

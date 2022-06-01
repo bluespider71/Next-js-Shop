@@ -1,5 +1,6 @@
 import Input from "@components/ui/input";
 import Button from "@components/ui/button";
+import Table from "@components/ui/table/table";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { fadeInTop } from "@utils/motion/fade-in-top";
@@ -7,7 +8,7 @@ import {
 	useUpdateUserMutation,
 	UpdateUserType,
 } from "@framework/customer/use-update-customer";
-import { RadioBox } from "@components/ui/radiobox";
+
 import { useTranslation } from "next-i18next";
 
 const defaultValues = {};
@@ -99,23 +100,7 @@ const AccountDetails: React.FC = () => {
 							errorKey={errors.email?.message}
 						/>
 					</div>
-					<div className="relative flex flex-col">
-						<span className="mt-2 text-sm text-heading font-semibold block pb-1">
-							{t("common:text-gender")}
-						</span>
-						<div className="mt-2 flex items-center space-s-6">
-							<RadioBox
-								labelKey="forms:label-male"
-								{...register("gender")}
-								value="male"
-							/>
-							<RadioBox
-								labelKey="forms:label-female"
-								{...register("gender")}
-								value="female"
-							/>
-						</div>
-					</div>
+					<Table name="tableInfo" data={USER_ADDRESSES} />
 					<div className="relative">
 						<Button
 							type="submit"
@@ -133,3 +118,45 @@ const AccountDetails: React.FC = () => {
 };
 
 export default AccountDetails;
+
+const USER_ADDRESSES = [
+	{
+		id:"1",
+		shipping_option: "Envío a domicilio",
+		chosen_courier_Id: "courier_id",
+		principal_street: "calle 1",
+		secondary_Street: "calle 2",
+		neighborhood_citadel: "barrio ejemplo",
+		house_color: "amarilla",
+		phone_number_1: "telefono 1",
+		phone_number_2: "telefono 2",
+		aditional_info: "Lorem Ipsum.....",
+		chosen_bus_copmany_Id: "",
+	},
+	{
+		id:"2",
+		shipping_option: "Cooperativa de Terminal Terrestre",
+		chosen_bus_copmany_Id: "bus_company_id",
+		chosen_courier_Id: "",
+		principal_street: "",
+		secondary_Street: "",
+		neighborhood_citadel: "",
+		house_color: "",
+		phone_number_1: "telefono 1",
+		phone_number_2: "telefono 2",
+		aditional_info: "Lorem Ipsum.....",
+	},
+	{
+		id:"3",
+		shipping_option: "Retiro de oficina",
+		chosen_courier_Id: "courier_id",
+		principal_street: "",
+		secondary_Street: "",
+		neighborhood_citadel: "",
+		house_color: "",
+		phone_number_1: "telefono 1",
+		phone_number_2: "",
+		aditional_info: "Lorem Ipsum.....",
+		chosen_bus_copmany_Id: "",
+	},
+];

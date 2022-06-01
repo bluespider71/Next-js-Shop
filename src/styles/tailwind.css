@@ -111,7 +111,7 @@
 	.headerMenu .menuItem:hover > .megaMenu,
 	.headerMenu .menuItem:hover > .subMenu {
 		visibility: visible;
-		@apply top-full;
+		@apply top-full border border-gray-400 rounded-2xl;
 	}
 
 	/* Mobile Drawer Menu */

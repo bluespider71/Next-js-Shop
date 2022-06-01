@@ -52,7 +52,12 @@ export type Category = {
 	icon?: string;
 	products?: Product[];
 	productCount?: number;
+	subCategoryIds?: string[] | SubCategory[];
+	status?: string;
+	createdAt?: string;
+	updateAt?: string;
 };
+
 export type Collection = {
 	id: number | string;
 	name: string;
@@ -92,6 +97,21 @@ export type Product = {
 	description?: string;
 	variations?: object;
 	[key: string]: unknown;
+	categoryIds?:  Category[] ;
+	subCategoryIds?: string[] | SubCategory[];
+	subSubCategoryIds?: string[] | SubSubCategory[];
+	offerPrice?: number;
+	ownerId?: number | string;
+	ratings?: number;
+	totalViews?: number;
+	status: Boolean;
+	variants: Variant[];
+	wholesale1: number;
+	wholesale2: number;
+	retailPrice1: number;
+	retailPrice2: number;
+	createdAt: Date;
+	updateAt: Date;
 };
 export type OrderItem = {
 	id: number | string;
@@ -130,4 +150,30 @@ export type Shop = {
 	socialShare: any;
 	created_at: string;
 	updated_at: string;
+}
+export type Variant = {
+	name?: string;
+	sku?: string;
+	pictures: string[];
+	sizes?: Size[];
+};
+export type Size = {
+	size?: string;
+	stock?: number;
+};
+
+export type SubCategory = {
+	id: number | string;
+	name: string;
+	subSubCategoryIds?: string[] | SubSubCategory[];
+	products?: Product[];
+	createdAt?: string;
+	updateAt?: string;
+};
+
+export type SubSubCategory = {
+	id: number | string;
+	name: string;
+	products?: Product[];
+	createdAt?: Date;
 };

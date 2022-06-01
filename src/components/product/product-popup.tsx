@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import isEmpty from "lodash/isEmpty";
 import { ROUTES } from "@utils/routes";
@@ -12,6 +12,15 @@ import usePrice from "@framework/product/use-price";
 import { getVariations } from "@framework/utils/get-variations";
 import { useTranslation } from "next-i18next";
 
+//ui components
+import ProductCart from "@components/product/product-cart";
+import ProductColors from "@components/product/product-colors";
+import ProductHeader from "@components/product/product-header";
+import ProductImage from "@components/product/product-image";
+import ProductPrice from "@components/product/product-price";
+import ProductSizes from "@components/product/product-sizes";
+import ProductColorImages from "@components/product/product-color-images";
+
 export default function ProductPopup() {
 	const { t } = useTranslation("common");
 	const {
@@ -22,22 +31,30 @@ export default function ProductPopup() {
 	const router = useRouter();
 	const { addItemToCart } = useCart();
 	const [quantity, setQuantity] = useState(1);
-	const [attributes, setAttributes] = useState<{ [key: string]: string }>({});
 	const [viewCartBtn, setViewCartBtn] = useState<boolean>(false);
 	const [addToCartLoader, setAddToCartLoader] = useState<boolean>(false);
+	const [image, setImage] = useState("");
+	const [sizes, setSizes] = useState([]);
+	const [pictures, setPictures] = useState([]);
+	const [selectedSize, setSelectedSize] = useState("");
+	const [selectedVariant, setSelectedVariant] = useState("");
+	const [selectedPicture, setSelectedPicture] = useState(0);
 	const { price, basePrice, discount } = usePrice({
-		amount: data.sale_price ? data.sale_price : data.price,
+		amount: data.offerPrice ? data.offerPrice : data.price,
 		baseAmount: data.price,
 		currencyCode: "USD",
 	});
-	const variations = getVariations(data.variations);
-	const { slug, image, name, description } = data;
+	const { variants, name, description } = data;
 
-	const isSelected = !isEmpty(variations)
-		? !isEmpty(attributes) &&
-		  Object.keys(variations).every((variation) =>
-				attributes.hasOwnProperty(variation)
-		  )
+	useEffect(() => {
+		setImage(variants[0].pictures[0]);
+		setPictures(variants[0].pictures);
+		setSizes(variants[0].sizes);
+		setSelectedVariant(variants[0].sku);
+	}, [variants]);
+
+	const isSelected = !isEmpty(variants)
+		? selectedVariant && selectedSize && true
 		: true;
 
 	function addToCart() {
@@ -48,23 +65,26 @@ export default function ProductPopup() {
 			setAddToCartLoader(false);
 			setViewCartBtn(true);
 		}, 600);
-		const item = generateCartItem(data!, attributes);
+		const item = generateCartItem(
+			data!,
+			{
+				size: selectedSize,
+				color: selectedVariant,
+			},
+			image
+		);
+
 		addItemToCart(item, quantity);
 		console.log(item, "item");
 	}
 
 	function navigateToProductPage() {
 		closeModal();
-		router.push(`${ROUTES.PRODUCT}/${slug}`, undefined, {
+		//router.push(`${ROUTES.PRODUCT}/${slug}`
+		//the below had slug as above
+		router.push(`${ROUTES.PRODUCT}/${data.id}/${selectedVariant}`, undefined, {
 			locale: router.locale,
 		});
-	}
-
-	function handleAttribute(attribute: any) {
-		setAttributes((prev) => ({
-			...prev,
-			...attribute,
-		}));
 	}
 
 	function navigateToCartPage() {
@@ -74,99 +94,76 @@ export default function ProductPopup() {
 		}, 300);
 	}
 
+	function handleColorSelected(sku: any) {
+		variants.map((variant: any) => {
+			if (variant.sku === sku) {
+				setImage(variant.pictures[0]);
+				setPictures(variant.pictures);
+				setSizes(variant.sizes);
+				setSelectedVariant(sku);
+				setSelectedPicture(0);
+				let sizes = variant.sizes.map((item: any) => item.size);
+				if (!sizes.includes(selectedSize)) {
+					setSelectedSize("");
+				}
+			}
+		});
+	}
+	function handlePictureSelected(index: any) {
+		setImage(pictures[index]);
+		setSelectedPicture(index);
+	}
+	function handleSizeSelected(size: string) {
+		setSelectedSize(size);
+	}
+
 	return (
 		<div className="rounded-lg bg-white">
 			<div className="flex flex-col lg:flex-row w-full md:w-[650px] lg:w-[960px] mx-auto overflow-hidden">
-				<div className="flex-shrink-0 flex items-center justify-center w-full lg:w-430px max-h-430px lg:max-h-full overflow-hidden bg-gray-300">
-					<img
-						src={
-							image?.original ??
-							"/assets/placeholder/products/product-thumbnail.svg"
-						}
-						alt={name}
-						className="lg:object-cover lg:w-full lg:h-full"
+				<div className="flex">
+					<ProductColorImages
+						pictures={pictures}
+						onClick={handlePictureSelected}
+						selectedPicture={selectedPicture}
 					/>
+					<ProductImage image={image} name={name} />
 				</div>
 
-				<div className="flex flex-col p-5 md:p-8 w-full">
+				<div id="right" className="flex flex-col p-5 md:p-8 w-full">
 					<div className="pb-5">
-						<div
-							className="mb-2 md:mb-2.5 block -mt-1.5"
-							onClick={navigateToProductPage}
-							role="button"
-						>
-							<h2 className="text-heading text-lg md:text-xl lg:text-2xl font-semibold hover:text-black">
-								{name}
-							</h2>
-						</div>
-						<p className="text-sm leading-6 md:text-body md:leading-7">
-							{description}
-						</p>
-
-						<div className="flex items-center mt-3">
-							<div className="text-heading font-semibold text-base md:text-xl lg:text-2xl">
-								{price}
-							</div>
-							{discount && (
-								<del className="font-segoe text-gray-400 text-base lg:text-xl ps-2.5 -mt-0.5 md:mt-0">
-									{basePrice}
-								</del>
-							)}
-						</div>
+						<ProductHeader
+							name={name}
+							description={description}
+							navigateToProductPage={navigateToProductPage}
+						/>
+						<ProductPrice
+							price={price}
+							basePrice={basePrice}
+							discount={discount}
+						/>
 					</div>
+					<ProductColors
+						variants={variants}
+						onClick={handleColorSelected}
+						selectedVariant={selectedVariant}
+					/>
+					<ProductSizes
+						sizes={sizes}
+						onClick={handleSizeSelected}
+						selectedSize={selectedSize}
+					/>
 
-					{Object.keys(variations).map((variation) => {
-						return (
-							<ProductAttributes
-								key={`popup-attribute-key${variation}`}
-								title={variation}
-								attributes={variations[variation]}
-								active={attributes[variation]}
-								onClick={handleAttribute}
-							/>
-						);
-					})}
-
-					<div className="pt-2 md:pt-4">
-						<div className="flex items-center justify-between mb-4 space-s-3 sm:space-s-4">
-							<Counter
-								quantity={quantity}
-								onIncrement={() => setQuantity((prev) => prev + 1)}
-								onDecrement={() =>
-									setQuantity((prev) => (prev !== 1 ? prev - 1 : 1))
-								}
-								disableDecrement={quantity === 1}
-							/>
-							<Button
-								onClick={addToCart}
-								variant="flat"
-								className={`w-full h-11 md:h-12 px-1.5 ${
-									!isSelected && "bg-gray-400 hover:bg-gray-400"
-								}`}
-								disabled={!isSelected}
-								loading={addToCartLoader}
-							>
-								{t("text-add-to-cart")}
-							</Button>
-						</div>
-
-						{viewCartBtn && (
-							<button
-								onClick={navigateToCartPage}
-								className="w-full mb-4 h-11 md:h-12 rounded bg-gray-100 text-heading focus:outline-none border border-gray-300 transition-colors hover:bg-gray-50 focus:bg-gray-50"
-							>
-								{t("text-view-cart")}
-							</button>
-						)}
-
-						<Button
-							onClick={navigateToProductPage}
-							variant="flat"
-							className="w-full h-11 md:h-12"
-						>
-							{t("text-view-details")}
-						</Button>
-					</div>
+					<ProductCart
+						navigateToProductPage={navigateToProductPage}
+						navigateToCartPage={navigateToCartPage}
+						addToCartLoader={addToCartLoader}
+						addToCart={addToCart}
+						quantity={quantity}
+						setQuantity={setQuantity}
+						t={t}
+						viewCartBtn={viewCartBtn}
+						isSelected={isSelected}
+					/>
 				</div>
 			</div>
 		</div>

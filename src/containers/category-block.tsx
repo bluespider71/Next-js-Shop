@@ -25,15 +25,15 @@ const breakpoints = {
 	},
 	"1025": {
 		slidesPerView: 6,
-		spaceBetween: 20,
+		spaceBetween: 28,
 	},
 	"768": {
 		slidesPerView: 5,
 		spaceBetween: 20,
 	},
-	"500": {
+	"500 ": {
 		slidesPerView: 4,
-		spaceBetween: 12,
+		spaceBetween: 20,
 	},
 	"0": {
 		slidesPerView: 3,
@@ -58,7 +58,7 @@ const breakpointsCircle = {
 		slidesPerView: 5,
 		spaceBetween: 20,
 	},
-	"500": {
+	"500 ": {
 		slidesPerView: 4,
 		spaceBetween: 20,
 	},
