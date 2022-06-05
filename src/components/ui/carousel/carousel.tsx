@@ -5,10 +5,10 @@ import { Navigation, Scrollbar, Pagination, Autoplay } from "swiper";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { getDirection } from "@utils/get-direction";
 import cn from "classnames";
-import "swiper/swiper.min.css";
-import "swiper/components/pagination/pagination.min.css";
-// import "swiper/css/autoplay";
-import "swiper/components/scrollbar";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/autoplay";
+import "swiper/css/scrollbar";
 
 type CarouselPropsType = {
 	className?: string;
