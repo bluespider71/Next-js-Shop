@@ -1,3 +1,3 @@
 # FrontendNextjsArrullos
 
-https://frontend-nextjs-arrullos.vercel.app/
+https://frontend-nextjs-arrullos.vercel.app
